@@ -1,8 +1,15 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
+import NotFound from "./NotFound";
+import "./App.css";
+import HomePage from "./pages/HomePage";
 
 const App = () => (
-  <div className="App">
-    <p className="App-intro">Book a meal</p>
+  <div>
+    <Switch>
+      <Route path="/" exact component={HomePage} />
+      <Route component={NotFound} />
+    </Switch>{" "}
   </div>
 );
 
