@@ -6,7 +6,7 @@ node_js:
 #   - node_modules
 script:
   - yarn install
-  - yarn test
+  - yarn coverage
 
 after_script:
   - yarn run coveralls
