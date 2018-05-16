@@ -6,7 +6,6 @@ const FormInput = ({ value, type, name, label, onChange, error }) => (
   <div className="form-group">
     <label htmlFor={name}>{label}</label>
     <input
-      required
       className={error ? "form-control is-invalid" : "form-control"}
       type={type}
       id={name}
