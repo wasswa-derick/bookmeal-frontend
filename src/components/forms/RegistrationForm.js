@@ -1,5 +1,7 @@
 import React from "react";
+import validator from "validator";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import FormInput from "./FormInput";
 
 /**
@@ -29,8 +31,47 @@ class RegistrationForm extends React.Component {
    *@param {Event} evt
    * @returns {null} returns null
    */
-  onSubmit = evt => {
+  onFormSubmit = evt => {
     evt.preventDefault();
+    const { data } = this.state;
+    let errors = this.validateData(data);
+
+    if (Object.keys(errors).length === 0) {
+      this.props.handleSubmit(data).catch(err => {
+        switch (err.response.status) {
+          case 500:
+            errors.form = "Internal server error occured";
+            break;
+          case 400:
+            errors = { ...err.response.data.errors };
+            break;
+          default:
+            break;
+        }
+        this.setState({ errors });
+      });
+    }
+
+    this.setState({ errors });
+  };
+  /**
+   *@param {Object} data
+   * @returns {Object} errors object
+   */
+  validateData = data => {
+    const errors = {};
+    if (validator.isEmpty(data.email)) {
+      errors.email = "This field is required";
+    } else if (!validator.isEmail(data.email)) {
+      errors.email = "This email is invalid";
+    }
+    if (validator.isEmpty(data.password)) {
+      errors.password = "This field is required";
+    }
+    if (validator.isEmpty(data.name)) {
+      errors.name = "This field is required";
+    }
+    return errors;
   };
 
   /**
@@ -39,7 +80,7 @@ class RegistrationForm extends React.Component {
   render() {
     const { data, errors } = this.state;
     return (
-      <form autoComplete="off" onSubmit={this.onSubmit}>
+      <form autoComplete="off" onSubmit={this.onFormSubmit}>
         <FormInput
           value={data.name}
           type="text"
@@ -64,7 +105,7 @@ class RegistrationForm extends React.Component {
           onChange={this.onChange}
           error={errors.password}
         />
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary btn-submit">
           Create Account
         </button>
         <p>
@@ -77,5 +118,9 @@ class RegistrationForm extends React.Component {
     );
   }
 }
+
+RegistrationForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+};
 
 export default RegistrationForm;

@@ -1,15 +1,22 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Signup from "./Signup";
+import { Signup } from "./Signup";
 import RegistrationForm from "../components/forms/RegistrationForm";
 
 describe("Signup Page", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Signup />);
+    const history = {
+      push: jest.fn
+    };
+    wrapper = shallow(<Signup registerCustomer={jest.fn} history={history} />);
   });
 
   it("should render registration form", () => {
-    expect(wrapper.containsMatchingElement(<RegistrationForm />)).toEqual(true);
+    expect(
+      wrapper.containsMatchingElement(
+        <RegistrationForm handleSubmit={wrapper.instance().handleSubmit} />
+      )
+    ).toEqual(true);
   });
 });

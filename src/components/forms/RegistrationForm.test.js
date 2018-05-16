@@ -6,7 +6,7 @@ import FormInput from "./FormInput";
 describe("RegistrationForm", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<RegistrationForm />);
+    wrapper = shallow(<RegistrationForm handleSubmit={jest.fn} />);
   });
 
   it("should render form", () => {
@@ -31,7 +31,18 @@ describe("RegistrationForm", () => {
 
   it("should change state on change of value", () => {});
 
-  it("should submit form", () => {});
+  it("it calls onSubmit when form is submitted", () => {
+    const spy = jest.spyOn(wrapper.instance(), "onFormSubmit");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+
+    // wrapper.find("form").simulate("submit");
+    // expect(spy).toHaveBeenCalledTimes(1);
+  });
 
   it("should validate on submitting form", () => {});
+
+  it("should render correctly", () => {
+    // expect(wrapper).toMatchSnapshot();
+  });
 });
