@@ -1,7 +1,8 @@
-import { USER_CREATED } from "./constants";
+import { USER_CREATED, CREATE_BUSINESS_ACCOUNT } from "./constants";
 
 const initialState = {
-  user: {}
+  user: {},
+  business: {}
 };
 
 /**
@@ -17,7 +18,12 @@ export default function(state = initialState, action = {}) {
         ...state,
         user: action.data
       };
-
+    case CREATE_BUSINESS_ACCOUNT:
+      return {
+        ...state,
+        business: action.data.business,
+        user: action.data.user
+      };
     default:
       return state;
   }
