@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BusinessSignup should render correctly 1`] = `
+<div>
+  <NavBar />
+  <div
+    className="container login-panel"
+  >
+    <div
+      className="card auth-card"
+    >
+      <div
+        className="card-body"
+      >
+        <h3
+          className="card-title title"
+        >
+          Create Your Business Account
+        </h3>
+        <BusinessSignupForm
+          handleSubmit={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
