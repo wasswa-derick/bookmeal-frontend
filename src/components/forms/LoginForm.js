@@ -99,7 +99,7 @@ class LoginForm extends React.Component {
           error={errors.password}
         />
         <button type="submit" className="btn btn-primary btn-submit">
-          Create Account
+          Log In
         </button>
         <p>
           Do not have an account?

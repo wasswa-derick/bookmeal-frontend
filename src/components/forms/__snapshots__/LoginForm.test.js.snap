@@ -23,7 +23,7 @@ exports[`LoginForm should render correctly 1`] = `
     className="btn btn-primary btn-submit"
     type="submit"
   >
-    Create Account
+    Log In
   </button>
   <p>
     Do not have an account?
