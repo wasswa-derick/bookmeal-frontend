@@ -1,4 +1,5 @@
 import reducer from "./authReducer";
+import rootReducer from "./index";
 import { USER_CREATED, CREATE_BUSINESS_ACCOUNT } from "./constants";
 
 describe("auhentication reducer", () => {
@@ -30,6 +31,13 @@ describe("auhentication reducer", () => {
         type: CREATE_BUSINESS_ACCOUNT,
         data: { user: userData, business: businessData }
       })
-    );
+    ).toEqual({
+      business: businessData,
+      user: userData
+    });
+  });
+
+  it("should export combine reducer", () => {
+    expect(rootReducer).toBeDefined();
   });
 });
