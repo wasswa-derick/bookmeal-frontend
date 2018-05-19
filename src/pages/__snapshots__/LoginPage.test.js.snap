@@ -2,7 +2,7 @@
 
 exports[`LoginPage should render correctly 1`] = `
 <div>
-  <Connect(Component) />
+  <Connect(NavBar) />
   <div
     className="container login-panel"
   >
