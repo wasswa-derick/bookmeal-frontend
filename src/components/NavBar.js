@@ -32,11 +32,15 @@ const NavBar = () => (
         </li> */}
       </ul>
       <ul className="navbar-nav pull-right">
-        {/* <li className="nav-item">
-          <a className="nav-link" href="./caterer_signup.html">
-            Sign up as caterer
-          </a>
-        </li> */}
+        <li className="nav-item">
+          <Link
+            className="nav-link"
+            href="/business/signup"
+            to="/business/signup"
+          >
+            Sign up as a caterer
+          </Link>
+        </li>
         <li className="nav-item">
           <Link className="nav-link" href="/signup" to="/signup">
             Sign up as customer
