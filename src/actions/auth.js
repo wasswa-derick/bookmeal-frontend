@@ -1,12 +1,11 @@
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 import {
   USER_CREATED,
   CREATE_BUSINESS_ACCOUNT,
   USER_LOGGED_IN,
   USER_LOGGED_OUT
 } from "../reducers/constants";
-
-const tokenName = "bookMeal:authUser";
 
 export const createdUser = data => ({
   type: USER_CREATED,
@@ -38,12 +37,14 @@ export const registerBusiness = data => dispatch =>
 export const loginUser = data => dispatch =>
   axios.post("/auth/login", data).then(res => {
     // get token and store it in localStorage
-    const { token } = res.data.token;
-    localStorage.setItem(tokenName, token);
-    return dispatch(userLoggedIn(res.data.user));
+    const { token } = res.data;
+    localStorage.setItem("authUserToken", token);
+    const user = jwtDecode(token);
+    console.log(user);
+    return dispatch(userLoggedIn(user));
   });
 
 export const logoutUser = () => dispatch => {
-  localStorage.removeItem(tokenName);
+  localStorage.removeItem("authUserToken");
   return dispatch(userLoggedOut());
 };
