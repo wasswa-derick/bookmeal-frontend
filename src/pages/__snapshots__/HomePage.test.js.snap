@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage should render correctly 1`] = `
+<div>
+  <NavBar />
+  <div
+    className="app-banner"
+  >
+    <p>
+      Everyday we present one featured menu
+    </p>
+    <p>
+      Allowing you to choose from the different meals and order
+    </p>
+    <img
+      alt="logo"
+      className="img-fluid"
+      src="banner.jpeg"
+    />
+  </div>
+</div>
+`;

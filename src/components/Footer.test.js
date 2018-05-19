@@ -11,4 +11,8 @@ describe("Footer", () => {
   it("should render a <footer/>", () => {
     expect(wrapper.find("footer").length).toEqual(1);
   });
+
+  it("should render correctly", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });

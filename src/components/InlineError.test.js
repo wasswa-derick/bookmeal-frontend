@@ -12,4 +12,8 @@ describe("InlineError", () => {
     const errorMsg = wrapper.find(".invalid-feedback").text();
     expect(errorMsg).toEqual("this is an error message");
   });
+
+  it("should render correctly", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });

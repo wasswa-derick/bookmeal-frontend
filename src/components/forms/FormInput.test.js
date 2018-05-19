@@ -25,4 +25,8 @@ describe("FormInput", () => {
     const text = wrapper.find("label").text();
     expect(text).toEqual("Test");
   });
+
+  it("should render correctly", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });

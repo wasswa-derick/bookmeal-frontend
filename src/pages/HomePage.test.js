@@ -16,4 +16,8 @@ describe("HomePage", () => {
   it("should render a <div/>", () => {
     expect(wrapper.containsMatchingElement(<NavBar />)).toEqual(true);
   });
+
+  it("should render correctly", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });

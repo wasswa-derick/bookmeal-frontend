@@ -19,4 +19,8 @@ describe("Signup Page", () => {
       )
     ).toEqual(true);
   });
+
+  it("should render correctly", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });
