@@ -11,4 +11,8 @@ describe("NavBar", () => {
   it("should render a <nav/>", () => {
     expect(wrapper.find("nav").length).toEqual(1);
   });
+
+  it("should render correctly", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });
