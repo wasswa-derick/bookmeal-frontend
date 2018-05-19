@@ -1,11 +1,13 @@
 import React from "react";
 import { shallow } from "enzyme";
-import NavBar from "./NavBar";
+import { NavBar } from "./NavBar";
 
 describe("NavBar", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<NavBar />);
+    wrapper = shallow(
+      <NavBar isUserAuthenticated={false} logoutUser={jest.fn} />
+    );
   });
 
   it("should render a <nav/>", () => {
