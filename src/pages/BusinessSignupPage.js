@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import BusinessSignupForm from "../components/forms/BusinessSignupForm";
 import { registerBusiness } from "../actions/auth";
-import NavBar from "../components/NavBar";
+import AppNavBar from "../components/NavBar";
 /**
  * @class Signup
  * @extends {React.Component}
@@ -24,7 +24,7 @@ export class BusinessSignupPage extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <AppNavBar />
         <div className="container login-panel">
           <div className="card auth-card">
             <div className="card-body">

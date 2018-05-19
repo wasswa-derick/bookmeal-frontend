@@ -1,10 +1,10 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import AppNavBar from "../components/NavBar";
 import banner from "../img/banner.jpeg";
 
 const HomePage = () => (
   <div>
-    <NavBar />
+    <AppNavBar />
     <div className="app-banner">
       <p>Everyday we present one featured menu</p>
       <p>Allowing you to choose from the different meals and order</p>
