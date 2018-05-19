@@ -2,7 +2,7 @@
 
 exports[`HomePage should render correctly 1`] = `
 <div>
-  <NavBar />
+  <Connect(Component) />
   <div
     className="app-banner"
   >

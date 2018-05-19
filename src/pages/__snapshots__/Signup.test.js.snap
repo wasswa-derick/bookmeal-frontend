@@ -2,7 +2,7 @@
 
 exports[`Signup Page should render correctly 1`] = `
 <div>
-  <NavBar />
+  <Connect(Component) />
   <div
     className="container login-panel"
   >
