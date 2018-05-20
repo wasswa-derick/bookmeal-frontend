@@ -6,7 +6,7 @@ import { CREATE_MEAL, FETCH_MEALS } from "../reducers/constants";
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe("authentication actions", () => {
+describe("meals actions", () => {
   let data;
   let expectedActions;
 
@@ -25,7 +25,7 @@ describe("authentication actions", () => {
     ];
   });
 
-  it("should create an action to meal", () => {
+  it("should create an action to create meal", () => {
     expect(expectedActions[0]).toEqual({
       type: CREATE_MEAL,
       data
@@ -40,5 +40,5 @@ describe("authentication actions", () => {
     expect(store.getActions()).toEqual(expectedActions);
   });
 
-  it("should perform async actions", () => {});
+  it("should perform meal async actions", () => {});
 });

@@ -26,5 +26,5 @@ export const getMeals = () => dispatch => {
   const headers = makeHeaders();
   return axios
     .get("/meals", { headers })
-    .then(res => dispatch(gotMeals(res.data)));
+    .then(res => dispatch(gotMeals(res.data.meals)));
 };
