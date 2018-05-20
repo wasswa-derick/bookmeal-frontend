@@ -40,8 +40,8 @@ export const loginUser = data => dispatch =>
     const { token } = res.data;
     localStorage.setItem("authUserToken", token);
     const user = jwtDecode(token);
-    console.log(user);
-    return dispatch(userLoggedIn(user));
+
+    return dispatch(userLoggedIn({ ...user, isLoggedIn: true }));
   });
 
 export const logoutUser = () => dispatch => {
