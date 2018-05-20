@@ -2,7 +2,6 @@
 
 exports[`HomePage should render correctly 1`] = `
 <div>
-  <Connect(NavBar) />
   <div
     className="app-banner"
   >

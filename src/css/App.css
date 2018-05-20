@@ -1,8 +1,9 @@
 @import url("Common.css");
-body {
+
+/* body {
     display: block;
     margin: 0px;
-}
+} */
 
 .app-banner {
     text-align: center;
