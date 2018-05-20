@@ -19,7 +19,7 @@ export class NavBar extends React.Component {
    */
   render() {
     return (
-      <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
         <Link className="navbar-brand" href="/" to="/">
           Book A Meal
         </Link>
@@ -45,7 +45,7 @@ export class NavBar extends React.Component {
           </ul>
           {this.props.isUserAuthenticated ? (
             <ul className="navbar-nav pull-right">
-              <li className="nav-item">
+              <li className="nav-item active">
                 <button
                   className="btn btn-primary nav-link"
                   onClick={this.logout}
@@ -94,7 +94,7 @@ NavBar.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    isUserAuthenticated: !!state.authReducer.user.id
+    isUserAuthenticated: !!state.authReducer.user.isLoggedIn
   };
 }
 

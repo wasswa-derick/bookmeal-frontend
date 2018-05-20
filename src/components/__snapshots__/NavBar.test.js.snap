@@ -2,7 +2,7 @@
 
 exports[`NavBar should render correctly 1`] = `
 <nav
-  className="navbar navbar-expand-md navbar-dark fixed-top bg-dark"
+  className="navbar navbar-expand-md navbar-dark bg-dark mb-4"
 >
   <Link
     className="navbar-brand"
