@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Meal Component should render correctly 1`] = `
+<Meal
+  meal={
+    Object {
+      "description": "lorem",
+      "id": 1,
+      "price": 20000,
+      "title": "test meal",
+    }
+  }
+>
+  <div
+    className="col-md-3"
+    key="1"
+  >
+    <div
+      className="meal-o"
+    >
+      <div
+        className="meal-actions"
+      >
+        <button
+          className="btn btn-link btn-del"
+          onClick={[Function]}
+        >
+          <i
+            className="fa fa-close"
+          />
+        </button>
+        <button
+          className="btn btn-link"
+        >
+          <i
+            className="fa fa-edit"
+          />
+        </button>
+      </div>
+      <div
+        className="thumbnail"
+      >
+        <img
+          alt=""
+          src="coffee.jpg"
+        />
+      </div>
+      <div
+        className="meal-detail"
+      >
+        <h5>
+          test meal
+          :
+          <span>
+            UGX 
+            20000
+          </span>
+        </h5>
+        <p>
+          lorem
+        </p>
+      </div>
+    </div>
+  </div>
+</Meal>
+`;
