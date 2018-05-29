@@ -11,6 +11,12 @@ import { logoutUser } from "../../actions/auth";
 import { getMeals, postMeal } from "../../actions/meals";
 import { setMessage } from "../../actions/message";
 
+const EditLink = () => (
+  <button className="btn btn-link">
+    <i className="fa fa-edit" />
+  </button>
+);
+
 /**
 
  * @export
@@ -27,6 +33,7 @@ export class MealsPage extends React.Component {
     errors: {},
     loaded: false
   };
+
   componentWillMount = () => {
     this.props.getMeals().catch(err => {
       if (err.response.status === 500) {
@@ -80,6 +87,14 @@ export class MealsPage extends React.Component {
   };
 
   /**
+   *@param {number} id
+   *@return {Promise} null
+   */
+  deleteMeal = id => {
+    console.log(id);
+  };
+
+  /**
    * @param {Object} data
    *@returns {Object} of errors
    */
@@ -125,7 +140,14 @@ export class MealsPage extends React.Component {
           </section>
           <Loader loaded={loaded}>
             <div className="row">
-              {meals.map(meal => <MealOption key={meal.id} meal={meal} />)}
+              {meals.map(meal => (
+                <MealOption
+                  key={meal.id}
+                  meal={meal}
+                  delete={this.deleteMeal}
+                  editLink={EditLink}
+                />
+              ))}
             </div>
           </Loader>
           <div className="modal fade" id="mealModal">
@@ -158,7 +180,7 @@ export class MealsPage extends React.Component {
                       name="price"
                       type="text"
                       label="Price"
-                      value={data.price}
+                      value={String(data.price)}
                       onChange={this.onChange}
                       error={errors.price}
                     />

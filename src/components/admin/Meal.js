@@ -9,7 +9,9 @@ import coffeeImg from "../../img/coffee.jpg";
  * @extends {React.Component}
  */
 class Meal extends React.Component {
-  delete = () => {};
+  delete = () => {
+    this.props.delete();
+  };
 
   /**
    *
@@ -17,6 +19,7 @@ class Meal extends React.Component {
    */
   render() {
     const { title, id, description, price } = this.props.meal;
+    const EditLink = this.props.editLink;
     return (
       <div key={id} className="col-md-3">
         <div className="meal-o">
@@ -24,9 +27,7 @@ class Meal extends React.Component {
             <button onClick={this.delete} className="btn btn-link btn-del">
               <i className="fa fa-close" />
             </button>
-            <button className="btn btn-link">
-              <i className="fa fa-edit" />
-            </button>
+            {EditLink && <EditLink />}
           </div>
           <div className="thumbnail">
             <img src={coffeeImg} alt="" />
@@ -49,6 +50,12 @@ Meal.propTypes = {
     price: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  delete: PropTypes.func.isRequired,
+  editLink: PropTypes.func
+};
+
+Meal.defaultProps = {
+  editLink: undefined
 };
 export default Meal;
