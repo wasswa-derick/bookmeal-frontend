@@ -42,6 +42,7 @@ class LoginForm extends React.Component {
             errors.form = "Internal server error occured";
             break;
           case 400:
+          case 401:
             errors = { ...err.response.data.errors };
             break;
           default:
