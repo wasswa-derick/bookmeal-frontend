@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CREATE_MEAL, FETCH_MEALS } from "../reducers/constants";
+import { CREATE_MEAL, FETCH_MEALS, DELETED_MEAL } from "../reducers/constants";
 
 export const createdMeal = data => ({
   type: CREATE_MEAL,
@@ -27,4 +27,15 @@ export const getMeals = () => dispatch => {
   return axios
     .get("/meals", { headers })
     .then(res => dispatch(gotMeals(res.data.meals)));
+};
+
+export const deletedMeal = () => ({
+  type: DELETED_MEAL
+});
+
+export const deleteMeal = id => dispatch => {
+  const headers = makeHeaders();
+  return axios
+    .delete(`/meals/${id}`, { headers })
+    .then(() => dispatch(deletedMeal()));
 };

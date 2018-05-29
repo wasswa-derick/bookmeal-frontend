@@ -5,3 +5,4 @@ export const USER_LOGGED_OUT = "USER_LOGGED_OUT";
 export const CREATE_MEAL = "CREATE_MEAL";
 export const FETCH_MEALS = "FETCH_MEALS";
 export const GOT_MESSAGE = "GOT_MESSAGE";
+export const DELETED_MEAL = "DELETED_MEAL";
