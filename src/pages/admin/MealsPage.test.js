@@ -19,6 +19,7 @@ describe("MealsPage", () => {
         setMessage={fn}
         postMeal={fn}
         meals={[]}
+        deleteMeal={fn}
       />
     );
   });

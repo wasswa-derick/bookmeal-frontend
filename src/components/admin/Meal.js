@@ -10,7 +10,8 @@ import coffeeImg from "../../img/coffee.jpg";
  */
 class Meal extends React.Component {
   delete = () => {
-    this.props.delete();
+    const { id } = this.props.meal;
+    this.props.delete(id);
   };
 
   /**
@@ -24,10 +25,15 @@ class Meal extends React.Component {
       <div key={id} className="col-md-3">
         <div className="meal-o">
           <div className="meal-actions">
-            <button onClick={this.delete} className="btn btn-link btn-del">
+            <button
+              onClick={this.delete}
+              data-toggle="modal"
+              data-target="#confirmDel"
+              className="btn btn-link btn-del"
+            >
               <i className="fa fa-close" />
             </button>
-            {EditLink && <EditLink />}
+            {EditLink && <EditLink id={id} />}
           </div>
           <div className="thumbnail">
             <img src={coffeeImg} alt="" />

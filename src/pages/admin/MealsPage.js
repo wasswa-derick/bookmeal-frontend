@@ -3,19 +3,28 @@ import { connect } from "react-redux";
 import validator from "validator";
 import PropTypes from "prop-types";
 import Loader from "react-loader";
+import { Link } from "react-router-dom";
 import MealOption from "../../components/admin/Meal";
 import Footer from "../../components/Footer";
 import FormInput from "../../components/forms/FormInput";
 import InlineError from "../../components/InlineError";
 import { logoutUser } from "../../actions/auth";
-import { getMeals, postMeal } from "../../actions/meals";
+import { getMeals, postMeal, deleteMeal } from "../../actions/meals";
 import { setMessage } from "../../actions/message";
 
-const EditLink = () => (
-  <button className="btn btn-link">
+const EditLink = ({ id }) => (
+  <Link
+    className="btn btn-link"
+    href={`/admin/meal/${id}/edit`}
+    to={`/admin/meal/${id}/edit`}
+  >
     <i className="fa fa-edit" />
-  </button>
+  </Link>
 );
+
+EditLink.propTypes = {
+  id: PropTypes.number.isRequired
+};
 
 /**
 
@@ -31,7 +40,8 @@ export class MealsPage extends React.Component {
       description: ""
     },
     errors: {},
-    loaded: false
+    loaded: false,
+    mealId: 0
   };
 
   componentWillMount = () => {
@@ -74,14 +84,14 @@ export class MealsPage extends React.Component {
     if (Object.keys(errors).length === 0) {
       this.props
         .postMeal(data)
+        .then(() => window.location.reload())
         .catch(err => {
           if (err.response.status === 400) {
             errors = { ...err.response.data.errors };
           }
 
           this.setState({ errors });
-        })
-        .then(() => window.location.reload());
+        });
     }
     this.setState({ errors });
   };
@@ -91,7 +101,30 @@ export class MealsPage extends React.Component {
    *@return {Promise} null
    */
   deleteMeal = id => {
-    console.log(id);
+    this.setState({ mealId: id });
+  };
+
+  confirmDeletion = () => {
+    const { mealId } = this.state;
+    this.props
+      .deleteMeal(mealId)
+      .then(() => window.location.reload())
+      .catch(err => {
+        switch (err.response.status) {
+          case 401:
+            this.props.logoutUser();
+            window.location.reload();
+            break;
+          case 500:
+            this.props.setMessage({
+              text: "Internal server error",
+              type: "danger"
+            });
+            break;
+          default:
+            break;
+        }
+      });
   };
 
   /**
@@ -226,6 +259,45 @@ export class MealsPage extends React.Component {
               </div>
             </div>
           </div>
+
+          <div className="modal fade" id="confirmDel">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="mealModalLabel">
+                    Confirm Deletion
+                  </h5>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <p>Are you sure you want to remove this meal.</p>
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    No
+                  </button>
+                  <button
+                    onClick={this.confirmDeletion}
+                    type="button"
+                    className="btn btn-primary"
+                  >
+                    Yes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <Footer />
       </div>
@@ -245,7 +317,8 @@ MealsPage.propTypes = {
   getMeals: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
   setMessage: PropTypes.func.isRequired,
-  postMeal: PropTypes.func.isRequired
+  postMeal: PropTypes.func.isRequired,
+  deleteMeal: PropTypes.func.isRequired
 };
 
 /**
@@ -260,5 +333,6 @@ export default connect(mapStateToProps, {
   getMeals,
   logoutUser,
   setMessage,
-  postMeal
+  postMeal,
+  deleteMeal
 })(MealsPage);

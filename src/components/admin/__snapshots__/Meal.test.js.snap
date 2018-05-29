@@ -24,6 +24,8 @@ exports[`Meal Component should render correctly 1`] = `
       >
         <button
           className="btn btn-link btn-del"
+          data-target="#confirmDel"
+          data-toggle="modal"
           onClick={[Function]}
         >
           <i
