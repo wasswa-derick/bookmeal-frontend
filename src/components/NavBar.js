@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logoutUser } from "../actions/auth";
+import MessageAlert from "./MessageAlert";
 
 /**
  * @export
@@ -18,74 +19,103 @@ export class NavBar extends React.Component {
    * @returns {any} rendered elements
    */
   render() {
+    const { text, type } = this.props;
     return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-        <Link className="navbar-brand" href="/" to="/">
-          Book A Meal
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarCollapse"
-          aria-controls="navbarCollapse"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link className="nav-link" href="/" to="/">
-                Home
-                <span className="sr-only">(current)</span>
-              </Link>
-            </li>
-          </ul>
-          {this.props.isUserAuthenticated ? (
-            <ul className="navbar-nav pull-right">
+      <header>
+        <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+          <Link className="navbar-brand" href="/" to="/">
+            Book A Meal
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="navbarCollapse">
+            <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <button
-                  className="btn btn-primary nav-link"
-                  onClick={this.logout}
-                >
-                  Log out
-                </button>
+                <Link className="nav-link" href="/" to="/">
+                  Home
+                  <span className="sr-only">(current)</span>
+                </Link>
               </li>
+              {this.props.isAdmin ? (
+                <ul className="navbar-nav pull-left">
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      href="/admin/meals"
+                      to="/admin/meals"
+                    >
+                      Meals
+                    </Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul />
+              )}
             </ul>
-          ) : (
-            <ul className="navbar-nav pull-right">
-              <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  href="/business/signup"
-                  to="/business/signup"
-                >
-                  Sign up as a caterer
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="/signup" to="/signup">
-                  Sign up as customer
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="/login" to="/login">
-                  Log In
-                </Link>
-              </li>
-            </ul>
-          )}
+            {this.props.isUserAuthenticated ? (
+              <ul className="navbar-nav pull-right">
+                <li className="nav-item active">
+                  <button
+                    className="btn btn-primary nav-link"
+                    onClick={this.logout}
+                  >
+                    Log out
+                  </button>
+                </li>
+              </ul>
+            ) : (
+              <ul className="navbar-nav pull-right">
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    href="/business/signup"
+                    to="/business/signup"
+                  >
+                    Sign up as a caterer
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/signup" to="/signup">
+                    Sign up as customer
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/login" to="/login">
+                    Log In
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </div>
+        </nav>
+        <div className="container">
+          {text && <MessageAlert text={text} type={type} />}
         </div>
-      </nav>
+      </header>
     );
   }
 }
 
 NavBar.propTypes = {
   isUserAuthenticated: PropTypes.bool.isRequired,
-  logoutUser: PropTypes.func.isRequired
+  isAdmin: PropTypes.bool.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  text: PropTypes.string
+};
+
+NavBar.defaultProps = {
+  type: undefined,
+  text: undefined
 };
 /**
 
@@ -94,7 +124,10 @@ NavBar.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    isUserAuthenticated: !!state.authReducer.user.isLoggedIn
+    isUserAuthenticated: !!state.authReducer.user.isLoggedIn,
+    isAdmin: !!state.authReducer.user.isAdmin,
+    text: state.messageReducer.message.text,
+    type: state.messageReducer.message.type
   };
 }
 

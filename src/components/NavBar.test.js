@@ -5,8 +5,17 @@ import { NavBar } from "./NavBar";
 describe("NavBar", () => {
   let wrapper;
   beforeEach(() => {
+    const message = {
+      type: "info",
+      text: "test"
+    };
     wrapper = shallow(
-      <NavBar isUserAuthenticated={false} logoutUser={jest.fn} />
+      <NavBar
+        isUserAuthenticated={false}
+        isAdmin={false}
+        logoutUser={jest.fn}
+        message={message}
+      />
     );
   });
 
