@@ -6,3 +6,5 @@ export const CREATE_MEAL = "CREATE_MEAL";
 export const FETCH_MEALS = "FETCH_MEALS";
 export const GOT_MESSAGE = "GOT_MESSAGE";
 export const DELETED_MEAL = "DELETED_MEAL";
+export const FETCH_MEAL = "FETCH_MEAL";
+export const EDITED_MEAL = "EDITED_MEAL";

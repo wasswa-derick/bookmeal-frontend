@@ -1,7 +1,12 @@
-import { CREATE_MEAL, FETCH_MEALS } from "./constants";
+import { CREATE_MEAL, FETCH_MEALS, FETCH_MEAL } from "./constants";
 
 const initialState = {
-  meal: {},
+  meal: {
+    id: 0,
+    title: "",
+    description: "",
+    price: 0
+  },
   meals: []
 };
 
@@ -22,6 +27,11 @@ export default function(state = initialState, action = {}) {
       return {
         ...state,
         meals: action.data
+      };
+    case FETCH_MEAL:
+      return {
+        ...state,
+        meal: action.data
       };
     default:
       return state;

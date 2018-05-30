@@ -1,5 +1,5 @@
 import reducer from "./mealsReducer";
-import { CREATE_MEAL, FETCH_MEALS } from "./constants";
+import { CREATE_MEAL, FETCH_MEALS, FETCH_MEAL } from "./constants";
 
 describe("auhentication reducer", () => {
   let meal;
@@ -13,7 +13,15 @@ describe("auhentication reducer", () => {
   });
 
   it("should return the initial state", () => {
-    expect(reducer(undefined, {})).toEqual({ meal: {}, meals: [] });
+    expect(reducer(undefined, {})).toEqual({
+      meal: {
+        id: 0,
+        title: "",
+        description: "",
+        price: 0
+      },
+      meals: []
+    });
   });
 
   it("should handle CREATE_MEAL ", () => {
@@ -28,7 +36,7 @@ describe("auhentication reducer", () => {
     });
   });
 
-  it("should handle FECTH_MEALS", () => {
+  it("should handle FETCH_MEALS", () => {
     expect(
       reducer(initialState, {
         type: FETCH_MEALS,
@@ -38,5 +46,14 @@ describe("auhentication reducer", () => {
       meal: {},
       meals: [meal]
     });
+  });
+
+  it("should handle FETCH_MEAL", () => {
+    expect(
+      reducer(initialState, {
+        type: FETCH_MEAL,
+        data: meal
+      })
+    ).toEqual({ meal, meals: [] });
   });
 });
