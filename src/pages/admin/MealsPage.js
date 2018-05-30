@@ -45,27 +45,7 @@ export class MealsPage extends React.Component {
   };
 
   componentWillMount = () => {
-    this.props.getMeals().catch(err => {
-      if (err.response.status === 500) {
-        this.props.setMessage({
-          text: "Internal server error",
-          type: "danger"
-        });
-      } else if (err.response.status === 401) {
-        this.props.logoutUser();
-        this.props.setMessage({
-          text: "Your session has expired, login again",
-          type: "danger"
-        });
-        window.location.reload();
-      } else if (err.response.status === 403) {
-        this.props.setMessage({
-          text: "Cannot fetch meals, access forbidden",
-          type: "info"
-        });
-      }
-    });
-
+    this.props.getMeals().catch(() => {});
     this.setState({ loaded: true });
   };
 
@@ -86,10 +66,9 @@ export class MealsPage extends React.Component {
         .postMeal(data)
         .then(() => window.location.reload())
         .catch(err => {
-          if (err.response.status === 400) {
+          if (err.response.status && err.response.status === 400) {
             errors = { ...err.response.data.errors };
           }
-
           this.setState({ errors });
         });
     }
@@ -98,7 +77,7 @@ export class MealsPage extends React.Component {
 
   /**
    *@param {number} id
-   *@return {Promise} null
+   *@return {null} null
    */
   deleteMeal = id => {
     this.setState({ mealId: id });

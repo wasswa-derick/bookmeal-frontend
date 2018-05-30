@@ -24,7 +24,9 @@ describe("MealsPage", () => {
     );
   });
 
-  it("should render a form for creating a meal", () => {});
+  it("should render a form for creating a meal", () => {
+    expect(wrapper.find("form").length).toEqual(1);
+  });
 
   it("should validate data", () => {
     wrapper.instance().onSubmit();
