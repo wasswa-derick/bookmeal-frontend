@@ -56,6 +56,16 @@ export class NavBar extends React.Component {
                       Meals
                     </Link>
                   </li>
+
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      href="/admin/menus"
+                      to="/admin/menus"
+                    >
+                      Menus
+                    </Link>
+                  </li>
                 </ul>
               ) : (
                 <ul />

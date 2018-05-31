@@ -11,6 +11,9 @@ import ConnectedBusinessSignupPage from "./pages/BusinessSignupPage";
 import AppGuestRoute from "./routes/GuestRoute";
 import AppAdminRoute from "./routes/AdminRoute";
 import AdminMealsPage from "./pages/admin/MealsPage";
+import AdminEditMealPage from "./pages/admin/EditMealPage";
+import AdminMenusPage from "./pages/admin/MenusPage";
+import AdminNewMenuPage from "./pages/admin/NewMenuPage";
 
 const App = ({ location }) => (
   <div>
@@ -35,6 +38,26 @@ const App = ({ location }) => (
         path="/admin/meals"
         exact
         component={AdminMealsPage}
+      />
+      <AppAdminRoute
+        location={location}
+        path="/admin/meal/:id/edit"
+        exact
+        component={AdminEditMealPage}
+      />
+
+      <AppAdminRoute
+        location={location}
+        path="/admin/menus"
+        exact
+        component={AdminMenusPage}
+      />
+
+      <AppAdminRoute
+        location={location}
+        path="/admin/menus/new"
+        exact
+        component={AdminNewMenuPage}
       />
       <Route component={NotFound} />
     </Switch>
