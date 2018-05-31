@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import coffeeImg from "../../img/coffee.jpg";
-
 /**
  * @export
  * @class Meal
@@ -24,7 +22,7 @@ class Meal extends React.Component {
     return (
       <div key={id} className="col-md-3">
         <div className="meal-o">
-          <div className="meal-actions">
+          <div>
             <button
               onClick={this.delete}
               data-toggle="modal"
@@ -35,14 +33,9 @@ class Meal extends React.Component {
             </button>
             {EditLink && <EditLink id={id} />}
           </div>
-          <div className="thumbnail">
-            <img src={coffeeImg} alt="" />
-          </div>
-          <div className="meal-detail">
-            <h5>
-              {title}:
-              <span>UGX {price}</span>
-            </h5>
+          <div className="row meal-detail ml-2">
+            <h6>{title}</h6>
+            <label htmlFor="price">UGX {price}</label>
             <p>{description}</p>
           </div>
         </div>

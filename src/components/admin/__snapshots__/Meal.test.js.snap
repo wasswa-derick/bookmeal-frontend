@@ -19,9 +19,7 @@ exports[`Meal Component should render correctly 1`] = `
     <div
       className="meal-o"
     >
-      <div
-        className="meal-actions"
-      >
+      <div>
         <button
           className="btn btn-link btn-del"
           data-target="#confirmDel"
@@ -34,24 +32,17 @@ exports[`Meal Component should render correctly 1`] = `
         </button>
       </div>
       <div
-        className="thumbnail"
+        className="row meal-detail ml-2"
       >
-        <img
-          alt=""
-          src="coffee.jpg"
-        />
-      </div>
-      <div
-        className="meal-detail"
-      >
-        <h5>
+        <h6>
           test meal
-          :
-          <span>
-            UGX 
-            20000
-          </span>
-        </h5>
+        </h6>
+        <label
+          htmlFor="price"
+        >
+          UGX 
+          20000
+        </label>
         <p>
           lorem
         </p>

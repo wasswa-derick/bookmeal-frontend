@@ -10,7 +10,6 @@ import InlineError from "../../components/InlineError";
 import { setMessage } from "../../actions/message";
 import { getMeals } from "../../actions/meals";
 import { addMenu } from "../../actions/menus";
-import coffeeImg from "../../img/coffee.jpg";
 
 /**
  * @export
@@ -151,7 +150,7 @@ export class NewMenuPage extends React.Component {
         <h4>Create New Menu</h4>
         <hr />
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-3">
             <FormInput
               value={data.title}
               type="text"
@@ -161,7 +160,7 @@ export class NewMenuPage extends React.Component {
               error={errors.title}
             />
           </div>
-          <div className="col-md-4">
+          <div className="col-md-3">
             <div className="form-group">
               <label htmlFor="date">Menu Date</label>
               <DatePicker
@@ -178,7 +177,7 @@ export class NewMenuPage extends React.Component {
               )}
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-3">
             <div className="form-group">
               <label htmlFor="desc">Description</label>
               <textarea
@@ -197,6 +196,12 @@ export class NewMenuPage extends React.Component {
               {errors.description && <InlineError text={errors.description} />}
             </div>
           </div>
+          <div className="col-md-3">
+            <div className="form-group">
+              <label htmlFor="menu-image">Attach Image</label>
+              <input className="form-control" type="file" name="menu-image" />
+            </div>
+          </div>
         </div>
         <div className="row">
           {meals.map(meal => (
@@ -209,15 +214,10 @@ export class NewMenuPage extends React.Component {
                     className="form-check-input"
                   />
                 </div>
-                <div className="thumbnail">
-                  <img src={coffeeImg} alt="" />
-                </div>
-                <div className="meal-detail">
-                  <h6>
-                    {meal.title}:
-                    <span>UGX {meal.price}</span>
-                  </h6>
-                  <label htmlFor="desc">{meal.description}</label>
+                <div className="row meal-detail ml-2">
+                  <h6>{meal.title}</h6>
+                  <label htmlFor="price">UGX {meal.price}</label>
+                  <p>{meal.description}</p>
                 </div>
               </div>
             </div>

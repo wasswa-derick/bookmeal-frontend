@@ -215,8 +215,6 @@ export class MealsPage extends React.Component {
                         <InlineError text={errors.description} />
                       )}
                     </div>
-
-                    <input className="form-control" type="file" name="image" />
                   </form>
                 </div>
                 <div className="modal-footer">

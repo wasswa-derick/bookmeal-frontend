@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Loader from "react-loader";
 import PropTypes from "prop-types";
 import { getMenus } from "../../actions/menus";
+import coffeeImg from "../../img/coffee.jpg";
 
 /**
 
@@ -62,6 +63,7 @@ export class MenusPage extends React.Component {
               <thead>
                 <tr role="row">
                   <th>Menu Date</th>
+                  <th>Picture</th>
                   <th>Meals</th>
                   <th>Description</th>
                 </tr>
@@ -71,9 +73,20 @@ export class MenusPage extends React.Component {
                   <tr key={menu.id} className="even">
                     <td>{menu.menuDate}</td>
                     <td>
+                      <img
+                        className="img-thumbnail"
+                        style={{ height: "100px" }}
+                        src={coffeeImg}
+                        alt=""
+                      />
+                    </td>
+                    <td>
                       {menu.meals.map(meal => (
                         <li key={meal.id}>
-                          {meal.title}: UGX {meal.price}
+                          {meal.title}:{" "}
+                          <span style={{ color: "#00a1e0" }}>
+                            UGX {meal.price}
+                          </span>
                         </li>
                       ))}
                     </td>

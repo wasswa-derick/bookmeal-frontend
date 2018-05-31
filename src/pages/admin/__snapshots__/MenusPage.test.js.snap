@@ -68,6 +68,9 @@ exports[`MenusPage should render correctly 1`] = `
               Menu Date
             </th>
             <th>
+              Picture
+            </th>
+            <th>
               Meals
             </th>
             <th>
