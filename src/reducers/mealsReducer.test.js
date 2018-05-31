@@ -1,7 +1,7 @@
 import reducer from "./mealsReducer";
 import { CREATE_MEAL, FETCH_MEALS, FETCH_MEAL } from "./constants";
 
-describe("auhentication reducer", () => {
+describe("meals reducer", () => {
   let meal;
   let initialState;
   beforeEach(() => {

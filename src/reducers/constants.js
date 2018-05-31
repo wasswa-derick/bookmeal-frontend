@@ -8,3 +8,6 @@ export const GOT_MESSAGE = "GOT_MESSAGE";
 export const DELETED_MEAL = "DELETED_MEAL";
 export const FETCH_MEAL = "FETCH_MEAL";
 export const EDITED_MEAL = "EDITED_MEAL";
+export const FETCH_MENU = "FETCH_MENU";
+export const FETCH_MENUS = "FETCH_MENUS";
+export const ADD_MENU = "ADD_MENU";
