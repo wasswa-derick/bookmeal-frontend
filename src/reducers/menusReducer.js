@@ -1,7 +1,17 @@
-import { FETCH_MENU, FETCH_MENUS, ADD_MENU } from "../reducers/constants";
+import {
+  FETCH_MENU,
+  FETCH_MENUS,
+  ADD_MENU,
+  FETCH_TODAY_MENUS
+} from "../reducers/constants";
 
 const initialState = {
-  menu: {},
+  menu: {
+    id: 0,
+    title: "",
+    description: "",
+    meals: []
+  },
   menus: []
 };
 
@@ -19,6 +29,7 @@ export default function(state = initialState, action = {}) {
         menu: action.data.menu
       };
     case FETCH_MENUS:
+    case FETCH_TODAY_MENUS:
       return {
         ...state,
         menus: action.data.menus

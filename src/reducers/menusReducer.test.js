@@ -7,14 +7,24 @@ describe("menus reducer", () => {
   beforeEach(() => {
     menu = { id: 1, title: "menu title", date: "2018-05-03" };
     initialState = {
-      menu: {},
+      menu: {
+        description: "",
+        id: 0,
+        meals: [],
+        title: ""
+      },
       menus: []
     };
   });
 
   it("should return the initial state", () => {
     expect(reducer(undefined, {})).toEqual({
-      menu: {},
+      menu: {
+        id: 0,
+        title: "",
+        description: "",
+        meals: []
+      },
       menus: []
     });
   });
@@ -38,7 +48,12 @@ describe("menus reducer", () => {
         data: { menus: [menu] }
       })
     ).toEqual({
-      menu: {},
+      menu: {
+        id: 0,
+        title: "",
+        description: "",
+        meals: []
+      },
       menus: [menu]
     });
   });
