@@ -114,6 +114,12 @@ th {
     text-align: center;
 }
 
+.meal-order-item {
+    border: 1px solid #eee;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, .01);
+}
+
 .thumbnail img {
     border-radius: 4px;
     padding: 5px;
