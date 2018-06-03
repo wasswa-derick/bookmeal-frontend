@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomerOrdersPage should render correctly 1`] = `
+<div
+  className="container"
+>
+  <div>
+    <h4>
+      Your Previous Orders
+    </h4>
+    <hr />
+  </div>
+  <Component
+    component="div"
+    loaded={false}
+    loadedClassName="loadedContent"
+    parentClassName="loader"
+  >
+    <table
+      className="table table-striped"
+      id="dtable"
+    >
+      <thead>
+        <tr
+          role="row"
+        >
+          <th>
+            Order Count
+          </th>
+          <th>
+            Meals Ordered
+          </th>
+          <th>
+            Total Cost
+          </th>
+          <th>
+            Expires
+          </th>
+          <th>
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </Component>
+  <OrderMealModal
+    order={
+      Object {
+        "cost": 0,
+        "id": 0,
+        "meals": Array [],
+        "menuId": 0,
+        "orderCount": 1,
+        "totalCost": 0,
+      }
+    }
+    selectedMenu={
+      Object {
+        "catering": Object {
+          "address": "",
+          "name": "",
+        },
+        "description": "",
+        "id": 0,
+        "meals": Array [],
+        "title": "",
+      }
+    }
+    submit={[Function]}
+  />
+</div>
+`;

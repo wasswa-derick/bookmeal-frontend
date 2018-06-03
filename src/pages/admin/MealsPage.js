@@ -3,13 +3,28 @@ import { connect } from "react-redux";
 import validator from "validator";
 import PropTypes from "prop-types";
 import Loader from "react-loader";
+import { Link } from "react-router-dom";
 import MealOption from "../../components/admin/Meal";
 import Footer from "../../components/Footer";
 import FormInput from "../../components/forms/FormInput";
 import InlineError from "../../components/InlineError";
 import { logoutUser } from "../../actions/auth";
-import { getMeals, postMeal } from "../../actions/meals";
+import { getMeals, postMeal, deleteMeal } from "../../actions/meals";
 import { setMessage } from "../../actions/message";
+
+const EditLink = ({ id }) => (
+  <Link
+    className="btn btn-link"
+    href={`/admin/meal/${id}/edit`}
+    to={`/admin/meal/${id}/edit`}
+  >
+    <i className="fa fa-edit" />
+  </Link>
+);
+
+EditLink.propTypes = {
+  id: PropTypes.number.isRequired
+};
 
 /**
 
@@ -25,30 +40,12 @@ export class MealsPage extends React.Component {
       description: ""
     },
     errors: {},
-    loaded: false
+    loaded: false,
+    mealId: 0
   };
-  componentWillMount = () => {
-    this.props.getMeals().catch(err => {
-      if (err.response.status === 500) {
-        this.props.setMessage({
-          text: "Internal server error",
-          type: "danger"
-        });
-      } else if (err.response.status === 401) {
-        this.props.logoutUser();
-        this.props.setMessage({
-          text: "Your session has expired, login again",
-          type: "danger"
-        });
-        window.location.reload();
-      } else if (err.response.status === 403) {
-        this.props.setMessage({
-          text: "Cannot fetch meals, access forbidden",
-          type: "info"
-        });
-      }
-    });
 
+  componentWillMount = () => {
+    this.props.getMeals().catch(() => {});
     this.setState({ loaded: true });
   };
 
@@ -67,16 +64,46 @@ export class MealsPage extends React.Component {
     if (Object.keys(errors).length === 0) {
       this.props
         .postMeal(data)
+        .then(() => window.location.reload())
         .catch(err => {
-          if (err.response.status === 400) {
+          if (err.response.status && err.response.status === 400) {
             errors = { ...err.response.data.errors };
           }
-
           this.setState({ errors });
-        })
-        .then(() => window.location.reload());
+        });
     }
     this.setState({ errors });
+  };
+
+  /**
+   *@param {number} id
+   *@return {null} null
+   */
+  deleteMeal = id => {
+    this.setState({ mealId: id });
+  };
+
+  confirmDeletion = () => {
+    const { mealId } = this.state;
+    this.props
+      .deleteMeal(mealId)
+      .then(() => window.location.reload())
+      .catch(err => {
+        switch (err.response.status) {
+          case 401:
+            this.props.logoutUser();
+            window.location.reload();
+            break;
+          case 500:
+            this.props.setMessage({
+              text: "Internal server error",
+              type: "danger"
+            });
+            break;
+          default:
+            break;
+        }
+      });
   };
 
   /**
@@ -125,7 +152,14 @@ export class MealsPage extends React.Component {
           </section>
           <Loader loaded={loaded}>
             <div className="row">
-              {meals.map(meal => <MealOption key={meal.id} meal={meal} />)}
+              {meals.map(meal => (
+                <MealOption
+                  key={meal.id}
+                  meal={meal}
+                  delete={this.deleteMeal}
+                  editLink={EditLink}
+                />
+              ))}
             </div>
           </Loader>
           <div className="modal fade" id="mealModal">
@@ -158,7 +192,7 @@ export class MealsPage extends React.Component {
                       name="price"
                       type="text"
                       label="Price"
-                      value={data.price}
+                      value={String(data.price)}
                       onChange={this.onChange}
                       error={errors.price}
                     />
@@ -181,8 +215,6 @@ export class MealsPage extends React.Component {
                         <InlineError text={errors.description} />
                       )}
                     </div>
-
-                    <input className="form-control" type="file" name="image" />
                   </form>
                 </div>
                 <div className="modal-footer">
@@ -199,6 +231,45 @@ export class MealsPage extends React.Component {
                     className="btn-save btn btn-primary"
                   >
                     Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="modal fade" id="confirmDel">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="mealModalLabel">
+                    Confirm Deletion
+                  </h5>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <p>Are you sure you want to remove this meal.</p>
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    No
+                  </button>
+                  <button
+                    onClick={this.confirmDeletion}
+                    type="button"
+                    className="btn btn-primary"
+                  >
+                    Yes
                   </button>
                 </div>
               </div>
@@ -223,7 +294,8 @@ MealsPage.propTypes = {
   getMeals: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
   setMessage: PropTypes.func.isRequired,
-  postMeal: PropTypes.func.isRequired
+  postMeal: PropTypes.func.isRequired,
+  deleteMeal: PropTypes.func.isRequired
 };
 
 /**
@@ -238,5 +310,6 @@ export default connect(mapStateToProps, {
   getMeals,
   logoutUser,
   setMessage,
-  postMeal
+  postMeal,
+  deleteMeal
 })(MealsPage);

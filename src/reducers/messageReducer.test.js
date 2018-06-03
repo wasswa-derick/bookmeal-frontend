@@ -1,7 +1,7 @@
 import reducer from "./messageReducer";
 import { GOT_MESSAGE } from "./constants";
 
-describe("auhentication reducer", () => {
+describe("message reducer", () => {
   let message;
   let initialState;
   beforeEach(() => {

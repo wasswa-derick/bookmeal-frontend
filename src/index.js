@@ -9,12 +9,16 @@ import JwtDecode from "jwt-decode";
 import App from "./App";
 import rootReducer from "./reducers";
 import { userLoggedIn } from "./actions/auth";
+import httpResponseInterceptor from "./actions/responseInterceptor";
+
 // import registerServiceWorker from "./registerServiceWorker";
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+httpResponseInterceptor(store);
 
 const token = localStorage.getItem("authUserToken");
 if (token) {

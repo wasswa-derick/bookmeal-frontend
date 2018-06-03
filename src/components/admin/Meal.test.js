@@ -11,13 +11,13 @@ describe("Meal Component", () => {
       price: 20000,
       description: "lorem"
     };
-    wrapper = mount(<Meal meal={meal} />);
+    wrapper = mount(<Meal meal={meal} delete={jest.fn} />);
   });
 
   it("should display title,price and description details", () => {
     expect(wrapper.find("p").text()).toBe("lorem");
-    expect(wrapper.find("span").text()).toBe("UGX 20000");
-    expect(wrapper.find("h5").text()).toContain("test meal");
+    expect(wrapper.find("label").text()).toBe("UGX 20000");
+    expect(wrapper.find("h6").text()).toContain("test meal");
   });
   it("should able to delete self", () => {
     const spy = jest.spyOn(wrapper.instance(), "delete");

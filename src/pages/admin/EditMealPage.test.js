@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { HomePage } from "./HomePage";
+import { EditMealPage } from "./EditMealPage";
 
 const err = {
   response: {
@@ -9,19 +9,27 @@ const err = {
 };
 const fn = () => Promise.reject(err);
 
-describe("HomePage", () => {
+describe("EditMealPage", () => {
   let wrapper;
   beforeEach(() => {
+    const meal = {
+      id: 0,
+      title: "",
+      description: "",
+      price: 0
+    };
     const history = {
+      pathname: "",
       push: jest.fn
     };
+    const match = { params: { id: "1" } };
+
     wrapper = shallow(
-      <HomePage
-        getTodayMenus={fn}
-        menus={[]}
-        orderMeals={fn}
-        isUserAuthenticated={false}
-        setMessage={jest.fn}
+      <EditMealPage
+        meal={meal}
+        getMeal={fn}
+        match={match}
+        editMeal={fn}
         history={history}
       />
     );

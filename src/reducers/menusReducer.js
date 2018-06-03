@@ -1,13 +1,18 @@
-import { CREATE_MEAL, FETCH_MEALS, FETCH_MEAL } from "./constants";
+import {
+  FETCH_MENU,
+  FETCH_MENUS,
+  ADD_MENU,
+  FETCH_TODAY_MENUS
+} from "../reducers/constants";
 
 const initialState = {
-  meal: {
+  menu: {
     id: 0,
     title: "",
     description: "",
-    price: 0
+    meals: []
   },
-  meals: []
+  menus: []
 };
 
 /**
@@ -18,20 +23,22 @@ const initialState = {
  */
 export default function(state = initialState, action = {}) {
   switch (action.type) {
-    case CREATE_MEAL:
+    case FETCH_MENU:
       return {
         ...state,
-        meal: action.data
+        menu: action.data.menu
       };
-    case FETCH_MEALS:
+    case FETCH_MENUS:
+    case FETCH_TODAY_MENUS:
       return {
         ...state,
-        meals: action.data
+        menus: action.data.menus
       };
-    case FETCH_MEAL:
+
+    case ADD_MENU:
       return {
         ...state,
-        meal: action.data
+        menu: action.data.menu
       };
     default:
       return state;
