@@ -3,19 +3,30 @@
 exports[`HomePage should render correctly 1`] = `
 <div>
   <div
-    className="app-banner"
+    className="container"
   >
-    <p>
-      Everyday we present one featured menu
-    </p>
-    <p>
-      Allowing you to choose from the different meals and order
-    </p>
-    <img
-      alt="logo"
-      className="img-fluid"
-      src="banner.jpeg"
-    />
+    <h4>
+      Favorite Restaurants
+    </h4>
+    <hr />
+    <Component
+      component="div"
+      loaded={false}
+      loadedClassName="loadedContent"
+      parentClassName="loader"
+    >
+      <div
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <h4>
+          Ooops. There are no menus from caterers today
+        </h4>
+      </div>
+    </Component>
   </div>
 </div>
 `;
