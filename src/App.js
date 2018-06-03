@@ -4,22 +4,27 @@ import PropTypes from "prop-types";
 import NotFound from "./NotFound";
 import "./css";
 import AppNavBar from "./components/NavBar";
-import HomePage from "./pages/HomePage";
+import AppHomePage from "./pages/HomePage";
 import ConnectedSignup from "./pages/Signup";
 import ConnectedLoginPage from "./pages/LoginPage";
 import ConnectedBusinessSignupPage from "./pages/BusinessSignupPage";
 import AppGuestRoute from "./routes/GuestRoute";
 import AppAdminRoute from "./routes/AdminRoute";
+import AppAuthenticatedRoute from "./routes/AuthenticatedRoute";
 import AdminMealsPage from "./pages/admin/MealsPage";
 import AdminEditMealPage from "./pages/admin/EditMealPage";
 import AdminMenusPage from "./pages/admin/MenusPage";
 import AdminNewMenuPage from "./pages/admin/NewMenuPage";
+import AdminOrdersHistoryPage from "./pages/admin/OrdersHistoryPage";
+import AdminDashboard from "./pages/admin/Dashboard";
+import CustomerOrderPage from "./pages/OrderPage";
+import AppCustomerOrdersPage from "./pages/CustomerOrdersPage";
 
 const App = ({ location }) => (
   <div>
     <AppNavBar />
     <Switch>
-      <Route path="/" exact component={HomePage} />
+      <Route path="/" exact component={AppHomePage} />
       <AppGuestRoute path="/signup" exact component={ConnectedSignup} />
       <AppGuestRoute
         location={location}
@@ -58,6 +63,34 @@ const App = ({ location }) => (
         path="/admin/menus/new"
         exact
         component={AdminNewMenuPage}
+      />
+
+      <AppAdminRoute
+        location={location}
+        path="/admin/orders"
+        exact
+        component={AdminOrdersHistoryPage}
+      />
+
+      <AppAdminRoute
+        location={location}
+        path="/admin"
+        exact
+        component={AdminDashboard}
+      />
+
+      <AppAuthenticatedRoute
+        location={location}
+        path="/order"
+        exact
+        component={CustomerOrderPage}
+      />
+
+      <AppAuthenticatedRoute
+        location={location}
+        path="/orders"
+        exact
+        component={AppCustomerOrdersPage}
       />
       <Route component={NotFound} />
     </Switch>

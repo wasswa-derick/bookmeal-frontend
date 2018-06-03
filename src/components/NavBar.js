@@ -45,8 +45,22 @@ export class NavBar extends React.Component {
                   <span className="sr-only">(current)</span>
                 </Link>
               </li>
+
+              {this.props.isUserAuthenticated && (
+                <li className="nav-item">
+                  <Link className="nav-link" href="/orders" to="/orders">
+                    My Orders
+                  </Link>
+                </li>
+              )}
+
               {this.props.isAdmin ? (
                 <ul className="navbar-nav pull-left">
+                  <li className="nav-item">
+                    <Link className="nav-link" href="/admin" to="/admin">
+                      Dashboard
+                    </Link>
+                  </li>
                   <li className="nav-item">
                     <Link
                       className="nav-link"
@@ -64,6 +78,16 @@ export class NavBar extends React.Component {
                       to="/admin/menus"
                     >
                       Menus
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      href="/admin/orders"
+                      to="/admin/orders"
+                    >
+                      Order History
                     </Link>
                   </li>
                 </ul>
