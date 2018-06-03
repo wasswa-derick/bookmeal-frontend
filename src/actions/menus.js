@@ -1,6 +1,11 @@
 import axios from "axios";
 
-import { FETCH_MENU, FETCH_MENUS, ADD_MENU } from "../reducers/constants";
+import {
+  FETCH_MENU,
+  FETCH_MENUS,
+  ADD_MENU,
+  FETCH_TODAY_MENUS
+} from "../reducers/constants";
 
 const makeHeaders = () => ({
   Authorization: localStorage.getItem("authUserToken")
@@ -35,9 +40,21 @@ export const gotMenu = data => ({
   data
 });
 
-export const getTodayMenu = () => dispatch => {
+export const getMenu = id => dispatch => {
+  const headers = makeHeaders();
+  return axios
+    .get(`/menu/${id}`, { headers })
+    .then(res => dispatch(gotMenu(res.data)));
+};
+
+const gotCurrentDayMenu = data => ({
+  type: FETCH_TODAY_MENUS,
+  data
+});
+
+export const getTodayMenus = () => dispatch => {
   const headers = makeHeaders();
   return axios
     .get(`/menu`, { headers })
-    .then(res => dispatch(gotMenu(res.data)));
+    .then(res => dispatch(gotCurrentDayMenu(res.data)));
 };
