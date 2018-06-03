@@ -28,7 +28,7 @@ describe("OrderPage", () => {
         history={history}
         setMessage={jest.fn}
         postOrder={fn}
-        getCartOrder={fn}
+        getCartOrder={jest.fn}
       />
     );
   });
