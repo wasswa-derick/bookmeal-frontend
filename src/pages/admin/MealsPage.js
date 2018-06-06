@@ -116,6 +116,8 @@ export class MealsPage extends React.Component {
       errors.price = "This field is required";
     } else if (!validator.isNumeric(data.price)) {
       errors.price = "Price value should be a number";
+    }else if(data.price <= 0){
+      errors.price = 'Price value cannot be less or equal to zero';
     }
 
     if (validator.isEmpty(data.title)) {
