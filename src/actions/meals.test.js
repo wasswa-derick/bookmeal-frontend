@@ -1,5 +1,6 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
+import moxios from "moxios";
 import * as actions from "./meals";
 import {
   CREATE_MEAL,
@@ -8,57 +9,136 @@ import {
   EDITED_MEAL,
   DELETED_MEAL
 } from "../reducers/constants";
+import mockLocalStorage from "../utils/localStorage";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+const postMealMock = {
+  id: 1,
+  title: "test title",
+  description: "test desc",
+  price: 1000
+};
+
+const fetchMealsMock = {
+  meals: [postMealMock]
+};
+
 describe("meals actions", () => {
+  Object.defineProperty(window, "localStorage", {
+    value: mockLocalStorage
+  });
   let data;
-  let expectedActions;
-
   beforeEach(() => {
-    data = { id: 1, title: "test" };
-
-    expectedActions = [
-      {
-        type: CREATE_MEAL,
-        data
-      },
-      {
-        type: FETCH_MEALS,
-        data: [data]
-      },
-      {
-        type: DELETED_MEAL
-      },
-      {
-        type: FETCH_MEAL,
-        data
-      },
-      {
-        type: EDITED_MEAL,
-        data
-      }
-    ];
+    moxios.install();
+    data = { title: "test", description: "test desc", price: 1000 };
   });
 
-  it("should create an action to create meal", () => {
-    expect(expectedActions[0]).toEqual({
-      type: CREATE_MEAL,
-      data
+  afterEach(() => {
+    moxios.uninstall();
+  });
+
+  it("should create CREATE_MEAL action when admin create a admin creates a meal", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: postMealMock
+      });
+    });
+
+    const expectedAction = [
+      {
+        type: CREATE_MEAL,
+        data: postMealMock
+      }
+    ];
+
+    const store = mockStore({ data: {} });
+    return store.dispatch(actions.postMeal(data)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
     });
   });
 
-  it("meal actions are dispatched to redux store", () => {
-    const store = mockStore({ data: {} });
-    store.dispatch(actions.createdMeal(data));
-    store.dispatch(actions.gotMeals([data]));
-    store.dispatch(actions.deletedMeal());
-    store.dispatch(actions.gotMeal(data));
-    store.dispatch(actions.editedMeal(data));
+  it("should create FETCH_MEALS action when user fetches meals", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: fetchMealsMock
+      });
+    });
 
-    expect(store.getActions()).toEqual(expectedActions);
+    const expectedAction = [
+      {
+        type: FETCH_MEALS,
+        data: [postMealMock]
+      }
+    ];
+
+    const store = mockStore({ data: {} });
+    return store.dispatch(actions.getMeals()).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
   });
 
-  it("should perform meal async actions", () => {});
+  it("should create a FETCH_MEAL action when user views a meal", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: postMealMock
+      });
+    });
+    const expectedAction = [
+      {
+        type: FETCH_MEAL,
+        data: postMealMock
+      }
+    ];
+
+    const store = mockStore({ data: {} });
+    return store.dispatch(actions.getMeal(1)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it("should create a DELETED_MEAL action when caterer deletes a meal", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: { status: "succesfully deleted" }
+      });
+    });
+
+    const expectedAction = [
+      {
+        type: DELETED_MEAL
+      }
+    ];
+
+    const store = mockStore({});
+    return store.dispatch(actions.deleteMeal(1)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it("should create a EDITED_MEAL action when caterer deletes a meal", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: postMealMock
+      });
+    });
+
+    const expectedAction = [{ type: EDITED_MEAL, data: postMealMock }];
+
+    const store = mockStore({ data: {} });
+    return store.dispatch(actions.editMeal(postMealMock)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
 });
