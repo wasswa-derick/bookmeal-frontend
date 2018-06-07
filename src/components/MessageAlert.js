@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const getAlert = type => {
+export const getAlert = type => {
   switch (type) {
     case "success":
       return "alert alert-success";

@@ -99,7 +99,7 @@ export class NavBar extends React.Component {
               <ul className="navbar-nav pull-right">
                 <li className="nav-item active">
                   <button
-                    className="btn btn-primary nav-link"
+                    className=".btn-logout btn btn-primary nav-link"
                     onClick={this.logout}
                   >
                     Log out
