@@ -3,13 +3,16 @@ import React from "react";
 import App from "./App";
 
 describe("App Component", () => {
+  let wrapper;
   it("renders  div", () => {
     const location = {
       pathname: ""
     };
-    const wrapper = shallow(<App location={location} />);
+    wrapper = shallow(<App location={location} />);
     expect(wrapper.find("div").length).toEqual(1);
   });
 
-  // TODO: add test for rendering correctly
+  it("should render correctly", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });
