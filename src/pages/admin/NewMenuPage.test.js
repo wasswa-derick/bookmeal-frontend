@@ -1,10 +1,13 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import { NewMenuPage } from "./NewMenuPage";
 
 const err = {
   response: {
-    status: 400
+    status: 400,
+    data: {
+      errors: {}
+    }
   }
 };
 const fn = () => Promise.reject(err);
@@ -15,7 +18,7 @@ describe("NewMenuPage", () => {
     const history = {
       push: jest.fn
     };
-    wrapper = shallow(
+    wrapper = mount(
       <NewMenuPage
         setMessage={fn}
         getMeals={fn}
@@ -26,11 +29,32 @@ describe("NewMenuPage", () => {
     );
   });
 
-  it("should validate data on submit", () => {
-    wrapper.instance().onSubmit();
-    const { errors } = wrapper.instance().state;
+  it("should validate data before submit", () => {
+    wrapper.instance().setState({ menuDate: null });
+    const { data } = wrapper.instance().state;
+
+    const errors = wrapper.instance().validate(data);
     expect(errors.title).toBe("This field is required");
     expect(errors.description).toBe("This field is required");
+  });
+
+  it("should submit form on click of save button", () => {
+    wrapper.setState({
+      meals: [1],
+      data: {
+        title: "test title",
+        description: "lorem desc"
+      }
+    });
+    const spy = jest.spyOn(wrapper.instance(), "onSubmit");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+
+    wrapper
+      .find(".btn-save")
+      .first()
+      .simulate("click");
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it("should set state when input values change", () => {
