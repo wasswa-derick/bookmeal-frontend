@@ -18,7 +18,9 @@ exports[`OrderMealModal should render correctly 1`] = `
         <h5
           className="modal-title"
           id="mealModalLabel"
-        />
+        >
+          menu title
+        </h5>
         <button
           aria-label="Close"
           className="close"
@@ -35,6 +37,34 @@ exports[`OrderMealModal should render correctly 1`] = `
       <div
         className="modal-body"
       >
+        <div
+          className="form-group meal-order-item"
+          key="1"
+        >
+          <input
+            checked={false}
+            onChange={[Function]}
+            type="checkbox"
+          />
+          meal title
+          <label
+            className="float-right"
+            htmlFor="price"
+            style={
+              Object {
+                "color": "#00a1e0",
+              }
+            }
+          >
+            UGX
+            5000
+          </label>
+          <p>
+            <i>
+              meal desc
+            </i>
+          </p>
+        </div>
         <hr />
         <div
           className="row"
