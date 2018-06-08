@@ -15,13 +15,16 @@ export default function(store) {
       if (error.response.status) {
         switch (error.response.status) {
           case 401:
-            localStorage.removeItem("authUserToken");
-            store.dispatch(
-              gotMessage({
-                text: "Session has expired log out and login again.",
-                type: "danger"
-              })
-            );
+            if (localStorage.getItem("authUserToken")) {
+              localStorage.removeItem("authUserToken");
+              store.dispatch(
+                gotMessage({
+                  text: "Session has expired log out and login again.",
+                  type: "danger"
+                })
+              );
+            }
+
             break;
           case 500:
             store.dispatch(

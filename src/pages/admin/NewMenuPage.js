@@ -34,11 +34,6 @@ export class NewMenuPage extends React.Component {
     const { meals, data, menuDate } = this.state;
     let errors = this.validate(data);
 
-    // validate the date as well
-    if (menuDate == null) {
-      errors.date = "This field is required";
-    }
-
     if (Object.keys(errors).length === 0) {
       if (meals.length === 0) {
         this.props.setMessage({
@@ -60,14 +55,12 @@ export class NewMenuPage extends React.Component {
             text: `New Menu ${data.title}  has been created successfully`,
             type: "info"
           });
-
           this.props.history.push("/admin/menus");
         })
         .catch(err => {
           if (err.response.status && err.response.status === 400) {
             errors = { ...err.response.data.errors };
           }
-
           this.setState({ errors });
         });
     }
@@ -120,6 +113,11 @@ export class NewMenuPage extends React.Component {
       errors.description = "This field is required";
     }
 
+    // validate the date as well
+    if (this.state.menuDate == null) {
+      errors.date = "This field is required";
+    }
+
     return errors;
   };
 
@@ -144,7 +142,10 @@ export class NewMenuPage extends React.Component {
     const { meals } = this.props;
     return (
       <div className="container">
-        <button onClick={this.onSubmit} className="btn btn-primary float-right">
+        <button
+          onClick={this.onSubmit}
+          className="btn-save btn btn-primary float-right"
+        >
           Save
         </button>
         <h4>Create New Menu</h4>

@@ -8,9 +8,7 @@ import MealOption from "../../components/admin/Meal";
 import Footer from "../../components/Footer";
 import FormInput from "../../components/forms/FormInput";
 import InlineError from "../../components/InlineError";
-import { logoutUser } from "../../actions/auth";
 import { getMeals, postMeal, deleteMeal } from "../../actions/meals";
-import { setMessage } from "../../actions/message";
 
 const EditLink = ({ id }) => (
   <Link
@@ -27,7 +25,6 @@ EditLink.propTypes = {
 };
 
 /**
-
  * @export
  * @class MealsPage
  * @extends {React.Component}
@@ -50,8 +47,8 @@ export class MealsPage extends React.Component {
   };
 
   /**
-   *@param {Event} e change event
-   *@return {null} nothing
+   * @param {Event} e change event
+   * @return {null} nothing
    */
   onChange = e =>
     this.setState({
@@ -88,36 +85,22 @@ export class MealsPage extends React.Component {
     this.props
       .deleteMeal(mealId)
       .then(() => window.location.reload())
-      .catch(err => {
-        switch (err.response.status) {
-          case 401:
-            this.props.logoutUser();
-            window.location.reload();
-            break;
-          case 500:
-            this.props.setMessage({
-              text: "Internal server error",
-              type: "danger"
-            });
-            break;
-          default:
-            break;
-        }
-      });
+      .catch(() => {});
   };
 
   /**
    * @param {Object} data
-   *@returns {Object} of errors
+   * @returns {Object} of errors
    */
   validate = data => {
     const errors = [];
-    if (validator.isEmpty(data.price)) {
+    if (validator.isEmpty(String(data.price))) {
       errors.price = "This field is required";
-    } else if (!validator.isNumeric(data.price)) {
+    } else if (!validator.isNumeric(String(data.price))) {
+      // cast to string as validator only works with strings
       errors.price = "Price value should be a number";
-    }else if(data.price <= 0){
-      errors.price = 'Price value cannot be less or equal to zero';
+    } else if (data.price <= 0) {
+      errors.price = "Price value cannot be less or equal to zero";
     }
 
     if (validator.isEmpty(data.title)) {
@@ -269,7 +252,7 @@ export class MealsPage extends React.Component {
                   <button
                     onClick={this.confirmDeletion}
                     type="button"
-                    className="btn btn-primary"
+                    className="btn-del btn btn-primary"
                   >
                     Yes
                   </button>
@@ -294,8 +277,6 @@ MealsPage.propTypes = {
     }).isRequired
   ).isRequired,
   getMeals: PropTypes.func.isRequired,
-  logoutUser: PropTypes.func.isRequired,
-  setMessage: PropTypes.func.isRequired,
   postMeal: PropTypes.func.isRequired,
   deleteMeal: PropTypes.func.isRequired
 };
@@ -310,8 +291,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   getMeals,
-  logoutUser,
-  setMessage,
   postMeal,
   deleteMeal
 })(MealsPage);
