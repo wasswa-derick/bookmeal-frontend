@@ -43,7 +43,7 @@ export class HomePage extends React.Component {
       .catch(() => {});
   };
   /**
-   * @param {Event}evt
+   * @param {Event} evt
    * @param {Number} id
    * @return {null} null
    * @memberof HomePage

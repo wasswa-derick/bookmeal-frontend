@@ -50,19 +50,22 @@ export class EditMealPage extends React.Component {
     if (Object.keys(errors).length === 0) {
       this.props
         .editMeal(data)
-        .then(() => this.props.history.push("/admin/meals"))
+        .then(() => {
+          this.props.history.push("/admin/meals");
+        })
         .catch(err => {
           switch (err.response.status) {
             case 400:
               errors = { ...err.response.data.errors };
+              this.setState({ errors });
               break;
             default:
               break;
           }
         });
+    } else {
+      this.setState({ errors });
     }
-
-    this.setState({ errors });
   };
 
   /**
@@ -75,8 +78,8 @@ export class EditMealPage extends React.Component {
       errors.price = "This field is required";
     } else if (!validator.isNumeric(String(data.price))) {
       errors.price = "Price value should be a number";
-    }else if(data.price <= 0){
-      errors.price = 'Price value cannot be less or equal to zero';
+    } else if (data.price <= 0) {
+      errors.price = "Price value cannot be less or equal to zero";
     }
     if (validator.isEmpty(data.title)) {
       errors.title = "This field is required";

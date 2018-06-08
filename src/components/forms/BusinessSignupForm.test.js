@@ -3,10 +3,22 @@ import { shallow } from "enzyme";
 import BusinessSignupForm from "./BusinessSignupForm";
 import FormInput from "./FormInput";
 
+const err = {
+  response: {
+    status: 400,
+    data: {
+      errors: {
+        title: "This field is required"
+      }
+    }
+  }
+};
+const mockFn = () => Promise.reject(err);
+
 describe("RegistrationForm", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<BusinessSignupForm handleSubmit={jest.fn} />);
+    wrapper = shallow(<BusinessSignupForm handleSubmit={mockFn} />);
   });
 
   it("should render form", () => {
@@ -43,17 +55,6 @@ describe("RegistrationForm", () => {
     wrapper.instance().onChange(evt);
     const { data } = wrapper.instance().state;
     expect(data.name).toBe("My name");
-  });
-
-  it("it calls onSubmit when form is submitted", () => {
-    const spy = jest.spyOn(wrapper.instance(), "onFormSubmit");
-    wrapper.instance().forceUpdate();
-    expect(spy).toHaveBeenCalledTimes(0);
-    // const creatBtn = wrapper.find("button");
-    // console.log(creatBtn);
-    // wrapper.find("button").simulate("click");
-    // // wrapper.find("form").simulate("submit");
-    // expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it("should validate on submitting form", () => {

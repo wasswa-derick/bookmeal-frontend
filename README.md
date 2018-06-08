@@ -2,7 +2,7 @@
 
 Frontend for meal-booking-application, that allows customers to make food orders and helps the food vendor know what the customers want to eat.
 
-[![Build Status](https://travis-ci.com/solnsubuga/bookmeal-frontend.svg?branch=master)](https://travis-ci.com/solnsubuga/bookmeal-frontend)[![Coverage Status](https://coveralls.io/repos/github/solnsubuga/bookmeal-frontend/badge.svg?branch=develop)](https://coveralls.io/github/solnsubuga/bookmeal-frontend?branch=develop)
+[![Build Status](https://travis-ci.com/solnsubuga/bookmeal-frontend.svg?branch=master)](https://travis-ci.com/solnsubuga/bookmeal-frontend) [![Coverage Status](https://coveralls.io/repos/github/solnsubuga/bookmeal-frontend/badge.svg?branch=develop)](https://coveralls.io/github/solnsubuga/bookmeal-frontend?branch=develop)
 
 ## Set Up
 

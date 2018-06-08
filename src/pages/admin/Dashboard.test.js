@@ -2,17 +2,12 @@ import React from "react";
 import { shallow } from "enzyme";
 import { Dashboard } from "./Dashboard";
 
-const err = {
-  response: {
-    status: 400
-  }
-};
-const fn = () => Promise.reject(err);
+const asyncMockFn = () => Promise.resolve({});
 
 describe("Dashboard", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Dashboard getOrders={fn} orders={[]} />);
+    wrapper = shallow(<Dashboard getOrders={asyncMockFn} orders={[]} />);
   });
 
   it("should render correctly", () => {

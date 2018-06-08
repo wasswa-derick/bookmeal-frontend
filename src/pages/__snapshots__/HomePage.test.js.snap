@@ -15,16 +15,83 @@ exports[`HomePage should render correctly 1`] = `
       loadedClassName="loadedContent"
       parentClassName="loader"
     >
-      <div
-        style={
-          Object {
-            "textAlign": "center",
+      <div>
+        <div
+          className="row mt-2"
+        >
+          <div
+            className="col-md-3"
+            key="1"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              className="card"
+              data-target="#orderModal"
+              data-toggle="modal"
+              onClick={[Function]}
+              style={
+                Object {
+                  "width": "18rem",
+                }
+              }
+            >
+              <img
+                alt="menu-img"
+                className="card-img-top"
+                src="coffee.jpg"
+              />
+              <div
+                className="card-body"
+              >
+                <h6
+                  className="card-title"
+                >
+                  menu title
+                </h6>
+                <p
+                  className="card-text"
+                  style={
+                    Object {
+                      "color": "gray",
+                    }
+                  }
+                >
+                  meal desc
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <OrderMealModal
+          order={
+            Object {
+              "cost": 0,
+              "id": 0,
+              "meals": Array [],
+              "menuId": 0,
+              "orderCount": 1,
+              "totalCost": 0,
+            }
           }
-        }
-      >
-        <h4>
-          Ooops. There are no menus from caterers today
-        </h4>
+          selectedMenu={
+            Object {
+              "catering": Object {
+                "address": "",
+                "name": "",
+              },
+              "description": "",
+              "id": 0,
+              "meals": Array [],
+              "title": "",
+            }
+          }
+          submit={[Function]}
+        />
       </div>
     </Component>
   </div>
