@@ -39,9 +39,6 @@ class RegistrationForm extends React.Component {
     if (Object.keys(errors).length === 0) {
       this.props.handleSubmit(data).catch(err => {
         switch (err.response.status) {
-          case 500:
-            errors.form = "Internal server error occured";
-            break;
           case 400:
             errors = { ...err.response.data.errors };
             break;
