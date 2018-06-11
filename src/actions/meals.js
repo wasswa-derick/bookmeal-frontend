@@ -24,14 +24,14 @@ const makeHeaders = () => ({
 export const postMeal = data => dispatch => {
   const headers = makeHeaders();
   return axios
-    .post("/meals", data, { headers })
+    .post("/api/v1/meals", data, { headers })
     .then(res => dispatch(createdMeal(res.data)));
 };
 
 export const getMeals = () => dispatch => {
   const headers = makeHeaders();
   return axios
-    .get("/meals", { headers })
+    .get("/api/v1/meals", { headers })
     .then(res => dispatch(gotMeals(res.data.meals)));
 };
 
@@ -42,7 +42,7 @@ export const deletedMeal = () => ({
 export const deleteMeal = id => dispatch => {
   const headers = makeHeaders();
   return axios
-    .delete(`/meals/${id}`, { headers })
+    .delete(`/api/v1/meals/${id}`, { headers })
     .then(() => dispatch(deletedMeal()));
 };
 
@@ -54,7 +54,7 @@ export const gotMeal = data => ({
 export const getMeal = id => dispatch => {
   const headers = makeHeaders();
   return axios
-    .get(`/meals/${id}`, { headers })
+    .get(`/api/v1/meals/${id}`, { headers })
     .then(res => dispatch(gotMeal(res.data)));
 };
 
@@ -66,6 +66,6 @@ export const editedMeal = data => ({
 export const editMeal = data => dispatch => {
   const headers = makeHeaders();
   return axios
-    .put(`/meals/${data.id}`, data, { headers })
+    .put(`/api/v1/meals/${data.id}`, data, { headers })
     .then(res => dispatch(editedMeal(res.data)));
 };

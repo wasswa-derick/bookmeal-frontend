@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Loader from "react-loader";
 import $ from "jquery";
-import coffeeImg from "../img/coffee.jpg";
 import { getTodayMenus } from "../actions/menus";
-import { orderMeals } from "../actions/orders";
 import { setMessage } from "../actions/message";
-import CustomerOrderMealModal from "../components/OrderMealModal";
 
 /**
  * @export
@@ -16,25 +13,7 @@ import CustomerOrderMealModal from "../components/OrderMealModal";
  */
 export class HomePage extends React.Component {
   state = {
-    order: {
-      id: 0,
-      menuId: 0,
-      meals: [],
-      totalCost: 0,
-      orderCount: 1,
-      cost: 0
-    },
-    loaded: false,
-    selectedMenu: {
-      catering: {
-        address: "",
-        name: ""
-      },
-      description: "",
-      id: 0,
-      meals: [],
-      title: ""
-    }
+    loaded: false
   };
   componentWillMount = () => {
     this.props
@@ -57,22 +36,8 @@ export class HomePage extends React.Component {
       $(".modal-backdrop").remove();
       this.props.history.push("/login");
     }
-    const { menus } = this.props;
-    const selectedMenu = menus.find(menu => menu.id === id);
-    this.setState({
-      selectedMenu,
-      order: { ...this.state.order, menuId: selectedMenu.id }
-    });
-  };
-  /**
-   * @param {Object} data
-   * @returns {null} void
-   * @memberof HomePage
-   */
-  makeOrder = data => {
-    this.props.orderMeals(data);
     $(".modal-backdrop").remove();
-    this.props.history.push("/order");
+    this.props.history.push(`/menu/${id}/order`);
   };
 
   /**
@@ -81,7 +46,7 @@ export class HomePage extends React.Component {
    */
   render() {
     const { menus } = this.props;
-    const { loaded, selectedMenu, order } = this.state;
+    const { loaded } = this.state;
 
     return (
       <div>
@@ -91,7 +56,7 @@ export class HomePage extends React.Component {
           <Loader loaded={loaded}>
             {menus.length === 0 ? (
               <div style={{ textAlign: "center" }}>
-                <h4>Ooops. There are no menus from caterers today</h4>
+                <h4>Ooops. There are no menus from caterers to show today</h4>
               </div>
             ) : (
               <div>
@@ -106,13 +71,11 @@ export class HomePage extends React.Component {
                         onClick={evt => this.viewMeals(evt, menu.id)}
                         aria-hidden
                         className="card"
-                        data-toggle="modal"
-                        data-target="#orderModal"
-                        style={{ width: "18rem" }}
+                        style={{ width: "16rem" }}
                       >
                         <img
                           className="card-img-top"
-                          src={coffeeImg}
+                          src={menu.url}
                           alt="menu-img"
                         />
                         <div className="card-body">
@@ -121,18 +84,10 @@ export class HomePage extends React.Component {
                             {menu.description}
                           </p>
                         </div>
-                        {/* <div className="card-footer">
-                      <p>BY: {menu.catering.name}</p>
-                    </div> */}
                       </div>
                     </div>
                   ))}
                 </div>
-                <CustomerOrderMealModal
-                  order={order}
-                  selectedMenu={selectedMenu}
-                  submit={this.makeOrder}
-                />
               </div>
             )}
           </Loader>
@@ -150,6 +105,7 @@ HomePage.propTypes = {
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       menuDate: PropTypes.string.isRequired,
+      url: PropTypes.string,
       meals: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number.isRequired,
@@ -158,7 +114,6 @@ HomePage.propTypes = {
       ).isRequired
     }).isRequired
   ).isRequired,
-  orderMeals: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
@@ -173,6 +128,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   getTodayMenus,
-  orderMeals,
   setMessage
 })(HomePage);

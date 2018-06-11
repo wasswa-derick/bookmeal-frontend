@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Loader from "react-loader";
 import PropTypes from "prop-types";
 import { getMenus } from "../../actions/menus";
-import coffeeImg from "../../img/coffee.jpg";
+// import coffeeImg from "../../img/coffee.jpg";
 
 /**
 
@@ -76,7 +76,7 @@ export class MenusPage extends React.Component {
                       <img
                         className="img-thumbnail"
                         style={{ height: "100px" }}
-                        src={coffeeImg}
+                        src={menu.url}
                         alt=""
                       />
                     </td>
@@ -110,6 +110,7 @@ MenusPage.propTypes = {
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       menuDate: PropTypes.string.isRequired,
+      url: PropTypes.string,
       meals: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number.isRequired,

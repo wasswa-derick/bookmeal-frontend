@@ -19,7 +19,7 @@ export const createdMenu = data => ({
 export const addMenu = data => dispatch => {
   const headers = makeHeaders();
   return axios
-    .post("/menu", data, { headers })
+    .post("/api/v1/menu", data, { headers })
     .then(res => dispatch(createdMenu(res.data)));
 };
 
@@ -31,7 +31,7 @@ export const gotMenus = data => ({
 export const getMenus = () => dispatch => {
   const headers = makeHeaders();
   return axios
-    .get("/menus", { headers })
+    .get("/api/v1/menus", { headers })
     .then(res => dispatch(gotMenus(res.data)));
 };
 
@@ -43,7 +43,7 @@ export const gotMenu = data => ({
 export const getMenu = id => dispatch => {
   const headers = makeHeaders();
   return axios
-    .get(`/menu/${id}`, { headers })
+    .get(`/api/v1/menu/${id}`, { headers })
     .then(res => dispatch(gotMenu(res.data)));
 };
 
@@ -55,6 +55,6 @@ const gotCurrentDayMenu = data => ({
 export const getTodayMenus = () => dispatch => {
   const headers = makeHeaders();
   return axios
-    .get(`/menu`, { headers })
+    .get(`/api/v1/menu`, { headers })
     .then(res => dispatch(gotCurrentDayMenu(res.data)));
 };

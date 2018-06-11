@@ -1,105 +1,162 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OrderPage should render correctly 1`] = `
-<div
-  className="container"
+<OrderPage
+  getMenu={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  match={
+    Object {
+      "params": Object {
+        "id": "1",
+      },
+    }
+  }
+  menu={
+    Object {
+      "description": "",
+      "id": 1,
+      "meals": Array [
+        Object {
+          "description": "",
+          "id": 1,
+          "price": 1000,
+          "title": "",
+        },
+      ],
+      "menuDate": "",
+      "title": "",
+    }
+  }
+  postOrder={[Function]}
+  setMessage={[Function]}
 >
-  <div>
-    <h4>
-      Confirm Meals Order:
-    </h4>
-  </div>
-  <hr />
-  <Component
-    component="div"
-    loaded={true}
-    loadedClassName="loadedContent"
-    parentClassName="loader"
+  <div
+    className="container"
   >
-    <table
-      className="table table-striped"
+    <h5 />
+    <hr />
+    <Component
+      component="div"
+      loaded={true}
+      loadedClassName="loadedContent"
+      parentClassName="loader"
     >
-      <thead>
-        <tr>
-          <th>
-            Meal Title
-          </th>
-          <th>
-            Meal Description
-          </th>
-          <th>
-            Meal Price
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          key="1"
+      <div
+        className="loadedContent"
+        key="content"
+      >
+        <div
+          className="modal-body"
         >
-          <td>
-            meal lorem
-          </td>
-          <td>
-            <p>
-              desc
-            </p>
-          </td>
-          <td>
+          <div
+            className="form-group meal-order-item"
+            key="1"
+          >
+            <input
+              onChange={[Function]}
+              type="checkbox"
+            />
             <label
+              className="ml-2"
+              htmlFor="title"
+            />
+            <label
+              className="float-right"
               htmlFor="price"
+              style={
+                Object {
+                  "color": "#00a1e0",
+                }
+              }
             >
-              UGX 
+              UGX
               1000
             </label>
-          </td>
-        </tr>
-        <tr>
-          <td />
-          <td>
-            <label
-              htmlFor="total"
+            <p
+              style={
+                Object {
+                  "fontSize": "14px",
+                }
+              }
+            />
+          </div>
+          <hr />
+          <div
+            className="row"
+          >
+            <div
+              className="col-md-5 input-group"
+            >
+              <div
+                className="input-group-prepend"
+              >
+                <button
+                  className="btn btn-primary"
+                  onClick={[Function]}
+                >
+                  <i
+                    className="fa fa-minus"
+                  />
+                </button>
+              </div>
+              <input
+                className="form-control"
+                readOnly={true}
+                type="text"
+                value={1}
+              />
+              <div
+                className="input-group-prepend"
+              >
+                <button
+                  className="btn btn-primary"
+                  onClick={[Function]}
+                >
+                  <i
+                    className="fa fa-plus"
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              className="col-md-4"
               style={
                 Object {
                   "fontWeight": "bold",
+                  "textAlign": "center",
                 }
               }
             >
-              1
-               Orders X 
-              1000
-              /= :
-            </label>
-            <br />
-            <label
-              htmlFor="cost"
-              style={
-                Object {
-                  "color": " #00a1e0",
-                }
-              }
+              UGX 
+              0
+            </div>
+            <div
+              className="col-md-3"
             >
-               
-              Total: UGX 
-              1000
-            </label>
-          </td>
-          <td>
-            <button
-              className="btn btn-danger mr-4"
-              onClick={[Function]}
-            >
-              Cancel
-            </button>
-            <button
-              className="btn btn-success"
-              onClick={[Function]}
-            >
-              Confirm
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </Component>
-</div>
+              <button
+                className="btn-save btn btn-primary"
+                disabled={true}
+                onClick={[Function]}
+                type="button"
+              >
+                Order
+              </button>
+              <button
+                className="btn btn-danger ml-4"
+                onClick={[Function]}
+                type="button"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Component>
+  </div>
+</OrderPage>
 `;

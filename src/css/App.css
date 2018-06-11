@@ -1,271 +1,265 @@
 @import url("Common.css");
 
-/* body {
-    display: block;
-    margin: 0px;
-} */
-
 .app-banner {
-    text-align: center;
-    background: #f6f6f8;
-    margin-top: -15px;
+  text-align: center;
+  background: #f6f6f8;
+  margin-top: -15px;
 }
 
 .app-banner h1 {
-    font: 40px;
-    color: #ffffff;
-    font-weight: bolder;
+  font: 40px;
+  color: #ffffff;
+  font-weight: bolder;
 }
 
 .app-banner p {
-    color: #000;
+  color: #000;
 }
 
 .app-banner img {
-    width: 400px;
+  width: 400px;
 }
 
 .specific-day {
-    margin: 0px 20px 0 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  margin: 0px 20px 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .specific-day input {
-    width: 50%;
+  width: 50%;
 }
 
 .menu-items {
-    margin: 0px 20px 0 20px;
+  margin: 0px 20px 0 20px;
 }
 
 .meal-option {
-    display: inline-block;
-    border: 1px solid #eee;
-    margin: 10px;
-    width: 260px;
-    height: 300px;
+  display: inline-block;
+  border: 1px solid #eee;
+  margin: 10px;
+  width: 260px;
+  height: 300px;
 }
 
 .img-container {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
 
 .meal-option img {
-    padding: 5px;
-    align-self: center;
-    width: 250px;
+  padding: 5px;
+  align-self: center;
+  width: 250px;
 }
 
 .meal-info {
-    text-align: center;
+  text-align: center;
 }
 
 .meal-info,
-p,
-{
-    margin-left: 11px;
+p {
+  margin-left: 11px;
 }
 
 .meal-info .title {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .meal-info .price {
-    color: #00a1e0;
+  color: #00a1e0;
 }
 
 .checkbox {
-    border: 2px solid #e8e9eb;
-    height: 10px;
-    width: 10px;
+  border: 2px solid #e8e9eb;
+  height: 10px;
+  width: 10px;
 }
 
 .checkout-container {
-    background: #f6f6f8;
-    margin-bottom: 80px;
+  background: #f6f6f8;
+  margin-bottom: 80px;
 }
 
 .checkout-container img {
-    height: 100px;
+  height: 100px;
 }
 
 .checkout-items {
-    display: grid;
-    align-items: center;
-    justify-content: center;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer .text-muted {
-    color: #00a1e0 !important;
+  color: #00a1e0 !important;
 }
 
 .checkout {
-    background: #f6f6f8;
-    display: grid;
-    grid-template-columns: 140px 200px 1fr;
-    height: 100px;
-    margin: 10px;
+  background: #f6f6f8;
+  display: grid;
+  grid-template-columns: 140px 200px 1fr;
+  height: 100px;
+  margin: 10px;
 }
 
 .checkout-img {
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 }
 
 .checkout-btn {
-    display: grid;
-    align-content: center;
-    margin-right: 50px;
-    justify-content: end;
+  display: grid;
+  align-content: center;
+  margin-right: 50px;
+  justify-content: end;
 }
 
 .checkout img {
-    margin-top: 10px;
-    height: 80px;
+  margin-top: 10px;
+  height: 80px;
 }
 
 .checkout-totals {
-    margin-right: 40px;
-    display: grid;
-    justify-content: center;
+  margin-right: 40px;
+  display: grid;
+  justify-content: center;
 }
 
 .checkout-totals label {
-    margin-top: 10px;
-    color: #d3d3d3;
+  margin-top: 10px;
+  color: #d3d3d3;
 }
 
 .checkout p {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .order-total {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .order-total .amt {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 @media screen and (max-width: 480px) {
-    .app-banner img {
-        width: 300px;
-    }
-    .menu-items {
-        display: grid;
-        justify-content: center;
-        justify-items: center;
-    }
-    .meal-option {
-        display: inline-block;
-        border: 1px solid #eee;
-        margin: 20px 20px 10px 20px;
-        width: 300px;
-        height: 300px;
-    }
-    .checkout {
-        background: #f6f6f8;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: repeat(3, 1fr);
-        margin: 10px;
-    }
-    .checkout img {
-        margin-top: 10px;
-    }
-    .checkout-img,
-    .checkout-btn,
-    .checkout-img {
-        grid-row: span 1;
-    }
-    .checkout-btn {
-        margin-right: 90px;
-        margin-bottom: 30px;
-    }
-    .specific-day {
-        display: block;
-    }
-    .specific-day input {
-        width: 90%;
-    }
+  .app-banner img {
+    width: 300px;
+  }
+  .menu-items {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+  }
+  .meal-option {
+    display: inline-block;
+    border: 1px solid #eee;
+    margin: 20px 20px 10px 20px;
+    width: 300px;
+    height: 300px;
+  }
+  .checkout {
+    background: #f6f6f8;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, 1fr);
+    margin: 10px;
+  }
+  .checkout img {
+    margin-top: 10px;
+  }
+  .checkout-img,
+  .checkout-btn,
+  .checkout-img {
+    grid-row: span 1;
+  }
+  .checkout-btn {
+    margin-right: 90px;
+    margin-bottom: 30px;
+  }
+  .specific-day {
+    display: block;
+  }
+  .specific-day input {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .navbar a:not(:first-child) {
-        display: none;
-    }
-    .navbar a.icon {
-        float: right;
-        display: block;
-    }
-    .navbar.responsive {
-        position: relative;
-    }
-    .navbar.responsive a.icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-    .navbar.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-    .checkout-btn {
-        margin-right: 90px;
-        margin-bottom: 30px;
-    }
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+  .navbar.responsive {
+    position: relative;
+  }
+  .navbar.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .checkout-btn {
+    margin-right: 90px;
+    margin-bottom: 30px;
+  }
 }
 
 @media screen and (max-width: 700 px) {
-    .navbar a:not(:first-child) {
-        display: none;
-    }
-    .navbar a.icon {
-        float: right;
-        display: block;
-    }
-    .navbar.responsive {
-        position: relative;
-    }
-    .navbar.responsive a.icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-    .navbar.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+  .navbar.responsive {
+    position: relative;
+  }
+  .navbar.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 800px) {
-    .navbar a:not(:first-child) {
-        display: none;
-    }
-    .navbar a.icon {
-        float: right;
-        display: block;
-    }
-    .navbar.responsive {
-        position: relative;
-    }
-    .navbar.responsive a.icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-    .navbar.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-    .checkout-btn {
-        margin-right: 130px;
-        margin-bottom: 30px;
-    }
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+  .navbar.responsive {
+    position: relative;
+  }
+  .navbar.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .checkout-btn {
+    margin-right: 130px;
+    margin-bottom: 30px;
+  }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Loader from "react-loader";
+import moment from "moment";
 import PropTypes from "prop-types";
 
 import { getOrders } from "../../actions/orders";
@@ -71,6 +72,7 @@ export class Dashboard extends React.Component {
                     <th>Customer Contact</th>
                     <th>Meals Ordered</th>
                     <th>Total Cost</th>
+                    <th>Date Ordered</th>
                   </tr>
                 </thead>
 
@@ -87,6 +89,7 @@ export class Dashboard extends React.Component {
                         ))}
                       </td>
                       <td>UGX {order.cost}</td>
+                      <td>{moment(order.createdAt).fromNow()}</td>
                     </tr>
                   ))}
                 </tbody>

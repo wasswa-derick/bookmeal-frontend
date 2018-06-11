@@ -60,7 +60,6 @@ export class CustomerOrdersPage extends React.Component {
    * @memberof CustomerOrdersPage
    */
   makeOrder = data => {
-    // TODO: test this to see if it actually works
     this.props
       .modifyOrder(data.id, {
         orderCount: data.orderCount,

@@ -81,7 +81,7 @@ const App = ({ location }) => (
 
       <AppAuthenticatedRoute
         location={location}
-        path="/order"
+        path="/menu/:id/order"
         exact
         component={CustomerOrderPage}
       />

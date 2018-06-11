@@ -30,11 +30,9 @@ AdminRoute.propTypes = {
  * @param {any} state
  * @returns {Object} props mapped from redux state
  */
-function mapStateToProps(state) {
-  return {
-    isUserAuthenticated: !!state.authReducer.user.isLoggedIn,
-    isAdmin: !!state.authReducer.user.isAdmin
-  };
-}
+const mapStateToProps = state => ({
+  isUserAuthenticated: !!state.authReducer.user.isLoggedIn,
+  isAdmin: !!state.authReducer.user.isAdmin
+});
 
 export default connect(mapStateToProps)(AdminRoute);

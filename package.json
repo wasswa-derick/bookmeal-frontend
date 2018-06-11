@@ -1,58 +1,56 @@
 {
-    "name": "bookmeal-frontend",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "axios": "^0.18.0",
-        "jquery": "^3.3.1",
-        "jsonwebtoken": "^8.2.2",
-        "jwt-decode": "^2.2.0",
-        "moment": "^2.22.1",
-        "moxios": "^0.4.0",
-        "prop-types": "^15.6.1",
-        "query-string": "^6.1.0",
-        "react": "^16.3.2",
-        "react-datepicker": "^1.5.0",
-        "react-dom": "^16.3.2",
-        "react-loader": "^2.4.5",
-        "react-redux": "^5.0.7",
-        "react-router-dom": "^4.2.2",
-        "react-scripts": "1.1.4",
-        "redux": "^4.0.0",
-        "redux-devtools-extension": "^2.13.2",
-        "redux-thunk": "^2.2.0",
-        "validator": "^10.2.0"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
-        "coverage": "react-scripts test --env=jsdom --coverage",
-        "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
-        "eject": "react-scripts eject",
-        "lint": "eslint src"
-    },
-    "devDependencies": {
-        "coveralls": "^3.0.1",
-        "enzyme": "^3.3.0",
-        "enzyme-adapter-react-16": "^1.1.1",
-        "enzyme-to-json": "^3.3.4",
-        "eslint": "^4.19.1",
-        "eslint-config-airbnb": "^16.1.0",
-        "eslint-config-prettier": "^2.9.0",
-        "eslint-plugin-import": "^2.11.0",
-        "eslint-plugin-jsx-a11y": "^6.0.3",
-        "eslint-plugin-prettier": "^2.6.0",
-        "eslint-plugin-react": "^7.8.0",
-        "fetch-mock": "^6.4.2",
-        "prettier": "^1.12.1",
-        "react-test-renderer": "^16.3.2",
-        "redux-mock-store": "^1.5.1"
-    },
-    "jest": {
-        "snapshotSerializers": [
-            "enzyme-to-json/serializer"
-        ]
-    },
-    "proxy": "http://localhost:5000/api/v1"
+  "name": "bookmeal-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "jquery": "^3.3.1",
+    "jsonwebtoken": "^8.2.2",
+    "jwt-decode": "^2.2.0",
+    "moment": "^2.22.1",
+    "moxios": "^0.4.0",
+    "prop-types": "^15.6.1",
+    "query-string": "^6.1.0",
+    "react": "^16.3.2",
+    "react-datepicker": "^1.5.0",
+    "react-dom": "^16.3.2",
+    "react-loader": "^2.4.5",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.2.0",
+    "validator": "^10.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "coverage": "react-scripts test --env=jsdom --coverage",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
+    "eject": "react-scripts eject",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.8.0",
+    "fetch-mock": "^6.4.2",
+    "prettier": "^1.12.1",
+    "react-test-renderer": "^16.3.2",
+    "redux-mock-store": "^1.5.1"
+  },
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
+  "proxy": "http://localhost:5000"
 }

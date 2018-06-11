@@ -10,7 +10,9 @@ const initialState = {
     id: 0,
     title: "",
     description: "",
-    meals: []
+    url: "",
+    meals: [],
+    menuDate: ""
   },
   menus: []
 };

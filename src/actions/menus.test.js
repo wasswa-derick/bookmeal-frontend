@@ -16,6 +16,7 @@ const postMenuMock = {
   id: 1,
   title: "title menu",
   description: "menu desc",
+  url: "",
   meals: [
     {
       id: 1,

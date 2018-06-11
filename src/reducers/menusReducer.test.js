@@ -5,13 +5,15 @@ describe("menus reducer", () => {
   let menu;
   let initialState;
   beforeEach(() => {
-    menu = { id: 1, title: "menu title", date: "2018-05-03" };
+    menu = { id: 1, title: "menu title", date: "2018-05-03", url: "" };
     initialState = {
       menu: {
         description: "",
         id: 0,
         meals: [],
-        title: ""
+        title: "",
+        url: "",
+        menuDate: ""
       },
       menus: []
     };
@@ -23,7 +25,9 @@ describe("menus reducer", () => {
         id: 0,
         title: "",
         description: "",
-        meals: []
+        meals: [],
+        url: "",
+        menuDate: ""
       },
       menus: []
     });
@@ -52,7 +56,9 @@ describe("menus reducer", () => {
         id: 0,
         title: "",
         description: "",
-        meals: []
+        meals: [],
+        url: "",
+        menuDate: ""
       },
       menus: [menu]
     });

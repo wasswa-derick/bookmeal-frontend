@@ -102,7 +102,7 @@ exports[`App Component should render correctly 1`] = `
           "pathname": "",
         }
       }
-      path="/order"
+      path="/menu/:id/order"
     />
     <Connect(AuthenticatedRoute)
       component={[Function]}

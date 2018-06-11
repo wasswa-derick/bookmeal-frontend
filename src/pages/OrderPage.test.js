@@ -1,14 +1,13 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import { OrderPage } from "./OrderPage";
-import mockStorage from "../utils/localStorage";
 
 const err = {
   response: {
     status: 400
   }
 };
-// const fn = () => Promise.reject(err);
+const fn = () => Promise.reject(err);
 
 const postOrderMockFn = data =>
   new Promise((resolve, reject) => {
@@ -22,28 +21,31 @@ describe("OrderPage", () => {
   let wrapper;
   let mockFn;
   beforeEach(() => {
-    Object.defineProperty(window, "sessionStorage", {
-      value: mockStorage
-    });
-
     mockFn = jest.fn();
     const history = {
       push: mockFn
     };
-    const cartOrder = {
-      menuId: 1,
-      meals: [{ title: "meal lorem", id: 1, price: 1000, description: "desc" }],
-      totalCost: 1000,
-      orderCount: 1,
-      cost: 1000
+    const match = {
+      params: {
+        id: "1"
+      }
     };
-    wrapper = shallow(
+
+    const menu = {
+      id: 1,
+      title: "",
+      description: "",
+      menuDate: "",
+      meals: [{ id: 1, title: "", description: "", price: 1000 }]
+    };
+    wrapper = mount(
       <OrderPage
-        cartOrder={cartOrder}
+        menu={menu}
         history={history}
         setMessage={mockFn}
         postOrder={postOrderMockFn}
-        getCartOrder={jest.fn}
+        getMenu={fn}
+        match={match}
       />
     );
   });
@@ -52,6 +54,38 @@ describe("OrderPage", () => {
     wrapper.instance().cancelOrder();
     wrapper.instance().makeOrder();
     expect(mockFn.mock.calls.length).toEqual(1);
+  });
+
+  it("should increment or decrement count", () => {
+    const evt = {};
+    const { order } = wrapper.instance().state;
+    expect(order.orderCount).toBe(1);
+
+    // increment count by 1
+    wrapper.instance().incrementCount(evt, true);
+
+    const { orderCount } = wrapper.instance().state.order;
+    expect(orderCount).toBe(2);
+
+    // then decrement the count by 1
+    wrapper.instance().incrementCount(evt, false);
+    expect(wrapper.instance().state.order.orderCount).toBe(1);
+  });
+
+  it("should add or remove meal to  orders when checked is called", () => {
+    const evt = {
+      target: { checked: true }
+    };
+    expect(wrapper.instance().state.order.meals.length).toEqual(0);
+
+    // check the meal to add it to order
+    wrapper.instance().checked(evt, 1);
+    expect(wrapper.instance().state.order.meals.length).toEqual(1);
+
+    // un check the meal to remove it from order
+    evt.target.checked = false;
+    wrapper.instance().checked(evt, 1);
+    expect(wrapper.instance().state.order.meals.length).toEqual(0);
   });
 
   it("should render correctly", () => {

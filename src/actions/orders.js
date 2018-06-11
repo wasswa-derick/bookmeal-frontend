@@ -55,34 +55,34 @@ export const getCartOrder = () => dispatch => {
 export const getOrders = () => dispatch => {
   const headers = makeHeaders();
   return axios
-    .get("/orders", { headers })
+    .get("/api/v1/orders", { headers })
     .then(res => dispatch(gotOrders(res.data.orders)));
 };
 
 export const getMyOrders = () => dispatch => {
   const headers = makeHeaders();
   return axios
-    .get("/myorders", { headers })
+    .get("/api/v1/myorders", { headers })
     .then(res => dispatch(gotOrders(res.data.orders)));
 };
 
 export const getOrder = id => dispatch => {
   const headers = makeHeaders();
   return axios
-    .get(`/orders/${id}`, { headers })
+    .get(`/api/v1/orders/${id}`, { headers })
     .then(res => dispatch(gotOrder(res.data)));
 };
 
 export const postOrder = data => dispatch => {
   const headers = makeHeaders();
   return axios
-    .post("/orders", data, { headers })
+    .post("/api/v1/orders", data, { headers })
     .then(res => dispatch(orderedMeal(res.data)));
 };
 
 export const modifyOrder = (id, data) => dispatch => {
   const headers = makeHeaders();
   return axios
-    .put(`/orders/${id}`, data, { headers })
+    .put(`/api/v1/orders/${id}`, data, { headers })
     .then(res => dispatch(orderedMeal(res.data)));
 };

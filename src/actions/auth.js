@@ -27,15 +27,17 @@ export const userLoggedOut = () => ({
 });
 
 export const registerCustomer = data => dispatch =>
-  axios.post("/auth/signup", data).then(res => dispatch(createdUser(res.data)));
+  axios
+    .post("/api/v1/auth/signup", data)
+    .then(res => dispatch(createdUser(res.data)));
 
 export const registerBusiness = data => dispatch =>
   axios
-    .post("/auth/business/signup", data)
+    .post("/api/v1/auth/business/signup", data)
     .then(res => dispatch(createdBusiness(res.data)));
 
 export const loginUser = data => dispatch =>
-  axios.post("/auth/login", data).then(res => {
+  axios.post("/api/v1/auth/login", data).then(res => {
     // get token and store it in localStorage
     const { token } = res.data;
     localStorage.setItem("authUserToken", token);

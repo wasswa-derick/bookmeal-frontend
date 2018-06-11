@@ -80,6 +80,9 @@ exports[`Dashboard should render correctly 1`] = `
               <th>
                 Total Cost
               </th>
+              <th>
+                Date Ordered
+              </th>
             </tr>
           </thead>
           <tbody />

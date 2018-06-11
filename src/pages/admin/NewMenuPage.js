@@ -20,7 +20,8 @@ export class NewMenuPage extends React.Component {
   state = {
     data: {
       title: "",
-      description: ""
+      description: "",
+      file: null
     },
     menuDate: moment(),
     errors: {},
@@ -45,6 +46,7 @@ export class NewMenuPage extends React.Component {
 
       this.props
         .addMenu({
+          file: data.file,
           title: data.title,
           description: data.description,
           date: menuDate.format("YYYY-MM-DD"),
@@ -76,6 +78,16 @@ export class NewMenuPage extends React.Component {
   onChange = e =>
     this.setState({
       data: { ...this.state.data, [e.target.name]: e.target.value }
+    });
+
+  /**
+   * @param {Event} e
+   * @returns {null} null
+   * @memberof NewMenuPage
+   */
+  handleFileUpload = e =>
+    this.setState({
+      data: { ...this.state.data, file: e.target.files[0] }
     });
   /**
    * @param {Event} evt
@@ -116,6 +128,10 @@ export class NewMenuPage extends React.Component {
     // validate the date as well
     if (this.state.menuDate == null) {
       errors.date = "This field is required";
+    }
+
+    if (data.file == null) {
+      errors.file = "Choose an image";
     }
 
     return errors;
@@ -200,7 +216,16 @@ export class NewMenuPage extends React.Component {
           <div className="col-md-3">
             <div className="form-group">
               <label htmlFor="menu-image">Attach Image</label>
-              <input className="form-control" type="file" name="menu-image" />
+              <input
+                className={
+                  errors.file ? "form-control is-invalid" : "form-control"
+                }
+                onChange={this.handleFileUpload}
+                type="file"
+                accept="image/*"
+                name="menu-image"
+              />
+              {errors.file && <InlineError text={errors.file} />}
             </div>
           </div>
         </div>

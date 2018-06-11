@@ -45,7 +45,7 @@ describe("HomePage", () => {
   it("should handle makeOrder", () => {
     const evt = {};
     wrapper.instance().viewMeals(evt, 1);
-    expect(mockFn.mock.calls.length).toEqual(1);
+    expect(mockFn.mock.calls.length).toEqual(2);
   });
 
   it("should render correctly", () => {

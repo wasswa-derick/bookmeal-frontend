@@ -31,19 +31,16 @@ exports[`HomePage should render correctly 1`] = `
             <div
               aria-hidden={true}
               className="card"
-              data-target="#orderModal"
-              data-toggle="modal"
               onClick={[Function]}
               style={
                 Object {
-                  "width": "18rem",
+                  "width": "16rem",
                 }
               }
             >
               <img
                 alt="menu-img"
                 className="card-img-top"
-                src="coffee.jpg"
               />
               <div
                 className="card-body"
@@ -67,31 +64,6 @@ exports[`HomePage should render correctly 1`] = `
             </div>
           </div>
         </div>
-        <OrderMealModal
-          order={
-            Object {
-              "cost": 0,
-              "id": 0,
-              "meals": Array [],
-              "menuId": 0,
-              "orderCount": 1,
-              "totalCost": 0,
-            }
-          }
-          selectedMenu={
-            Object {
-              "catering": Object {
-                "address": "",
-                "name": "",
-              },
-              "description": "",
-              "id": 0,
-              "meals": Array [],
-              "title": "",
-            }
-          }
-          submit={[Function]}
-        />
       </div>
     </Component>
   </div>

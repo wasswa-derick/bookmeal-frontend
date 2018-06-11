@@ -149,7 +149,9 @@ export class OrderMealModal extends React.Component {
                     type="checkbox"
                     checked={meal.checked}
                   />
-                  {meal.title}
+                  <label htmlFor="title" className="ml-2">
+                    {meal.title}
+                  </label>
                   <label
                     className="float-right"
                     style={{ color: "#00a1e0" }}
@@ -157,7 +159,7 @@ export class OrderMealModal extends React.Component {
                   >
                     UGX{meal.price}
                   </label>
-                  <p>
+                  <p style={{ fontSize: "14px" }}>
                     <i>{meal.description}</i>
                   </p>
                 </div>

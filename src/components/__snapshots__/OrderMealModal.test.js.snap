@@ -46,7 +46,12 @@ exports[`OrderMealModal should render correctly 1`] = `
             onChange={[Function]}
             type="checkbox"
           />
-          meal title
+          <label
+            className="ml-2"
+            htmlFor="title"
+          >
+            meal title
+          </label>
           <label
             className="float-right"
             htmlFor="price"
@@ -59,7 +64,13 @@ exports[`OrderMealModal should render correctly 1`] = `
             UGX
             5000
           </label>
-          <p>
+          <p
+            style={
+              Object {
+                "fontSize": "14px",
+              }
+            }
+          >
             <i>
               meal desc
             </i>

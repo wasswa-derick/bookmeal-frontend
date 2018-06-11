@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import moment from "moment";
 import Loader from "react-loader";
 import PropTypes from "prop-types";
 import { getOrders } from "../../actions/orders";
@@ -41,6 +42,7 @@ export class OrdersHistoryPage extends React.Component {
                 <th>Order Count</th>
                 <th>Meals Ordered</th>
                 <th>Total Cost</th>
+                <th>Date Ordered</th>
               </tr>
             </thead>
 
@@ -58,6 +60,7 @@ export class OrdersHistoryPage extends React.Component {
                     ))}
                   </td>
                   <td>{order.cost}</td>
+                  <td>{moment(order.createdAt).fromNow()}</td>
                 </tr>
               ))}
             </tbody>
@@ -75,6 +78,7 @@ OrdersHistoryPage.propTypes = {
       cost: PropTypes.number.isRequired,
       orderCount: PropTypes.number.isRequired,
       expiresAt: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
       meals: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number.isRequired,
