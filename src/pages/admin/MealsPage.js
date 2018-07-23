@@ -60,7 +60,7 @@ export class MealsPage extends React.Component {
     let errors = this.validate(data);
     if (Object.keys(errors).length === 0) {
       this.props
-        .postMeal(data)
+        .postMeal({ ...data, price: parseInt(data.price, 10) })
         .then(() => window.location.reload())
         .catch(err => {
           if (err.response.status && err.response.status === 400) {
@@ -105,6 +105,8 @@ export class MealsPage extends React.Component {
 
     if (validator.isEmpty(data.title)) {
       errors.title = "This field is required";
+    } else if (data.title.length > 64) {
+      errors.title = "This field value should less than 64 characters long.";
     }
 
     if (validator.isEmpty(data.description)) {

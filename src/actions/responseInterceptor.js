@@ -23,6 +23,7 @@ export default function(store) {
                   type: "danger"
                 })
               );
+              window.location.reload();
             }
 
             break;

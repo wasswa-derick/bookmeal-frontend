@@ -30,7 +30,7 @@ exports[`HomePage should render correctly 1`] = `
           >
             <div
               aria-hidden={true}
-              className="card"
+              className="card menu"
               onClick={[Function]}
               style={
                 Object {
@@ -38,10 +38,6 @@ exports[`HomePage should render correctly 1`] = `
                 }
               }
             >
-              <img
-                alt="menu-img"
-                className="card-img-top"
-              />
               <div
                 className="card-body"
               >

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "datatables.net": "^1.10.19",
     "jquery": "^3.3.1",
     "jsonwebtoken": "^8.2.2",
     "jwt-decode": "^2.2.0",
@@ -50,7 +51,9 @@
     "redux-mock-store": "^1.5.1"
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "proxy": "http://localhost:5000"
 }

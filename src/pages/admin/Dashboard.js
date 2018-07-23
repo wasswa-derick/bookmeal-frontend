@@ -31,6 +31,8 @@ export class Dashboard extends React.Component {
       .catch(() => {});
   };
 
+  componentDidMount = () => {};
+
   /**
    * @returns {any} elements
    */

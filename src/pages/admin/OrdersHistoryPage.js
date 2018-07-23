@@ -20,6 +20,11 @@ export class OrdersHistoryPage extends React.Component {
       .then(() => this.setState({ loaded: true }))
       .catch(() => {});
   };
+
+  componentDidMount = () => {};
+
+  componentDidUpdate = () => {};
+
   /**
    * @returns {null} renders elements
    * @memberof OrdersHistoryPage

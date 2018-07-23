@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Loader from "react-loader";
 import $ from "jquery";
+import Loader from "react-loader";
 import { getTodayMenus } from "../actions/menus";
 import { setMessage } from "../actions/message";
 
@@ -21,6 +21,7 @@ export class HomePage extends React.Component {
       .then(() => this.setState({ loaded: true }))
       .catch(() => {});
   };
+
   /**
    * @param {Event} evt
    * @param {Number} id
@@ -70,14 +71,9 @@ export class HomePage extends React.Component {
                       <div
                         onClick={evt => this.viewMeals(evt, menu.id)}
                         aria-hidden
-                        className="card"
+                        className="card menu"
                         style={{ width: "16rem" }}
                       >
-                        <img
-                          className="card-img-top"
-                          src={menu.url}
-                          alt="menu-img"
-                        />
                         <div className="card-body">
                           <h6 className="card-title">{menu.title}</h6>
                           <p style={{ color: "gray" }} className="card-text">

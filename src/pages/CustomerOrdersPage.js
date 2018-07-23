@@ -40,6 +40,7 @@ export class CustomerOrdersPage extends React.Component {
       .then(() => this.setState({ loaded: true }))
       .catch(() => {});
   };
+
   /**
    * @param {Event} evt
    * @param {Object} order
