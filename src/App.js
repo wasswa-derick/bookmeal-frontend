@@ -3,94 +3,92 @@ import { Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import NotFound from "./NotFound";
 import "./css";
-import AppNavBar from "./components/NavBar";
-import AppHomePage from "./pages/HomePage";
-import ConnectedSignup from "./pages/Signup";
-import ConnectedLoginPage from "./pages/LoginPage";
-import ConnectedBusinessSignupPage from "./pages/BusinessSignupPage";
-import AppGuestRoute from "./routes/GuestRoute";
-import AppAdminRoute from "./routes/AdminRoute";
-import AppAuthenticatedRoute from "./routes/AuthenticatedRoute";
-import AdminMealsPage from "./pages/admin/MealsPage";
-import AdminEditMealPage from "./pages/admin/EditMealPage";
-import AdminMenusPage from "./pages/admin/MenusPage";
-import AdminNewMenuPage from "./pages/admin/NewMenuPage";
-import AdminOrdersHistoryPage from "./pages/admin/OrdersHistoryPage";
-import AdminDashboard from "./pages/admin/Dashboard";
-import CustomerOrderPage from "./pages/OrderPage";
-import AppCustomerOrdersPage from "./pages/CustomerOrdersPage";
+import { NavBar } from "./components/common";
+import {
+  Home,
+  Signup,
+  Login,
+  BusinessSignup,
+  Order,
+  CustomerOrders
+} from "./components";
+import { GuestRoute, AdminRoute, AuthenticatedRoute } from "./routes";
+
+import {
+  Meals,
+  Menus,
+  AdminOrdersHistory,
+  Dashboard,
+  EditMeal,
+  NewMenu
+} from "./components/admin";
 
 const App = ({ location }) => (
   <div>
-    <AppNavBar />
+    <NavBar />
     <Switch>
-      <Route path="/" exact component={AppHomePage} />
-      <AppGuestRoute path="/signup" exact component={ConnectedSignup} />
-      <AppGuestRoute
+      <Route path="/" exact component={Home} />
+      <GuestRoute path="/signup" exact component={Signup} />
+      <GuestRoute
         location={location}
         path="/business/signup"
         exact
-        component={ConnectedBusinessSignupPage}
+        component={BusinessSignup}
       />
-      <AppGuestRoute
-        location={location}
-        path="/login"
-        exact
-        component={ConnectedLoginPage}
-      />
-      <AppAdminRoute
+      <GuestRoute location={location} path="/login" exact component={Login} />
+      <AdminRoute
         location={location}
         path="/admin/meals"
         exact
-        component={AdminMealsPage}
+        component={Meals}
       />
-      <AppAdminRoute
+      <AdminRoute
         location={location}
         path="/admin/meal/:id/edit"
         exact
-        component={AdminEditMealPage}
+        component={EditMeal}
       />
 
-      <AppAdminRoute
+      <AdminRoute
         location={location}
         path="/admin/menus"
         exact
-        component={AdminMenusPage}
+        component={Menus}
       />
 
-      <AppAdminRoute
+      <AdminRoute
         location={location}
         path="/admin/menus/new"
         exact
-        component={AdminNewMenuPage}
+        component={NewMenu}
       />
 
-      <AppAdminRoute
+      <AdminRoute
         location={location}
         path="/admin/orders"
         exact
-        component={AdminOrdersHistoryPage}
+        component={AdminOrdersHistory}
       />
 
-      <AppAdminRoute
+      <AdminRoute
         location={location}
         path="/admin"
         exact
-        component={AdminDashboard}
+        component={Dashboard}
       />
 
-      <AppAuthenticatedRoute
+      <AuthenticatedRoute
         location={location}
         path="/menu/:id/order"
         exact
-        component={CustomerOrderPage}
+        component={Order}
       />
 
-      <AppAuthenticatedRoute
+      <AuthenticatedRoute
         location={location}
         path="/orders"
         exact
-        component={AppCustomerOrdersPage}
+        component={CustomerOrders}
       />
       <Route component={NotFound} />
     </Switch>

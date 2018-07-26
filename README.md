@@ -9,7 +9,7 @@ Frontend for meal-booking-application, that allows customers to make food orders
 In order to run the project locally you should clone the Meal booking backend application.
 
 Go to the [repository](https://github.com/solnsubuga/meal-booking-app) and clone it.
-Follow the instruction in it's README` to setup and run the backend application.
+Follow the instruction in it's `README` to setup and run the backend application.
 
 Make sure to have the backend server running at `http://127.0.0.1:5000`
 
