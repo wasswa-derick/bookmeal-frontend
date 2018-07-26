@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormInput should render correctly 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    htmlFor="test"
+  >
+    Test
+  </label>
+  <input
+    autoComplete="off"
+    className="form-control"
+    id="test"
+    name="test"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+</div>
+`;

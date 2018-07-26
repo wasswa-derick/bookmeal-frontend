@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { NewMenuPage } from "./NewMenuPage";
+import { NewMenuPage } from "./NewMenu";
 
 const err = {
   response: {

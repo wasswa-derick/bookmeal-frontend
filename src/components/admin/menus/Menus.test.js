@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { MenusPage } from "./MenusPage";
+import { MenusPage } from "./Menus";
 
 const err = {
   response: {

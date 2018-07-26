@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { LoginPage } from "./LoginPage";
-import LoginForm from "../../components/forms";
+import { LoginPage } from "./Login";
+import LoginForm from "../../components/common/forms/loginForm/LoginForm";
 
 describe("LoginPage", () => {
   let wrapper;

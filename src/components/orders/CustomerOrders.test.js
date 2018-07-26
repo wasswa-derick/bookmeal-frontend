@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { CustomerOrdersPage } from "./CustomerOrdersPage";
+import { CustomerOrdersPage } from "./CustomerOrders";
 
 const err = {
   response: {

@@ -1,7 +1,7 @@
 export { default as Dashboard } from "./dashboard/Dashboard";
-export { default as EditMeal } from "./editMeal/EditMealPage";
-export { default as EditMenu } from "./editMenu/EditMenuPage";
-export { default as Meals } from "./meals/MealsPage";
-export { default as Menus } from "./menus/MenusPage";
-export { default as NewMenu } from "./newMenu/NewMenuPage";
-export { default as AdminOrdersHistory } from "./orders/OrdersHistoryPage";
+export { default as EditMeal } from "./editMeal/EditMeal";
+export { default as EditMenu } from "./editMenu/EditMenu";
+export { default as Meals } from "./meals/Meals";
+export { default as Menus } from "./menus/Menus";
+export { default as NewMenu } from "./newMenu/NewMenu";
+export { default as AdminOrdersHistory } from "./orders/OrdersHistory";

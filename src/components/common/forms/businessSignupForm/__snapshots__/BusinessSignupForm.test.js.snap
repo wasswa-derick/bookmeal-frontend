@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegistrationForm should render correctly 1`] = `
+<form
+  autoComplete="off"
+  onSubmit={[Function]}
+>
+  <FormInput
+    label="Business Name"
+    name="businessName"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <FormInput
+    label="Business Address"
+    name="businessAddress"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <FormInput
+    label="Full Name"
+    name="name"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <FormInput
+    label="Email"
+    name="email"
+    onChange={[Function]}
+    type="email"
+    value=""
+  />
+  <FormInput
+    label="Password"
+    name="password"
+    onChange={[Function]}
+    type="password"
+    value=""
+  />
+  <button
+    className="btn btn-primary btn-submit"
+    type="submit"
+  >
+    Create Account
+  </button>
+  <p>
+    Already have an account?
+    <Link
+      href="/login"
+      replace={false}
+      to="/login"
+    >
+      Log In
+    </Link>
+  </p>
+</form>
+`;
