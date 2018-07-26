@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { EditMealPage } from "./EditMeal";
+import { EditMeal } from "./EditMeal";
 
 const err = {
   response: {
@@ -15,7 +15,7 @@ const err = {
 const fn = () => Promise.reject(err);
 const asyncMockFn = () => Promise.resolve({});
 
-describe("EditMealPage", () => {
+describe("EditMeal", () => {
   let wrapper;
   beforeEach(() => {
     const meal = {
@@ -31,7 +31,7 @@ describe("EditMealPage", () => {
     const match = { params: { id: "1" } };
 
     wrapper = mount(
-      <EditMealPage
+      <EditMeal
         meal={meal}
         getMeal={asyncMockFn}
         match={match}

@@ -8,10 +8,10 @@ import { setMessage } from "../../actions/message";
 
 /**
  * @export
- * @class HomePage
+ * @class Home
  * @extends {React.Component}
  */
-export class HomePage extends React.Component {
+export class Home extends React.Component {
   state = {
     loaded: false
   };
@@ -26,7 +26,7 @@ export class HomePage extends React.Component {
    * @param {Event} evt
    * @param {Number} id
    * @return {null} null
-   * @memberof HomePage
+   * @memberof Home
    */
   viewMeals = (evt, id) => {
     if (!this.props.isUserAuthenticated) {
@@ -43,7 +43,7 @@ export class HomePage extends React.Component {
 
   /**
    * @returns {object} rendered elements
-   * @memberof HomePage
+   * @memberof Home
    */
   render() {
     const { menus } = this.props;
@@ -96,7 +96,7 @@ export class HomePage extends React.Component {
   }
 }
 
-HomePage.propTypes = {
+Home.propTypes = {
   getTodayMenus: PropTypes.func.isRequired,
   menus: PropTypes.arrayOf(
     PropTypes.shape({
@@ -128,4 +128,4 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   getTodayMenus,
   setMessage
-})(HomePage);
+})(Home);

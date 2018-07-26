@@ -7,10 +7,10 @@ import { getOrders } from "../../../actions/orders";
 
 /**
  * @export
- * @class OrdersHistoryPage
+ * @class OrdersHistory
  * @extends {React.Component}
  */
-export class OrdersHistoryPage extends React.Component {
+export class OrdersHistory extends React.Component {
   state = {
     loaded: false
   };
@@ -27,7 +27,7 @@ export class OrdersHistoryPage extends React.Component {
 
   /**
    * @returns {null} renders elements
-   * @memberof OrdersHistoryPage
+   * @memberof OrdersHistory
    */
   render() {
     const { loaded } = this.state;
@@ -76,7 +76,7 @@ export class OrdersHistoryPage extends React.Component {
   }
 }
 
-OrdersHistoryPage.propTypes = {
+OrdersHistory.propTypes = {
   orders: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -104,4 +104,4 @@ const mapStateToProps = state => ({
   orders: state.ordersReducer.orders
 });
 
-export default connect(mapStateToProps, { getOrders })(OrdersHistoryPage);
+export default connect(mapStateToProps, { getOrders })(OrdersHistory);

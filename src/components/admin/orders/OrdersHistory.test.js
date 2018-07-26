@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { OrdersHistoryPage } from "./OrdersHistoryPage";
+import { OrdersHistory } from "./OrdersHistory";
 
 const err = {
   response: {
@@ -9,10 +9,10 @@ const err = {
 };
 const fn = () => Promise.reject(err);
 
-describe("OrdersHistoryPage", () => {
+describe("OrdersHistory", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<OrdersHistoryPage getOrders={fn} orders={[]} />);
+    wrapper = shallow(<OrdersHistory getOrders={fn} orders={[]} />);
   });
 
   it("should render correctly", () => {

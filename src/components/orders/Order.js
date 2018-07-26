@@ -8,10 +8,10 @@ import { setMessage } from "../../actions/message";
 
 /**
  * @export
- * @class OrderPage
+ * @class Order
  * @extends {React.Component}
  */
-export class OrderPage extends React.Component {
+export class Order extends React.Component {
   state = {
     loaded: false,
     order: {
@@ -111,7 +111,7 @@ export class OrderPage extends React.Component {
 
   /**
    * @returns {div} renders a div
-   * @memberof OrderPage
+   * @memberof Order
    */
   render() {
     const { menu } = this.props;
@@ -200,7 +200,7 @@ export class OrderPage extends React.Component {
   }
 }
 
-OrderPage.propTypes = {
+Order.propTypes = {
   menu: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -235,4 +235,4 @@ export default connect(mapStateToProps, {
   getMenu,
   postOrder,
   setMessage
-})(OrderPage);
+})(Order);

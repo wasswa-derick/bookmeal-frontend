@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage should render correctly 1`] = `
+<div>
+  <div
+    className="container login-panel"
+  >
+    <div
+      className="card auth-card"
+    >
+      <div
+        className="card-body"
+      >
+        <h3
+          className="card-title title"
+        >
+          Log Into Your Account
+        </h3>
+        <LoginForm
+          handleSubmit={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

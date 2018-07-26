@@ -24,10 +24,10 @@ EditLink.propTypes = {
 
 /**
  * @export
- * @class MealsPage
+ * @class Meals
  * @extends {React.Component}
  */
-export class MealsPage extends React.Component {
+export class Meals extends React.Component {
   state = {
     data: {
       title: "",
@@ -267,7 +267,7 @@ export class MealsPage extends React.Component {
   }
 }
 
-MealsPage.propTypes = {
+Meals.propTypes = {
   meals: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -293,4 +293,4 @@ export default connect(mapStateToProps, {
   getMeals,
   postMeal,
   deleteMeal
-})(MealsPage);
+})(Meals);

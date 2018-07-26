@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { NewMenuPage } from "./NewMenu";
+import { NewMenu } from "./NewMenu";
 
 const err = {
   response: {
@@ -12,14 +12,14 @@ const err = {
 };
 const fn = () => Promise.reject(err);
 
-describe("NewMenuPage", () => {
+describe("NewMenu", () => {
   let wrapper;
   beforeEach(() => {
     const history = {
       push: jest.fn
     };
     wrapper = mount(
-      <NewMenuPage
+      <NewMenu
         setMessage={fn}
         getMeals={fn}
         meals={[]}

@@ -12,7 +12,7 @@ import { getMeal, editMeal } from "../../../actions/meals";
  * @class EditMealPage
  * @extends {React.Component}
  */
-export class EditMealPage extends React.Component {
+export class EditMeal extends React.Component {
   state = {
     data: {
       title: "",
@@ -37,7 +37,7 @@ export class EditMealPage extends React.Component {
   /**
    * @param {Event} e
    * @returns {null} sets state on target value on change
-   * @memberof EditMealPage
+   * @memberof EditMeal
    */
   onChange = e =>
     this.setState({
@@ -93,7 +93,7 @@ export class EditMealPage extends React.Component {
   /**
    *
    * @returns {null} elements to render
-   * @memberof EditMealPage
+   * @memberof EditMeal
    */
   render() {
     const { errors, data, loaded } = this.state;
@@ -169,7 +169,7 @@ export class EditMealPage extends React.Component {
   }
 }
 
-EditMealPage.propTypes = {
+EditMeal.propTypes = {
   getMeal: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -192,4 +192,4 @@ const mapStateToProps = state => ({
   meal: state.mealsReducer.meal
 });
 
-export default connect(mapStateToProps, { getMeal, editMeal })(EditMealPage);
+export default connect(mapStateToProps, { getMeal, editMeal })(EditMeal);

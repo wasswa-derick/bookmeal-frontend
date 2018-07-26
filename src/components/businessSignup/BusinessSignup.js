@@ -7,7 +7,7 @@ import { registerBusiness } from "../../actions/auth";
  * @class Signup
  * @extends {React.Component}
  */
-export class BusinessSignupPage extends React.Component {
+export class BusinessSignup extends React.Component {
   /**
    * @param {object} data to submit
    * @returns {Promise} promise to the caller
@@ -36,10 +36,10 @@ export class BusinessSignupPage extends React.Component {
   }
 }
 
-BusinessSignupPage.propTypes = {
+BusinessSignup.propTypes = {
   registerBusiness: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired
 };
-export default connect(null, { registerBusiness })(BusinessSignupPage);
+export default connect(null, { registerBusiness })(BusinessSignup);

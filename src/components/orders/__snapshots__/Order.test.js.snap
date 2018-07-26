@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order should render correctly 1`] = `
+<Order
+  getMenu={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  match={
+    Object {
+      "params": Object {
+        "id": "1",
+      },
+    }
+  }
+  menu={
+    Object {
+      "description": "",
+      "id": 1,
+      "meals": Array [
+        Object {
+          "description": "",
+          "id": 1,
+          "price": 1000,
+          "title": "",
+        },
+      ],
+      "menuDate": "",
+      "title": "",
+    }
+  }
+  postOrder={[Function]}
+  setMessage={[Function]}
+>
+  <div
+    className="container"
+  >
+    <h5 />
+    <hr />
+    <Component
+      component="div"
+      loaded={true}
+      loadedClassName="loadedContent"
+      parentClassName="loader"
+    >
+      <div
+        className="loadedContent"
+        key="content"
+      >
+        <div
+          className="modal-body"
+        >
+          <div
+            className="form-group meal-order-item"
+            key="1"
+          >
+            <input
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="ml-2"
+              htmlFor="title"
+            />
+            <label
+              className="float-right"
+              htmlFor="price"
+              style={
+                Object {
+                  "color": "#00a1e0",
+                }
+              }
+            >
+              UGX
+              1000
+            </label>
+            <p
+              style={
+                Object {
+                  "fontSize": "14px",
+                }
+              }
+            />
+          </div>
+          <hr />
+          <div
+            className="row"
+          >
+            <div
+              className="col-md-5 input-group"
+            >
+              <div
+                className="input-group-prepend"
+              >
+                <button
+                  className="btn btn-primary"
+                  onClick={[Function]}
+                >
+                  <i
+                    className="fa fa-minus"
+                  />
+                </button>
+              </div>
+              <input
+                className="form-control"
+                readOnly={true}
+                type="text"
+                value={1}
+              />
+              <div
+                className="input-group-prepend"
+              >
+                <button
+                  className="btn btn-primary"
+                  onClick={[Function]}
+                >
+                  <i
+                    className="fa fa-plus"
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              className="col-md-4"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                }
+              }
+            >
+              UGX 
+              0
+            </div>
+            <div
+              className="col-md-3"
+            >
+              <button
+                className="btn-save btn btn-primary"
+                disabled={true}
+                onClick={[Function]}
+                type="button"
+              >
+                Order
+              </button>
+              <button
+                className="btn btn-danger ml-4"
+                onClick={[Function]}
+                type="button"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Component>
+  </div>
+</Order>
+`;

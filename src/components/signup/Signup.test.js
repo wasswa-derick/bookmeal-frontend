@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { Signup } from "./Signup";
-import RegistrationForm from "../../components/forms";
+import RegistrationForm from "../common/forms/registrationForm/RegistrationForm";
 
 describe("Signup Page", () => {
   let wrapper;

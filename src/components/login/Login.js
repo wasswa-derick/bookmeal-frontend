@@ -4,21 +4,21 @@ import PropTypes from "prop-types";
 import { LoginForm } from "../common/forms";
 import { loginUser } from "../../actions/auth";
 /**
- * @class LoginPage
+ * @class Login
  * @extends {React.Component}
  */
-export class LoginPage extends React.Component {
+export class Login extends React.Component {
   /**
    * @param {object} data to submit
    * @returns {Promise} promise to the caller
-   * @memberof LoginPage
+   * @memberof Login
    */
   handleSubmit = data =>
     this.props.loginUser(data).then(() => this.props.history.push("/"));
 
   /**
    * @returns {any} renders a page
-   * @memberof LoginPage
+   * @memberof Login
    */
   render() {
     return (
@@ -36,10 +36,10 @@ export class LoginPage extends React.Component {
   }
 }
 
-LoginPage.propTypes = {
+Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired
 };
-export default connect(null, { loginUser })(LoginPage);
+export default connect(null, { loginUser })(Login);

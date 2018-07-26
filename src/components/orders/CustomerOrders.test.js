@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { CustomerOrdersPage } from "./CustomerOrders";
+import { CustomerOrders } from "./CustomerOrders";
 
 const err = {
   response: {
@@ -10,7 +10,7 @@ const err = {
 const fn = () => Promise.reject(err);
 const asyncMockFn = () => Promise.resolve({});
 
-describe("CustomerOrdersPage", () => {
+describe("CustomerOrders", () => {
   let wrapper;
   beforeEach(() => {
     const menu = {
@@ -20,7 +20,7 @@ describe("CustomerOrdersPage", () => {
       meals: [{ id: 1, title: "test meal", price: 1000, description: "desc" }]
     };
     wrapper = shallow(
-      <CustomerOrdersPage
+      <CustomerOrders
         getMyOrders={asyncMockFn}
         getMenu={asyncMockFn}
         menu={menu}

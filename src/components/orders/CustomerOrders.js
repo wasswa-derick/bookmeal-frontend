@@ -9,10 +9,10 @@ import { getMenu } from "../../actions/menus";
 
 /**
  * @export
- * @class CustomerOrdersPage
+ * @class CustomerOrders
  * @extends {React.Component}
  */
-export class CustomerOrdersPage extends React.Component {
+export class CustomerOrders extends React.Component {
   state = {
     order: {
       id: 0,
@@ -45,7 +45,7 @@ export class CustomerOrdersPage extends React.Component {
    * @param {Event} evt
    * @param {Object} order
    * @returns {null} void
-   * @memberof CustomerOrdersPage
+   * @memberof CustomerOrders
    */
   onSelected = (evt, order) => {
     this.setState({ order });
@@ -58,7 +58,7 @@ export class CustomerOrdersPage extends React.Component {
   /**
    * @param {Object} data
    * @returns {null} void
-   * @memberof CustomerOrdersPage
+   * @memberof CustomerOrders
    */
   makeOrder = data => {
     this.props
@@ -71,7 +71,7 @@ export class CustomerOrdersPage extends React.Component {
   };
   /**
    * @returns {null} renders elements
-   * @memberof CustomerOrdersPage
+   * @memberof CustomerOrders
    */
   render() {
     const { loaded } = this.state;
@@ -134,7 +134,7 @@ export class CustomerOrdersPage extends React.Component {
   }
 }
 
-CustomerOrdersPage.propTypes = {
+CustomerOrders.propTypes = {
   orders: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -172,5 +172,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { getMyOrders, getMenu, modifyOrder })(
-  CustomerOrdersPage
+  CustomerOrders
 );

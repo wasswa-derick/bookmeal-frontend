@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { BusinessSignupPage } from "./BusinessSignupPage";
+import { BusinessSignup } from "./BusinessSignup";
 
 describe("BusinessSignup", () => {
   let wrapper;
@@ -9,7 +9,7 @@ describe("BusinessSignup", () => {
       push: jest.fn
     };
     wrapper = shallow(
-      <BusinessSignupPage registerBusiness={jest.fn} history={history} />
+      <BusinessSignup registerBusiness={jest.fn} history={history} />
     );
   });
 

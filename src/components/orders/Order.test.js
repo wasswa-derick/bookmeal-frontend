@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { OrderPage } from "./Order";
+import { Order } from "./Order";
 
 const err = {
   response: {
@@ -17,7 +17,7 @@ const postOrderMockFn = data =>
     reject(err);
   });
 
-describe("OrderPage", () => {
+describe("Order", () => {
   let wrapper;
   let mockFn;
   beforeEach(() => {
@@ -39,7 +39,7 @@ describe("OrderPage", () => {
       meals: [{ id: 1, title: "", description: "", price: 1000 }]
     };
     wrapper = mount(
-      <OrderPage
+      <Order
         menu={menu}
         history={history}
         setMessage={mockFn}

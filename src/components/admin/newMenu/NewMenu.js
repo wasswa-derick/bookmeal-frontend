@@ -13,10 +13,10 @@ import { addMenu } from "../../../actions/menus";
 
 /**
  * @export
- * @class NewMenuPage
+ * @class NewMenu
  * @extends {React.Component}
  */
-export class NewMenuPage extends React.Component {
+export class NewMenu extends React.Component {
   state = {
     data: {
       title: "",
@@ -71,7 +71,7 @@ export class NewMenuPage extends React.Component {
   /**
    * @param {Event} e
    * @returns {null} null
-   * @memberof NewMenuPage
+   * @memberof NewMenu
    */
   onChange = e =>
     this.setState({
@@ -82,7 +82,7 @@ export class NewMenuPage extends React.Component {
    * @param {Event} evt
    * @param {Number} id
    * @returns {null} void
-   * @memberof NewMenuPage
+   * @memberof NewMenu
    */
   checked = (evt, id) => {
     const { meals } = this.state;
@@ -102,7 +102,7 @@ export class NewMenuPage extends React.Component {
   /**
    * @param {Object} data
    * @returns {Object} of errors
-   * @memberof NewMenuPage
+   * @memberof NewMenu
    */
   validate = data => {
     const errors = {};
@@ -124,7 +124,7 @@ export class NewMenuPage extends React.Component {
   /**
    * @param {Date} date
    * @returns {null} null
-   * @memberof NewMenuPage
+   * @memberof NewMenu
    */
   handleDateChange = date => {
     this.setState({
@@ -135,7 +135,7 @@ export class NewMenuPage extends React.Component {
   /**
    *
    * @returns {null} elements to render
-   * @memberof NewMenuPage
+   * @memberof NewMenu
    */
   render() {
     const { data, errors } = this.state;
@@ -223,7 +223,7 @@ export class NewMenuPage extends React.Component {
   }
 }
 
-NewMenuPage.propTypes = {
+NewMenu.propTypes = {
   setMessage: PropTypes.func.isRequired,
   getMeals: PropTypes.func.isRequired,
   meals: PropTypes.arrayOf(
@@ -245,5 +245,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { setMessage, getMeals, addMenu })(
-  NewMenuPage
+  NewMenu
 );

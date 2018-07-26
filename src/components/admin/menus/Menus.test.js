@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { MenusPage } from "./Menus";
+import { Menus } from "./Menus";
 
 const err = {
   response: {
@@ -12,7 +12,7 @@ const fn = () => Promise.reject(err);
 describe("MenusPage", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<MenusPage menus={[]} getMenus={fn} />);
+    wrapper = shallow(<Menus menus={[]} getMenus={fn} />);
   });
 
   it("should contain a link to set new menu page", () => {

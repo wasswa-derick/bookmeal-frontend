@@ -5,16 +5,16 @@ import React from "react";
  * @class EditMenuPage
  * @extends {React.Component}
  */
-export class EditMenuPage extends React.Component {
+export class EditMenu extends React.Component {
   state = {};
   componentDidMount = () => {};
   /**
    * @returns {HTMLElement} div
-   * @memberof EditMenuPage
+   * @memberof EditMenu
    */
   render() {
     return <div />;
   }
 }
 
-export default EditMenuPage;
+export default EditMenu;

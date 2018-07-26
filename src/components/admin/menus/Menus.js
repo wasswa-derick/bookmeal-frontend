@@ -8,10 +8,10 @@ import { getMenus } from "../../../actions/menus";
 /**
 
  * @export
- * @class MenusPage
+ * @class Menus
  * @extends {React.Component}
  */
-export class MenusPage extends React.Component {
+export class Menus extends React.Component {
   state = {
     loaded: false
   };
@@ -25,7 +25,7 @@ export class MenusPage extends React.Component {
    *
    *
    * @returns {null} elements to render
-   * @memberof MenusPage
+   * @memberof Menus
    */
   render() {
     const { menus } = this.props;
@@ -92,7 +92,7 @@ export class MenusPage extends React.Component {
   }
 }
 
-MenusPage.propTypes = {
+Menus.propTypes = {
   getMenus: PropTypes.func.isRequired,
   menus: PropTypes.arrayOf(
     PropTypes.shape({
@@ -115,4 +115,4 @@ const mapSateToProps = state => ({
   menus: state.menusReducer.menus
 });
 
-export default connect(mapSateToProps, { getMenus })(MenusPage);
+export default connect(mapSateToProps, { getMenus })(Menus);

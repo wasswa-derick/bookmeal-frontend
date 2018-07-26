@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersHistory should render correctly 1`] = `
+<div
+  className="container"
+>
+  <div>
+    <h4>
+      Order History
+    </h4>
+    <hr />
+  </div>
+  <Component
+    component="div"
+    loaded={false}
+    loadedClassName="loadedContent"
+    parentClassName="loader"
+  >
+    <table
+      className="table table-striped"
+      id="dtable"
+    >
+      <thead>
+        <tr
+          role="row"
+        >
+          <th>
+            Customer Name
+          </th>
+          <th>
+            Customer Contact
+          </th>
+          <th>
+            Order Count
+          </th>
+          <th>
+            Meals Ordered
+          </th>
+          <th>
+            Total Cost
+          </th>
+          <th>
+            Date Ordered
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </Component>
+</div>
+`;

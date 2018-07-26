@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { MealsPage } from "./Meals";
+import { Meals } from "./Meals";
 
 const err = {
   response: {
@@ -14,11 +14,11 @@ const err = {
 };
 const fn = () => Promise.reject(err);
 
-describe("MealsPage", () => {
+describe("Meals", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = mount(
-      <MealsPage getMeals={fn} postMeal={fn} meals={[]} deleteMeal={fn} />
+      <Meals getMeals={fn} postMeal={fn} meals={[]} deleteMeal={fn} />
     );
   });
 

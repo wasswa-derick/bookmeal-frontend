@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render correctly 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <h4>
+      Favorite Restaurants
+    </h4>
+    <hr />
+    <Component
+      component="div"
+      loaded={false}
+      loadedClassName="loadedContent"
+      parentClassName="loader"
+    >
+      <div>
+        <div
+          className="row mt-2"
+        >
+          <div
+            className="col-md-3"
+            key="1"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              className="card menu"
+              onClick={[Function]}
+              style={
+                Object {
+                  "width": "16rem",
+                }
+              }
+            >
+              <div
+                className="card-body"
+              >
+                <h6
+                  className="card-title"
+                >
+                  menu title
+                </h6>
+                <p
+                  className="card-text"
+                  style={
+                    Object {
+                      "color": "gray",
+                    }
+                  }
+                >
+                  <i>
+                    meal desc
+                  </i>
+                </p>
+              </div>
+              <div>
+                <p>
+                  By: 
+                  Solo
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Component>
+  </div>
+</div>
+`;

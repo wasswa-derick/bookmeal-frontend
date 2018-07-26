@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { LoginPage } from "./Login";
+import { Login } from "./Login";
 import LoginForm from "../../components/common/forms/loginForm/LoginForm";
 
 describe("LoginPage", () => {
@@ -9,7 +9,7 @@ describe("LoginPage", () => {
     const history = {
       push: jest.fn
     };
-    wrapper = shallow(<LoginPage loginUser={jest.fn} history={history} />);
+    wrapper = shallow(<Login loginUser={jest.fn} history={history} />);
   });
 
   it("should render a login form", () => {
