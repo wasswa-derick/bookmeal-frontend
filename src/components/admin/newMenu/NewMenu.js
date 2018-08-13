@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import DatePicker from "react-datepicker";
 import validator from "validator";
 import moment from "moment";
+import { notify } from "react-notify-toast";
 import PropTypes from "prop-types";
 import "react-datepicker/dist/react-datepicker.css";
 import { FormInput } from "../../common/forms";
@@ -36,20 +37,18 @@ export class NewMenu extends React.Component {
 
     if (Object.keys(errors).length === 0) {
       if (meals.length === 0) {
-        this.props.setMessage({
-          text: "Select at least one meal to put on the menu",
-          type: "danger"
-        });
+        notify.show("Select at least one meal to put on the menu", "error");
         return;
       }
+      const formData = new FormData();
+      formData.append("title", data.title);
+      formData.append("description", data.description);
+      formData.append("menu_date", menuDate.format("YYYY-MM-DD"));
+      formData.append("meals", meals);
+      formData.append("imageFile", data.imageFile);
 
       this.props
-        .addMenu({
-          title: data.title,
-          description: data.description,
-          menu_date: menuDate.format("YYYY-MM-DD"),
-          meals
-        })
+        .addMenu(formData)
         .then(() => {
           this.props.setMessage({
             text: `New Menu ${data.title}  has been created successfully`,
@@ -133,6 +132,16 @@ export class NewMenu extends React.Component {
   };
 
   /**
+   * @param {Event} e
+   * @returns {null} null
+   * @memberof NewMenu
+   */
+  handleFileUpload = e =>
+    this.setState({
+      data: { ...this.state.data, imageFile: e.target.files[0] }
+    });
+
+  /**
    *
    * @returns {null} elements to render
    * @memberof NewMenu
@@ -195,6 +204,21 @@ export class NewMenu extends React.Component {
                 value={data.description}
               />
               {errors.description && <InlineError text={errors.description} />}
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="form-group">
+              <label htmlFor="menu-image">Attach Image</label>
+              <input
+                className={
+                  errors.xls ? "form-control is-invalid" : "form-control"
+                }
+                onChange={this.handleFileUpload}
+                type="file"
+                accept="image/x-png,image/gif,image/jpeg"
+                name="users-file"
+              />
+              {errors.xls && <InlineError text={errors.xls} />}
             </div>
           </div>
         </div>

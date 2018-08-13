@@ -3,73 +3,165 @@
 exports[`Home should render correctly 1`] = `
 <div>
   <div
+    className="header-copy"
+  >
+    <div
+      className="header-text"
+    >
+      <h1>
+        Enjoy Food from 
+      </h1>
+      <span>
+        your Favorite Restaurants
+      </span>
+    </div>
+  </div>
+  <div
     className="container"
   >
-    <h4>
-      Favorite Restaurants
-    </h4>
-    <hr />
-    <Component
-      component="div"
-      loaded={false}
-      loadedClassName="loadedContent"
-      parentClassName="loader"
+    <div
+      className="row"
     >
-      <div>
-        <div
-          className="row mt-2"
+      <div
+        className="col-md-6"
+      >
+        <h4>
+           Menus from your favorite restaurants
+        </h4>
+      </div>
+    </div>
+    <hr />
+    <div
+      className="row bookings"
+    >
+      <div
+        className="col-md-3"
+      >
+        <ul
+          className="list-group"
         >
-          <div
-            className="col-md-3"
-            key="1"
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
+          <li
+            className="list-group-item list-group-item-action active"
           >
+            Today
+          </li>
+          <li
+            className="list-group-item"
+          >
+            Monday
+          </li>
+          <li
+            className="list-group-item"
+          >
+            Tuesday
+          </li>
+          <li
+            className="list-group-item"
+          >
+            Wednesday
+          </li>
+          <li
+            className="list-group-item"
+          >
+            Thursday
+          </li>
+          <li
+            className="list-group-item"
+          >
+            Friday
+          </li>
+        </ul>
+      </div>
+      <div
+        className="col-md-9"
+      >
+        <Component
+          component="div"
+          loaded={false}
+          loadedClassName="loadedContent"
+          parentClassName="loader"
+        >
+          <div>
             <div
-              aria-hidden={true}
-              className="card menu"
-              onClick={[Function]}
-              style={
-                Object {
-                  "width": "16rem",
-                }
-              }
+              className="row mt-2"
             >
               <div
-                className="card-body"
+                className="col-md-3"
+                key="1"
+                style={
+                  Object {
+                    "cursor": "pointer",
+                  }
+                }
               >
-                <h6
-                  className="card-title"
-                >
-                  menu title
-                </h6>
-                <p
-                  className="card-text"
+                <div
+                  aria-hidden={true}
+                  className="card"
+                  onClick={[Function]}
                   style={
                     Object {
-                      "color": "gray",
+                      "padding": "10px",
+                      "width": "16rem",
                     }
                   }
                 >
-                  <i>
-                    meal desc
-                  </i>
-                </p>
-              </div>
-              <div>
-                <p>
-                  By: 
-                  Solo
-                </p>
+                  <img
+                    alt=""
+                    className="img img-thumbnail"
+                    src="coffee.jpg"
+                    style={
+                      Object {
+                        "height": "180px",
+                        "width": "100%",
+                      }
+                    }
+                  />
+                  <div
+                    className="card-body"
+                  >
+                    <h6
+                      className="card-title"
+                    >
+                      menu title
+                    </h6>
+                    <p
+                      className="card-text"
+                      style={
+                        Object {
+                          "color": "gray",
+                        }
+                      }
+                    >
+                      <i>
+                        meal desc
+                      </i>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      By: 
+                      Solo
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Component>
       </div>
-    </Component>
+    </div>
+    <hr />
+    <div
+      className="center-site"
+    >
+      <h4>
+        Use our service to order food online and we shall make the delivery in a matter of minutes!
+      </h4>
+      <p>
+        With this site keeping in touch is alot easier and faster.
+      </p>
+    </div>
   </div>
+  <Footer />
 </div>
 `;

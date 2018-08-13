@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Notications from "react-notify-toast";
 import PropTypes from "prop-types";
 import { logoutUser } from "../../../actions/auth";
-import MessageAlert from "../messageAlert/MessageAlert";
 
 /**
  * @export
@@ -15,11 +15,11 @@ export class NavBar extends React.Component {
     this.props.logoutUser();
     window.location.reload();
   };
+
   /**
    * @returns {any} rendered elements
    */
   render() {
-    const { text, type } = this.props;
     return (
       <header>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -132,7 +132,7 @@ export class NavBar extends React.Component {
           </div>
         </nav>
         <div className="container">
-          {text && <MessageAlert text={text} type={type} />}
+          <Notications />
         </div>
       </header>
     );

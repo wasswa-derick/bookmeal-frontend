@@ -1,8 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import moment from "moment";
 import $ from "jquery";
 import Loader from "react-loader";
+import PropTypes from "prop-types";
+import coffee from "../../assets/images/coffee.jpg";
+import { Footer } from "../common";
 import { getTodayMenus } from "../../actions/menus";
 import { setMessage } from "../../actions/message";
 
@@ -13,13 +16,16 @@ import { setMessage } from "../../actions/message";
  */
 export class Home extends React.Component {
   state = {
-    loaded: false
+    loaded: false,
+    dates: []
   };
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.props
       .getTodayMenus()
       .then(() => this.setState({ loaded: true }))
       .catch(() => {});
+
+    this.generateDates();
   };
 
   /**
@@ -41,6 +47,18 @@ export class Home extends React.Component {
     this.props.history.push(`/menu/${id}/order`);
   };
 
+  generateDates = () => {
+    const { dates } = this.state;
+    const currentDate = moment();
+    dates.push(currentDate);
+    for (let i = 1; i < 7; ) {
+      const newDate = currentDate.add(1, "days");
+      dates.push(newDate);
+      i += 1;
+    }
+    this.setState({ dates });
+  };
+
   /**
    * @returns {object} rendered elements
    * @memberof Home
@@ -51,46 +69,93 @@ export class Home extends React.Component {
 
     return (
       <div>
-        <div className="container">
-          <h4>Favorite Restaurants</h4>
-          <hr />
-          <Loader loaded={loaded}>
-            {menus.length === 0 ? (
-              <div style={{ textAlign: "center" }}>
-                <h4>Ooops. There are no menus from caterers to show today</h4>
-              </div>
-            ) : (
-              <div>
-                <div className="row mt-2">
-                  {menus.map(menu => (
-                    <div
-                      style={{ cursor: "pointer" }}
-                      key={menu.id}
-                      className="col-md-3"
-                    >
-                      <div
-                        onClick={evt => this.viewMeals(evt, menu.id)}
-                        aria-hidden
-                        className="card menu"
-                        style={{ width: "16rem" }}
-                      >
-                        <div className="card-body">
-                          <h6 className="card-title">{menu.title}</h6>
-                          <p style={{ color: "gray" }} className="card-text">
-                            <i>{menu.description}</i>
-                          </p>
-                        </div>
-                        <div>
-                          <p>By: {menu.catering.name}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </Loader>
+        <div className="header-copy">
+          <div className="header-text">
+            <h1>Enjoy Food from </h1>
+            <span>your Favorite Restaurants</span>
+          </div>
         </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <h4> Menus from your favorite restaurants</h4>
+            </div>
+          </div>
+
+          <hr />
+          <div className="row bookings">
+            <div className="col-md-3">
+              <ul className="list-group">
+                <li className="list-group-item list-group-item-action active">
+                  Today
+                </li>
+                <li className="list-group-item">Monday</li>
+                <li className="list-group-item">Tuesday</li>
+                <li className="list-group-item">Wednesday</li>
+                <li className="list-group-item">Thursday</li>
+                <li className="list-group-item">Friday</li>
+              </ul>
+            </div>
+            <div className="col-md-9">
+              <Loader loaded={loaded}>
+                {menus.length === 0 ? (
+                  <div style={{ textAlign: "center" }}>
+                    <h4>
+                      Ooops. There are no menus from caterers to show today
+                    </h4>
+                  </div>
+                ) : (
+                  <div>
+                    <div className="row mt-2">
+                      {menus.map(menu => (
+                        <div
+                          style={{ cursor: "pointer" }}
+                          key={menu.id}
+                          className="col-md-3"
+                        >
+                          <div
+                            onClick={evt => this.viewMeals(evt, menu.id)}
+                            aria-hidden
+                            className="card"
+                            style={{ width: "16rem", padding: "10px" }}
+                          >
+                            <img
+                              className="img img-thumbnail"
+                              src={menu.imageURL ? menu.imageURL : coffee}
+                              alt=""
+                              style={{ height: "180px", width: "100%" }}
+                            />
+                            <div className="card-body">
+                              <h6 className="card-title">{menu.title}</h6>
+                              <p
+                                style={{ color: "gray" }}
+                                className="card-text"
+                              >
+                                <i>{menu.description}</i>
+                              </p>
+                            </div>
+                            <div>
+                              <p>By: {menu.catering.name}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </Loader>
+            </div>
+          </div>
+          <hr />
+          <div className="center-site">
+            <h4>
+              Use our service to order food online and we shall make the
+              delivery in a matter of minutes!
+            </h4>
+            <p>With this site keeping in touch is alot easier and faster.</p>
+          </div>
+        </div>
+        <Footer />
       </div>
     );
   }

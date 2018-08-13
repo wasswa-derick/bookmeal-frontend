@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import NotFound from "./NotFound";
-import "./css";
+import "./assets";
 import { NavBar } from "./components/common";
 import {
   Home,
