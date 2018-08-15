@@ -4,10 +4,10 @@ import moment from "moment";
 import $ from "jquery";
 import Loader from "react-loader";
 import PropTypes from "prop-types";
+import { setMessage } from "../../actions/message";
 import coffee from "../../assets/images/coffee.jpg";
 import { Footer } from "../common";
 import { getTodayMenus } from "../../actions/menus";
-import { setMessage } from "../../actions/message";
 
 /**
  * @export
@@ -37,8 +37,8 @@ export class Home extends React.Component {
   viewMeals = (evt, id) => {
     if (!this.props.isUserAuthenticated) {
       this.props.setMessage({
-        text: `Login or create account to view and order meals on this menu`,
-        type: `warning`
+        text: "Login or create account to view and order meals on this menu",
+        type: "warning"
       });
       $(".modal-backdrop").remove();
       this.props.history.push("/login");

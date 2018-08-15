@@ -65,6 +65,7 @@ export class Menus extends React.Component {
                   <th>Picture</th>
                   <th>Meals</th>
                   <th>Description</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -90,6 +91,14 @@ export class Menus extends React.Component {
                       ))}
                     </td>
                     <td>{menu.description}</td>
+                    <td>
+                      <Link
+                        href={`/admin/menus/${menu.id}/edit`}
+                        to={`/admin/menus/${menu.id}/edit`}
+                      >
+                        <i className="fa fa-edit" />
+                      </Link>
+                    </td>
                   </tr>
                 ))}
               </tbody>

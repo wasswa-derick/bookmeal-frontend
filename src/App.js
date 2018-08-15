@@ -20,7 +20,8 @@ import {
   AdminOrdersHistory,
   Dashboard,
   EditMeal,
-  NewMenu
+  NewMenu,
+  EditMenu
 } from "./components/admin";
 
 const App = ({ location }) => (
@@ -61,6 +62,13 @@ const App = ({ location }) => (
         path="/admin/menus/new"
         exact
         component={NewMenu}
+      />
+
+      <AdminRoute
+        location={location}
+        path="/admin/menus/:id/edit"
+        exact
+        component={EditMenu}
       />
 
       <AdminRoute

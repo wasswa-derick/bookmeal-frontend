@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddMenu should render correctly 1`] = `
+<div>
+  <button
+    className="btn-save btn btn-primary float-right"
+    onClick={[Function]}
+  >
+    Save
+  </button>
+  <h4>
+    title
+  </h4>
+  <hr />
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-3"
+    >
+      <FormInput
+        label="Title"
+        name="title"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="col-md-3"
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="date"
+        >
+          Menu Date
+        </label>
+        <DatePicker
+          allowSameDay={false}
+          className="form-control"
+          dateFormat="L"
+          dateFormatCalendar="MMMM YYYY"
+          disabled={false}
+          disabledKeyboardNavigation={false}
+          dropdownMode="scroll"
+          monthsShown={1}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClickOutside={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMonthChange={[Function]}
+          onSelect={[Function]}
+          onYearChange={[Function]}
+          preventOpenOnFocus={false}
+          selected={Object {}}
+          shouldCloseOnSelect={true}
+          showTimeSelect={false}
+          timeCaption="Time"
+          timeIntervals={30}
+          withPortal={false}
+        />
+      </div>
+    </div>
+    <div
+      className="col-md-3"
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="desc"
+        >
+          Description
+        </label>
+        <textarea
+          className="form-control"
+          cols="20"
+          id="desc"
+          name="description"
+          onChange={[Function]}
+          rows="2"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-md-3"
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="menu-image"
+        >
+          Attach Image
+        </label>
+        <input
+          accept="image/x-png,image/jpeg,image/png"
+          className="form-control"
+          name="users-file"
+          onChange={[Function]}
+          type="file"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="row"
+  />
+</div>
+`;

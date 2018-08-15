@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Notications from "react-notify-toast";
 import PropTypes from "prop-types";
 import { logoutUser } from "../../../actions/auth";
 
@@ -20,6 +19,7 @@ export class NavBar extends React.Component {
    * @returns {any} rendered elements
    */
   render() {
+    // const {type,text} = this.props;
     return (
       <header>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -131,9 +131,7 @@ export class NavBar extends React.Component {
             )}
           </div>
         </nav>
-        <div className="container">
-          <Notications />
-        </div>
+        <div className="container" />
       </header>
     );
   }

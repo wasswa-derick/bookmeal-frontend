@@ -82,6 +82,16 @@ exports[`App Component should render correctly 1`] = `
           "pathname": "",
         }
       }
+      path="/admin/menus/:id/edit"
+    />
+    <Connect(AdminRoute)
+      component={[Function]}
+      exact={true}
+      location={
+        Object {
+          "pathname": "",
+        }
+      }
       path="/admin/orders"
     />
     <Connect(AdminRoute)

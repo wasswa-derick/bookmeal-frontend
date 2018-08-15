@@ -76,6 +76,9 @@ exports[`MenusPage should render correctly 1`] = `
             <th>
               Description
             </th>
+            <th>
+              Action
+            </th>
           </tr>
         </thead>
         <tbody />

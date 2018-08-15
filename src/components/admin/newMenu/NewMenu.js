@@ -1,16 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import DatePicker from "react-datepicker";
 import validator from "validator";
 import moment from "moment";
 import { notify } from "react-notify-toast";
 import PropTypes from "prop-types";
 import "react-datepicker/dist/react-datepicker.css";
-import { FormInput } from "../../common/forms";
-import { InlineError } from "../../common";
-import { setMessage } from "../../../actions/message";
 import { getMeals } from "../../../actions/meals";
 import { addMenu } from "../../../actions/menus";
+import AddMenuForm from "../addMenu/addMenuForm";
 
 /**
  * @export
@@ -27,7 +24,7 @@ export class NewMenu extends React.Component {
     errors: {},
     meals: []
   };
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.props.getMeals().catch(() => {});
   };
 
@@ -50,10 +47,10 @@ export class NewMenu extends React.Component {
       this.props
         .addMenu(formData)
         .then(() => {
-          this.props.setMessage({
-            text: `New Menu ${data.title}  has been created successfully`,
-            type: "info"
-          });
+          notify.show(
+            `New Menu ${data.title}  has been created successfully`,
+            "success"
+          );
           this.props.history.push("/admin/menus");
         })
         .catch(err => {
@@ -147,108 +144,28 @@ export class NewMenu extends React.Component {
    * @memberof NewMenu
    */
   render() {
-    const { data, errors } = this.state;
+    const { data, errors, menuDate } = this.state;
     const { meals } = this.props;
+    const menu = { ...data, id: 0, meals };
     return (
       <div className="container">
-        <button
-          onClick={this.onSubmit}
-          className="btn-save btn btn-primary float-right"
-        >
-          Save
-        </button>
-        <h4>Create New Menu</h4>
-        <hr />
-        <div className="row">
-          <div className="col-md-3">
-            <FormInput
-              value={data.title}
-              type="text"
-              name="title"
-              onChange={this.onChange}
-              label="Title"
-              error={errors.title}
-            />
-          </div>
-          <div className="col-md-3">
-            <div className="form-group">
-              <label htmlFor="date">Menu Date</label>
-              <DatePicker
-                className={
-                  errors.date ? "form-control is-invalid" : "form-control"
-                }
-                onChange={this.handleDateChange}
-                selected={this.state.menuDate}
-              />
-              {errors.date && (
-                <p style={{ color: "#dc3545", fontSize: "80%" }}>
-                  {errors.date}
-                </p>
-              )}
-            </div>
-          </div>
-          <div className="col-md-3">
-            <div className="form-group">
-              <label htmlFor="desc">Description</label>
-              <textarea
-                className={
-                  errors.description
-                    ? "form-control is-invalid"
-                    : "form-control"
-                }
-                name="description"
-                id="desc"
-                cols="20"
-                rows="2"
-                onChange={this.onChange}
-                value={data.description}
-              />
-              {errors.description && <InlineError text={errors.description} />}
-            </div>
-          </div>
-          <div className="col-md-3">
-            <div className="form-group">
-              <label htmlFor="menu-image">Attach Image</label>
-              <input
-                className={
-                  errors.xls ? "form-control is-invalid" : "form-control"
-                }
-                onChange={this.handleFileUpload}
-                type="file"
-                accept="image/x-png,image/gif,image/jpeg"
-                name="users-file"
-              />
-              {errors.xls && <InlineError text={errors.xls} />}
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          {meals.map(meal => (
-            <div key={meal.id} className="col-md-3">
-              <div className="meal-o">
-                <div className="meal-actions">
-                  <input
-                    onChange={evt => this.checked(evt, meal.id)}
-                    type="checkbox"
-                    className="form-check-input"
-                  />
-                </div>
-                <div className="row meal-detail ml-2">
-                  <h6>{meal.title}</h6>
-                  <label htmlFor="price">UGX {meal.price}</label>
-                  <p>{meal.description}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <AddMenuForm
+          title="Create New Menu"
+          menu={menu}
+          errors={errors}
+          menuDate={menuDate}
+          onChange={this.onChange}
+          handleDateChange={this.handleDateChange}
+          handleFileUpload={this.handleFileUpload}
+          checked={this.checked}
+          onSubmit={this.onSubmit}
+        />
       </div>
     );
   }
 }
 
 NewMenu.propTypes = {
-  setMessage: PropTypes.func.isRequired,
   getMeals: PropTypes.func.isRequired,
   meals: PropTypes.arrayOf(
     PropTypes.shape({
@@ -268,6 +185,4 @@ const mapStateToProps = state => ({
   meals: state.mealsReducer.meals
 });
 
-export default connect(mapStateToProps, { setMessage, getMeals, addMenu })(
-  NewMenu
-);
+export default connect(mapStateToProps, { getMeals, addMenu })(NewMenu);

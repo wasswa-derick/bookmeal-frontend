@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditMenu should render correctly 1`] = `
+<div
+  className="container"
+>
+  <Component
+    component="div"
+    loaded={false}
+    loadedClassName="loadedContent"
+    parentClassName="loader"
+  >
+    <AddMenuForm
+      checked={[Function]}
+      errors={Object {}}
+      handleDateChange={[Function]}
+      handleFileUpload={[Function]}
+      menu={
+        Object {
+          "description": "",
+          "id": 0,
+          "meals": Array [],
+          "menuDate": "",
+          "title": "",
+        }
+      }
+      onChange={[Function]}
+      onSubmit={[Function]}
+      title="Edit menu"
+    />
+  </Component>
+</div>
+`;
