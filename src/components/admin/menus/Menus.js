@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "react-loader";
 import PropTypes from "prop-types";
-import { getMenus } from "../../../actions/menus";
+import { getMenus, deleteMenu } from "../../../actions/menus";
 import coffee from "../../../assets/images/coffee.jpg";
+import DeleteModal from "../deleteModal/DeleteModal";
 
 /**
  * @export
@@ -12,14 +13,32 @@ import coffee from "../../../assets/images/coffee.jpg";
  * @extends {React.Component}
  */
 export class Menus extends React.Component {
-  state = {
-    loaded: false
-  };
+  state = { loaded: false, menuId: 0 };
   componentWillMount = () =>
-    this.props
-      .getMenus()
-      .then(() => this.setState({ loaded: true }))
-      .catch(() => {});
+    this.props.getMenus().then(() => this.setState({ loaded: true }));
+
+  /**
+   *@param {number} id
+   *@return {null} null
+   */
+  setDeletionId = id => {
+    console.log(id);
+    this.setState({ menuId: id });
+  };
+
+  /**
+   *@param {Event}evt
+   *@param {Number} id
+   *@returns {null}null
+   *@memberof Menus
+   */
+  delete = () => {
+    const { menuId } = this.state;
+    this.props.deleteMenu(menuId).then(() => {
+      // this.props.getMenus()
+      window.location.reload();
+    });
+  };
 
   /**
    *
@@ -74,7 +93,10 @@ export class Menus extends React.Component {
                     <td>{menu.menuDate}</td>
                     <td>
                       <img
-                        style={{ height: "100px" }}
+                        style={{
+                          height: "100px",
+                          width: "150px"
+                        }}
                         className="img img-thumbnail"
                         src={menu.imageURL ? menu.imageURL : coffee}
                         alt=""
@@ -98,12 +120,23 @@ export class Menus extends React.Component {
                       >
                         <i className="fa fa-edit" />
                       </Link>
+                      <a
+                        style={{ marginLeft: "10px" }}
+                        href="#delete"
+                        role="button"
+                        data-toggle="modal"
+                        data-target="#confirmDel"
+                        onClick={() => this.setDeletionId(menu.id)}
+                      >
+                        <i className="fa fa-trash text-danger" />
+                      </a>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </Loader>
+          <DeleteModal title="menu" confirmDeletion={this.delete} />
         </section>
       </div>
     );
@@ -126,11 +159,12 @@ Menus.propTypes = {
         }).isRequired
       ).isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  deleteMenu: PropTypes.func.isRequired
 };
 
 const mapSateToProps = state => ({
   menus: state.menusReducer.menus
 });
 
-export default connect(mapSateToProps, { getMenus })(Menus);
+export default connect(mapSateToProps, { getMenus, deleteMenu })(Menus);

@@ -105,7 +105,7 @@ export class CustomerOrders extends React.Component {
                       </li>
                     ))}
                   </td>
-                  <td>{order.cost}</td>
+                  <td>UGX {order.cost}</td>
                   <td>{moment(order.expiresAt).fromNow()}</td>
                   <td>
                     {(moment() - moment(order.expiresAt) <= 0 && (
@@ -117,7 +117,7 @@ export class CustomerOrders extends React.Component {
                         data-toggle="modal"
                         data-target="#orderModal"
                       />
-                    )) || <p className="text-danger">Expired can not modify</p>}
+                    )) || <p className="text-danger">Order has expired</p>}
                   </td>
                 </tr>
               ))}

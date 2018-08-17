@@ -2,15 +2,6 @@ import React from "react";
 import { shallow } from "enzyme";
 import { EditMenu } from "./EditMenu";
 
-const err = {
-  response: {
-    status: 400,
-    data: {
-      errors: {}
-    }
-  }
-};
-
 const fn = () => Promise.resolve();
 
 describe("EditMenu", () => {
@@ -24,9 +15,23 @@ describe("EditMenu", () => {
       title: "",
       description: "",
       meals: [],
-      menuDate: ""
+      menuDate: "2019-04-09"
     };
-    wrapper = shallow(<EditMenu match={match} menu={menu} getMenu={fn} />);
+    const history = {
+      push: jest.fn
+    };
+    wrapper = shallow(
+      <EditMenu
+        match={match}
+        setMessage={jest.fn}
+        getMeals={fn}
+        meals={[]}
+        menu={menu}
+        getMenu={fn}
+        editMenu={fn}
+        history={history}
+      />
+    );
   });
 
   it("should render correctly", () => {

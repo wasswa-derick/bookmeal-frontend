@@ -16,3 +16,4 @@ export const FETCH_ORDER = "FETCH_ORDER";
 export const FETCH_ORDERS = "FETCH_ORDERS";
 export const CHECKOUT_ORDER = "CHECK_OUT_ORDER";
 export const FETCH_TODAY_MENUS = "FETCH_TODAY_MENUS";
+export const DELETED_MENU = "DELETED_MENU";

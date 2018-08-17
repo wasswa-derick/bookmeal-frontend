@@ -35,45 +35,7 @@ exports[`Home should render correctly 1`] = `
       className="row bookings"
     >
       <div
-        className="col-md-3"
-      >
-        <ul
-          className="list-group"
-        >
-          <li
-            className="list-group-item list-group-item-action active"
-          >
-            Today
-          </li>
-          <li
-            className="list-group-item"
-          >
-            Monday
-          </li>
-          <li
-            className="list-group-item"
-          >
-            Tuesday
-          </li>
-          <li
-            className="list-group-item"
-          >
-            Wednesday
-          </li>
-          <li
-            className="list-group-item"
-          >
-            Thursday
-          </li>
-          <li
-            className="list-group-item"
-          >
-            Friday
-          </li>
-        </ul>
-      </div>
-      <div
-        className="col-md-9"
+        className="col-md-12"
       >
         <Component
           component="div"

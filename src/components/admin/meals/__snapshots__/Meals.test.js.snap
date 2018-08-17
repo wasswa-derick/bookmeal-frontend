@@ -168,67 +168,74 @@ exports[`Meals should render correctly 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="modal fade"
-        id="confirmDel"
+      <DeleteModal
+        confirmDeletion={[Function]}
+        title="meal"
       >
         <div
-          className="modal-dialog"
-          role="document"
+          className="modal fade"
+          id="confirmDel"
         >
           <div
-            className="modal-content"
+            className="modal-dialog"
+            role="document"
           >
             <div
-              className="modal-header"
+              className="modal-content"
             >
-              <h5
-                className="modal-title"
-                id="mealModalLabel"
+              <div
+                className="modal-header"
               >
-                Confirm Deletion
-              </h5>
-              <button
-                aria-label="Close"
-                className="close"
-                data-dismiss="modal"
-                type="button"
-              >
-                <span
-                  aria-hidden="true"
+                <h5
+                  className="modal-title"
+                  id="mealModalLabel"
                 >
-                  ×
-                </span>
-              </button>
-            </div>
-            <div
-              className="modal-body"
-            >
-              <p>
-                Are you sure you want to remove this meal.
-              </p>
-            </div>
-            <div
-              className="modal-footer"
-            >
-              <button
-                className="btn btn-secondary"
-                data-dismiss="modal"
-                type="button"
+                  Confirm Deletion
+                </h5>
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div
+                className="modal-body"
               >
-                No
-              </button>
-              <button
-                className="btn-del btn btn-primary"
-                onClick={[Function]}
-                type="button"
+                <p>
+                  Are you sure you want to remove this 
+                  meal
+                  .
+                </p>
+              </div>
+              <div
+                className="modal-footer"
               >
-                Yes
-              </button>
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  No
+                </button>
+                <button
+                  className="btn-del btn btn-primary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Yes
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </DeleteModal>
     </div>
     <Footer>
       <footer

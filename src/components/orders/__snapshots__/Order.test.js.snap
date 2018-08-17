@@ -89,7 +89,7 @@ exports[`Order should render correctly 1`] = `
             className="row"
           >
             <div
-              className="col-md-5 input-group"
+              className="col-md-2 input-group"
             >
               <div
                 className="input-group-prepend"
@@ -135,7 +135,7 @@ exports[`Order should render correctly 1`] = `
               0
             </div>
             <div
-              className="col-md-3"
+              className="col-md-6 pull-right"
             >
               <button
                 className="btn-save btn btn-primary"

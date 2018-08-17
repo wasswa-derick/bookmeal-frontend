@@ -144,7 +144,7 @@ export class Order extends React.Component {
             ))}
             <hr />
             <div className="row">
-              <div className="col-md-5 input-group">
+              <div className="col-md-2 input-group">
                 <div className="input-group-prepend">
                   <button
                     onClick={evt => this.incrementCount(evt, false)}
@@ -175,7 +175,7 @@ export class Order extends React.Component {
               >
                 UGX {order.cost}
               </div>
-              <div className="col-md-3">
+              <div className="col-md-6 pull-right">
                 <button
                   type="button"
                   disabled={order.cost === 0}

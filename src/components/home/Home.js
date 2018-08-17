@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import moment from "moment";
 import $ from "jquery";
 import Loader from "react-loader";
 import PropTypes from "prop-types";
@@ -16,16 +15,13 @@ import { getTodayMenus } from "../../actions/menus";
  */
 export class Home extends React.Component {
   state = {
-    loaded: false,
-    dates: []
+    loaded: false
   };
   componentDidMount = () => {
     this.props
       .getTodayMenus()
       .then(() => this.setState({ loaded: true }))
       .catch(() => {});
-
-    this.generateDates();
   };
 
   /**
@@ -45,18 +41,6 @@ export class Home extends React.Component {
     }
     $(".modal-backdrop").remove();
     this.props.history.push(`/menu/${id}/order`);
-  };
-
-  generateDates = () => {
-    const { dates } = this.state;
-    const currentDate = moment();
-    dates.push(currentDate);
-    for (let i = 1; i < 7; ) {
-      const newDate = currentDate.add(1, "days");
-      dates.push(newDate);
-      i += 1;
-    }
-    this.setState({ dates });
   };
 
   /**
@@ -84,19 +68,7 @@ export class Home extends React.Component {
 
           <hr />
           <div className="row bookings">
-            <div className="col-md-3">
-              <ul className="list-group">
-                <li className="list-group-item list-group-item-action active">
-                  Today
-                </li>
-                <li className="list-group-item">Monday</li>
-                <li className="list-group-item">Tuesday</li>
-                <li className="list-group-item">Wednesday</li>
-                <li className="list-group-item">Thursday</li>
-                <li className="list-group-item">Friday</li>
-              </ul>
-            </div>
-            <div className="col-md-9">
+            <div className="col-md-12">
               <Loader loaded={loaded}>
                 {menus.length === 0 ? (
                   <div style={{ textAlign: "center" }}>

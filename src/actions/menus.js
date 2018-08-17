@@ -4,7 +4,8 @@ import {
   FETCH_MENU,
   FETCH_MENUS,
   ADD_MENU,
-  FETCH_TODAY_MENUS
+  FETCH_TODAY_MENUS,
+  DELETED_MENU
 } from "../reducers/constants";
 
 const makeHeaders = () => ({
@@ -57,4 +58,23 @@ export const getTodayMenus = () => dispatch => {
   return axios
     .get(`/api/v1/menu`, { headers })
     .then(res => dispatch(gotCurrentDayMenu(res.data)));
+};
+
+export const editMenu = (id, data) => dispatch => {
+  const headers = makeHeaders();
+  return axios
+    .put(`/api/v1/menu/${id}`, data, { headers })
+    .then(res => dispatch(gotMenu(res.data)));
+};
+
+export const menuDeleted = data => ({
+  type: DELETED_MENU,
+  data
+});
+
+export const deleteMenu = id => dispatch => {
+  const headers = makeHeaders();
+  return axios
+    .delete(`/api/v1/menu/${id}`, { headers })
+    .then(res => dispatch(menuDeleted(res.data)));
 };

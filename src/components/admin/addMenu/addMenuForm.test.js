@@ -5,19 +5,19 @@ import AddMenuForm from "./addMenuForm";
 describe("AddMenu", () => {
   let wrapper;
   beforeEach(() => {
-    const menu = {
+    const data = {
       id: 0,
       title: "",
-      description: "",
-      meals: []
+      description: ""
     };
     const errors = {};
     const menuDate = {};
     wrapper = shallow(
       <AddMenuForm
-        menu={menu}
+        data={data}
         errors={errors}
         menuDate={menuDate}
+        meals={[]}
         handleDateChange={jest.fn}
         handleFileUpload={jest.fn}
         onChange={jest.fn}

@@ -84,6 +84,10 @@ exports[`MenusPage should render correctly 1`] = `
         <tbody />
       </table>
     </Component>
+    <DeleteModal
+      confirmDeletion={[Function]}
+      title="menu"
+    />
   </section>
 </div>
 `;

@@ -10,9 +10,10 @@ import { InlineError } from "../../common";
  * @extends {React.Component}
  */
 const AddMenuForm = ({
-  menu,
+  data,
   errors,
   menuDate,
+  meals,
   handleDateChange,
   handleFileUpload,
   onChange,
@@ -29,7 +30,7 @@ const AddMenuForm = ({
     <div className="row">
       <div className="col-md-3">
         <FormInput
-          value={menu.title}
+          value={data.title}
           type="text"
           name="title"
           onChange={onChange}
@@ -41,12 +42,16 @@ const AddMenuForm = ({
         <div className="form-group">
           <label htmlFor="date">Menu Date</label>
           <DatePicker
-            className={errors.date ? "form-control is-invalid" : "form-control"}
+            className={
+              errors.menu_date ? "form-control is-invalid" : "form-control"
+            }
             onChange={handleDateChange}
             selected={menuDate}
           />
-          {errors.date && (
-            <p style={{ color: "#dc3545", fontSize: "80%" }}>{errors.date}</p>
+          {errors.menu_date && (
+            <p style={{ color: "#dc3545", fontSize: "80%" }}>
+              {errors.menu_date}
+            </p>
           )}
         </div>
       </div>
@@ -62,7 +67,7 @@ const AddMenuForm = ({
             cols="20"
             rows="2"
             onChange={onChange}
-            value={menu.description}
+            value={data.description}
           />
           {errors.description && <InlineError text={errors.description} />}
         </div>
@@ -84,12 +89,13 @@ const AddMenuForm = ({
       </div>
     </div>
     <div className="row">
-      {menu.meals.map(meal => (
+      {meals.map(meal => (
         <div key={meal.id} className="col-md-3">
           <div className="meal-o">
             <div className="meal-actions">
               <input
                 onChange={evt => checked(evt, meal.id)}
+                checked={meal.checked && true}
                 type="checkbox"
                 className="form-check-input"
               />
@@ -107,24 +113,23 @@ const AddMenuForm = ({
 );
 
 AddMenuForm.propTypes = {
-  menu: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+  data: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    url: PropTypes.string,
-    meals: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired
-      }).isRequired
-    ).isRequired
+    url: PropTypes.string
   }).isRequired,
   handleDateChange: PropTypes.func.isRequired,
   handleFileUpload: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   checked: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  meals: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
 };
 
 export default AddMenuForm;

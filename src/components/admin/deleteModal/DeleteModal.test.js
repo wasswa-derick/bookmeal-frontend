@@ -1,16 +1,14 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { AdminRoute } from "./AdminRoute";
+import DeleteModal from "./DeleteModal";
 
-describe("AdminRoute", () => {
+describe("delete modal", () => {
   let wrapper;
   beforeEach(() => {
-    const component = () => <h1>Test</h1>;
     wrapper = shallow(
-      <AdminRoute isUserAuthenticated isAdmin component={component} />
+      <DeleteModal title="something" confirmDeletion={jest.fn} />
     );
   });
-
   it("should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });

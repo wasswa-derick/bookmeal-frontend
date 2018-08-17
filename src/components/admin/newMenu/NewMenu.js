@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import validator from "validator";
 import moment from "moment";
-import { notify } from "react-notify-toast";
 import PropTypes from "prop-types";
 import "react-datepicker/dist/react-datepicker.css";
 import { getMeals } from "../../../actions/meals";
+import { setMessage } from "../../../actions/message";
 import { addMenu } from "../../../actions/menus";
 import AddMenuForm from "../addMenu/addMenuForm";
 
@@ -25,7 +25,7 @@ export class NewMenu extends React.Component {
     meals: []
   };
   componentDidMount = () => {
-    this.props.getMeals().catch(() => {});
+    this.props.getMeals();
   };
 
   onSubmit = () => {
@@ -34,7 +34,10 @@ export class NewMenu extends React.Component {
 
     if (Object.keys(errors).length === 0) {
       if (meals.length === 0) {
-        notify.show("Select at least one meal to put on the menu", "error");
+        this.props.setMessage({
+          text: `Select at least one meal to put on the menu`,
+          type: "danger"
+        });
         return;
       }
       const formData = new FormData();
@@ -47,10 +50,10 @@ export class NewMenu extends React.Component {
       this.props
         .addMenu(formData)
         .then(() => {
-          notify.show(
-            `New Menu ${data.title}  has been created successfully`,
-            "success"
-          );
+          this.props.setMessage({
+            text: `New Menu ${data.title}  has been created successfully`,
+            type: "success"
+          });
           this.props.history.push("/admin/menus");
         })
         .catch(err => {
@@ -112,7 +115,7 @@ export class NewMenu extends React.Component {
 
     // validate the date as well
     if (this.state.menuDate == null) {
-      errors.date = "This field is required";
+      errors.menu_date = "This field is required";
     }
     return errors;
   };
@@ -146,14 +149,14 @@ export class NewMenu extends React.Component {
   render() {
     const { data, errors, menuDate } = this.state;
     const { meals } = this.props;
-    const menu = { ...data, id: 0, meals };
     return (
       <div className="container">
         <AddMenuForm
           title="Create New Menu"
-          menu={menu}
+          data={data}
           errors={errors}
           menuDate={menuDate}
+          meals={meals}
           onChange={this.onChange}
           handleDateChange={this.handleDateChange}
           handleFileUpload={this.handleFileUpload}
@@ -178,11 +181,14 @@ NewMenu.propTypes = {
   addMenu: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  setMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   meals: state.mealsReducer.meals
 });
 
-export default connect(mapStateToProps, { getMeals, addMenu })(NewMenu);
+export default connect(mapStateToProps, { getMeals, addMenu, setMessage })(
+  NewMenu
+);

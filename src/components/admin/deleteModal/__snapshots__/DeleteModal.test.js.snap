@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`delete modal should render correctly 1`] = `
+<div
+  className="modal fade"
+  id="confirmDel"
+>
+  <div
+    className="modal-dialog"
+    role="document"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+          id="mealModalLabel"
+        >
+          Confirm Deletion
+        </h5>
+        <button
+          aria-label="Close"
+          className="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <div
+        className="modal-body"
+      >
+        <p>
+          Are you sure you want to remove this 
+          something
+          .
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <button
+          className="btn btn-secondary"
+          data-dismiss="modal"
+          type="button"
+        >
+          No
+        </button>
+        <button
+          className="btn-del btn btn-primary"
+          onClick={[Function]}
+          type="button"
+        >
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

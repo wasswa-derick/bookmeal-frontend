@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { MealOption, Footer, InlineError } from "../../common";
 import { FormInput } from "../../common/forms";
 import { getMeals, postMeal, deleteMeal } from "../../../actions/meals";
+import DeleteModal from "../deleteModal/DeleteModal";
 
 const EditLink = ({ id }) => (
   <Link
@@ -221,45 +222,7 @@ export class Meals extends React.Component {
               </div>
             </div>
           </div>
-
-          <div className="modal fade" id="confirmDel">
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="mealModalLabel">
-                    Confirm Deletion
-                  </h5>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <p>Are you sure you want to remove this meal.</p>
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    No
-                  </button>
-                  <button
-                    onClick={this.confirmDeletion}
-                    type="button"
-                    className="btn-del btn btn-primary"
-                  >
-                    Yes
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <DeleteModal title="meal" confirmDeletion={this.confirmDeletion} />
         </div>
         <Footer />
       </div>

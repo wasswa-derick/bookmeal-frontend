@@ -12,7 +12,7 @@ const fn = () => Promise.reject(err);
 describe("MenusPage", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Menus menus={[]} getMenus={fn} />);
+    wrapper = shallow(<Menus menus={[]} getMenus={fn} deleteMenu={fn} />);
   });
 
   it("should contain a link to set new menu page", () => {
