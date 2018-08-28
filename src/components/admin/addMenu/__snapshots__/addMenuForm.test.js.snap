@@ -39,7 +39,7 @@ exports[`AddMenu should render correctly 1`] = `
         </label>
         <DatePicker
           allowSameDay={false}
-          className="form-control"
+          className="form-control is-invalid"
           dateFormat="L"
           dateFormatCalendar="MMMM YYYY"
           disabled={false}
@@ -62,6 +62,16 @@ exports[`AddMenu should render correctly 1`] = `
           timeIntervals={30}
           withPortal={false}
         />
+        <p
+          style={
+            Object {
+              "color": "#dc3545",
+              "fontSize": "80%",
+            }
+          }
+        >
+          error
+        </p>
       </div>
     </div>
     <div
@@ -76,13 +86,16 @@ exports[`AddMenu should render correctly 1`] = `
           Description
         </label>
         <textarea
-          className="form-control"
+          className="form-control is-invalid"
           cols="20"
           id="desc"
           name="description"
           onChange={[Function]}
           rows="2"
           value=""
+        />
+        <InlineError
+          text="error"
         />
       </div>
     </div>
@@ -99,16 +112,50 @@ exports[`AddMenu should render correctly 1`] = `
         </label>
         <input
           accept="image/x-png,image/jpeg,image/png"
-          className="form-control"
+          className="form-control is-invalid"
           name="users-file"
           onChange={[Function]}
           type="file"
+        />
+        <InlineError
+          text="error"
         />
       </div>
     </div>
   </div>
   <div
     className="row"
-  />
+  >
+    <div
+      className="col-md-3"
+      key="1"
+    >
+      <div
+        className="meal-o"
+      >
+        <div
+          className="meal-actions"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </div>
+        <div
+          className="row meal-detail ml-2"
+        >
+          <h6 />
+          <label
+            htmlFor="price"
+          >
+            UGX 
+          </label>
+          <p />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

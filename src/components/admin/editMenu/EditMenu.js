@@ -19,7 +19,7 @@ export class EditMenu extends React.Component {
     loaded: false,
     errors: {},
     meals: [],
-    menuDate: moment(),
+    menuDate: " ",
     data: {
       title: "",
       description: ""

@@ -30,8 +30,8 @@ export class Order extends React.Component {
     });
     this.props
       .getMenu(id)
-      .then(() => {})
-      .catch(() => {});
+      .then(() => { })
+      .catch(() => { });
 
     this.setState({ loaded: true });
   };

@@ -2,18 +2,21 @@ import React from "react";
 import { shallow } from "enzyme";
 import { Menus } from "./Menus";
 
-const err = {
-  response: {
-    status: 400
-  }
-};
-const fn = () => Promise.reject(err);
+const fn = () => Promise.resolve({});
 
 describe("MenusPage", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<Menus menus={[]} getMenus={fn} deleteMenu={fn} />);
   });
+
+  it("should set menu id to delete", () => {
+    wrapper.instance().setDeletionId(1);
+    const { menuId } = wrapper.instance().state;
+    expect(menuId).toBe(1);
+  });
+
+  it("should delete menu", () => {});
 
   it("should contain a link to set new menu page", () => {
     const linkProps = wrapper.find("Link").props();

@@ -1,4 +1,4 @@
-import axios from "axios";
+import http from "./axiosInstance";
 import {
   ORDER_MEAL,
   FETCH_ORDER,
@@ -6,9 +6,6 @@ import {
   CHECKOUT_ORDER
 } from "../reducers/constants";
 
-const makeHeaders = () => ({
-  Authorization: localStorage.getItem("authUserToken")
-});
 
 export const gotOrder = data => ({
   type: FETCH_ORDER,
@@ -52,37 +49,28 @@ export const getCartOrder = () => dispatch => {
   return dispatch(gotCheckoutOrder(JSON.parse(data)));
 };
 
-export const getOrders = () => dispatch => {
-  const headers = makeHeaders();
-  return axios
-    .get("/api/v1/orders", { headers })
+export const getOrders = () => dispatch => http
+  .get("/orders")
+  .then(res => dispatch(gotOrders(res.data.orders)));
+
+export const getMyOrders = () => dispatch =>
+  http
+    .get("/myorders")
     .then(res => dispatch(gotOrders(res.data.orders)));
-};
 
-export const getMyOrders = () => dispatch => {
-  const headers = makeHeaders();
-  return axios
-    .get("/api/v1/myorders", { headers })
-    .then(res => dispatch(gotOrders(res.data.orders)));
-};
 
-export const getOrder = id => dispatch => {
-  const headers = makeHeaders();
-  return axios
-    .get(`/api/v1/orders/${id}`, { headers })
-    .then(res => dispatch(gotOrder(res.data)));
-};
+export const getOrder = id => dispatch => http
+  .get(`/orders/${id}`)
+  .then(res => dispatch(gotOrder(res.data)));
 
-export const postOrder = data => dispatch => {
-  const headers = makeHeaders();
-  return axios
-    .post("/api/v1/orders", data, { headers })
+
+export const postOrder = data => dispatch => http
+  .post("/orders", data)
+  .then(res => dispatch(orderedMeal(res.data)));
+
+
+export const modifyOrder = (id, data) => dispatch =>
+  http
+    .put(`/orders/${id}`, data)
     .then(res => dispatch(orderedMeal(res.data)));
-};
 
-export const modifyOrder = (id, data) => dispatch => {
-  const headers = makeHeaders();
-  return axios
-    .put(`/api/v1/orders/${id}`, data, { headers })
-    .then(res => dispatch(orderedMeal(res.data)));
-};

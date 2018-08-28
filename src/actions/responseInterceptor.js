@@ -1,4 +1,4 @@
-import axios from "axios";
+import instance from "./axiosInstance";
 import { gotMessage } from "./message";
 
 /**
@@ -7,8 +7,8 @@ import { gotMessage } from "./message";
  * @export
  * @param {any} store
  */
-export default function(store) {
-  axios.interceptors.response.use(
+export default function (store) {
+  instance.interceptors.response.use(
     response => response,
     error => {
       // Handle 505 errors and 401 errors

@@ -2,7 +2,7 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import moxios from "moxios";
 import * as actions from "./orders";
-import mockLocalStorage from "../utils/localStorage";
+import instance from './axiosInstance';
 import {
   FETCH_ORDER,
   FETCH_ORDERS,
@@ -25,12 +25,8 @@ const postOrdersMock = {
 describe("orders actions", () => {
   let data;
   beforeEach(() => {
-    Object.defineProperties(window, {
-      localStorage: { value: mockLocalStorage },
-      sessionStorage: { value: mockLocalStorage } // sessionStorage has similar methods as localStorage
-    });
 
-    moxios.install();
+    moxios.install(instance);
     data = {
       cost: 15000,
       meals: [{ id: 1, title: "meal title", price: 75000 }],
@@ -162,15 +158,6 @@ describe("orders actions", () => {
   });
 
   it("should handle getCartOrder", () => {
-    // const cartOrderMock = {
-    //   menuId: 0,
-    //   meals: [],
-    //   totalCost: 0,
-    //   itemCount: 0,
-    //   cost: 0,
-    //   mealIds: []
-    // };
-
     const expectedAction = [
       {
         type: CHECKOUT_ORDER,

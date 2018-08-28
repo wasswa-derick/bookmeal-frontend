@@ -34,7 +34,7 @@ exports[`Dashboard should render correctly 1`] = `
           className="stat"
         >
           <h2>
-            0
+            1
              
             <i
               className="fa fa-sort"
@@ -85,7 +85,29 @@ exports[`Dashboard should render correctly 1`] = `
               </th>
             </tr>
           </thead>
-          <tbody />
+          <tbody>
+            <tr
+              className="even"
+              key="1"
+            >
+              <td />
+              <td />
+              <td>
+                <li
+                  key="1"
+                >
+                  : UGX 
+                </li>
+              </td>
+              <td>
+                UGX 
+                400
+              </td>
+              <td>
+                a few seconds ago
+              </td>
+            </tr>
+          </tbody>
         </table>
       </Component>
     </div>

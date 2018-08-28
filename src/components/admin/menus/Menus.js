@@ -21,10 +21,7 @@ export class Menus extends React.Component {
    *@param {number} id
    *@return {null} null
    */
-  setDeletionId = id => {
-    console.log(id);
-    this.setState({ menuId: id });
-  };
+  setDeletionId = id => this.setState({ menuId: id });
 
   /**
    *@param {Event}evt

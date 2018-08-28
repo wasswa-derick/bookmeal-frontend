@@ -10,7 +10,7 @@ import {
   USER_LOGGED_IN,
   USER_LOGGED_OUT
 } from "../reducers/constants";
-import mockLocalStorage from "../utils/localStorage";
+import instance from './axiosInstance';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -35,11 +35,11 @@ describe("authentication actions", () => {
   let businessData;
 
   beforeEach(() => {
-    Object.defineProperty(window, "localStorage", {
-      value: mockLocalStorage
-    });
+    // Object.defineProperty(window, "localStorage", {
+    //   value: mockLocalStorage
+    // });
 
-    moxios.install();
+    moxios.install(instance);
     data = { email: "test@test.com", password: "test", name: "test" };
     businessData = {
       user: data,

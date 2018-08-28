@@ -7,7 +7,25 @@ const asyncMockFn = () => Promise.resolve({});
 describe("Dashboard", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Dashboard getOrders={asyncMockFn} orders={[]} />);
+    const orders = [
+      {
+        id: 1,
+        cost: 400,
+        expiresAt: "",
+        meals: [
+          {
+            id: 1,
+            title: ""
+          }
+        ],
+        customer: {
+          id: 1,
+          name: "",
+          email: ""
+        }
+      }
+    ];
+    wrapper = shallow(<Dashboard getOrders={asyncMockFn} orders={orders} />);
   });
 
   it("should render correctly", () => {

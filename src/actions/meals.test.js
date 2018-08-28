@@ -9,7 +9,7 @@ import {
   EDITED_MEAL,
   DELETED_MEAL
 } from "../reducers/constants";
-import mockLocalStorage from "../utils/localStorage";
+import instance from './axiosInstance';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -26,12 +26,9 @@ const fetchMealsMock = {
 };
 
 describe("meals actions", () => {
-  Object.defineProperty(window, "localStorage", {
-    value: mockLocalStorage
-  });
   let data;
   beforeEach(() => {
-    moxios.install();
+    moxios.install(instance);
     data = { title: "test", description: "test desc", price: 1000 };
   });
 

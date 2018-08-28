@@ -3,13 +3,17 @@ import { shallow } from "enzyme";
 import { Signup } from "./Signup";
 import RegistrationForm from "../common/forms/registrationForm/RegistrationForm";
 
+const asyncMockFn = () => Promise.resolve({});
+
 describe("Signup Page", () => {
   let wrapper;
   beforeEach(() => {
     const history = {
       push: jest.fn
     };
-    wrapper = shallow(<Signup registerCustomer={jest.fn} history={history} />);
+    wrapper = shallow(
+      <Signup registerCustomer={asyncMockFn} history={history} />
+    );
   });
 
   it("should render registration form", () => {

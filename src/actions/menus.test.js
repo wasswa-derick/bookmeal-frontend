@@ -8,7 +8,7 @@ import {
   ADD_MENU,
   FETCH_TODAY_MENUS
 } from "../reducers/constants";
-import mockLocalStorage from "../utils/localStorage";
+import instance from './axiosInstance';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -29,10 +29,7 @@ const postMenuMock = {
 describe("meals actions", () => {
   let data;
   beforeEach(() => {
-    Object.defineProperty(window, "localStorage", {
-      value: mockLocalStorage
-    });
-    moxios.install();
+    moxios.install(instance);
     data = {
       title: "test",
       description: "lorem description",

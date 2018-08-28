@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import jwtDecode from "jwt-decode";
 import {
   USER_CREATED,
@@ -6,6 +6,7 @@ import {
   USER_LOGGED_IN,
   USER_LOGGED_OUT
 } from "../reducers/constants";
+import http from "./axiosInstance";
 
 export const createdUser = data => ({
   type: USER_CREATED,
@@ -27,17 +28,17 @@ export const userLoggedOut = () => ({
 });
 
 export const registerCustomer = data => dispatch =>
-  axios
-    .post("/api/v1/auth/signup", data)
+  http
+    .post("/auth/signup", data)
     .then(res => dispatch(createdUser(res.data)));
 
 export const registerBusiness = data => dispatch =>
-  axios
-    .post("/api/v1/auth/business/signup", data)
+  http
+    .post("/auth/business/signup", data)
     .then(res => dispatch(createdBusiness(res.data)));
 
 export const loginUser = data => dispatch =>
-  axios.post("/api/v1/auth/login", data).then(res => {
+  http.post("/auth/login", data).then(res => {
     // get token and store it in localStorage
     const { token } = res.data;
     localStorage.setItem("authUserToken", token);

@@ -17,18 +17,15 @@ export class Dashboard extends React.Component {
     total: 0
   };
   componentWillMount = () => {
-    this.props
-      .getOrders()
-      .then(() => {
-        this.setState({ loaded: true });
-        let total = 0;
-        this.props.orders.forEach(order => {
-          total += order.cost;
-        });
+    this.props.getOrders().then(() => {
+      this.setState({ loaded: true });
+      let total = 0;
+      this.props.orders.forEach(order => {
+        total += order.cost;
+      });
 
-        this.setState({ total });
-      })
-      .catch(() => {});
+      this.setState({ total });
+    });
   };
 
   componentDidMount = () => {};

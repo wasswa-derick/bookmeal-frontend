@@ -10,14 +10,25 @@ describe("AddMenu", () => {
       title: "",
       description: ""
     };
-    const errors = {};
+    const errors = {
+      menu_date: "error",
+      description: "error",
+      imageFile: "error"
+    };
+    const meals = [
+      {
+        id: 1,
+        title: "",
+        checked: true
+      }
+    ];
     const menuDate = {};
     wrapper = shallow(
       <AddMenuForm
         data={data}
         errors={errors}
         menuDate={menuDate}
-        meals={[]}
+        meals={meals}
         handleDateChange={jest.fn}
         handleFileUpload={jest.fn}
         onChange={jest.fn}

@@ -26,6 +26,7 @@ describe("Meal Component", () => {
     wrapper.find(".btn-del").simulate("click");
     expect(spy).toHaveBeenCalledTimes(1);
   });
+
   it("should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
