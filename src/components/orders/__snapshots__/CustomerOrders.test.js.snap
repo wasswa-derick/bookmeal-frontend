@@ -41,7 +41,38 @@ exports[`CustomerOrders should render correctly 1`] = `
           </th>
         </tr>
       </thead>
-      <tbody />
+      <tbody>
+        <tr
+          className="even"
+          key="1"
+        >
+          <td>
+            1
+          </td>
+          <td>
+            <li
+              key="1"
+            >
+              test
+              : UGX 
+            </li>
+          </td>
+          <td>
+            UGX 
+            2000
+          </td>
+          <td>
+            Invalid date
+          </td>
+          <td>
+            <p
+              className="text-danger"
+            >
+              Order has expired
+            </p>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </Component>
   <OrderMealModal

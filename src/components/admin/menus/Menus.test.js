@@ -7,19 +7,31 @@ const fn = () => Promise.resolve({});
 describe("MenusPage", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Menus menus={[]} getMenus={fn} deleteMenu={fn} />);
+    const menus = [
+      {
+        id: 1,
+        title: "test",
+        description: "test",
+        menuDate: "",
+        url: "",
+        meals: [{ id: 1, title: "meal" }]
+      }
+    ];
+    wrapper = shallow(<Menus menus={menus} getMenus={fn} deleteMenu={fn} />);
   });
 
-  it("should set menu id to delete", () => {
+  it("should set menu id to delete and delete menu", () => {
     wrapper.instance().setDeletionId(1);
+    wrapper.instance().delete();
     const { menuId } = wrapper.instance().state;
     expect(menuId).toBe(1);
   });
 
-  it("should delete menu", () => {});
-
   it("should contain a link to set new menu page", () => {
-    const linkProps = wrapper.find("Link").props();
+    const linkProps = wrapper
+      .find("Link")
+      .first()
+      .props();
     expect(linkProps.to).toBe("/admin/menus/new");
   });
 

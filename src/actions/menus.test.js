@@ -6,12 +6,14 @@ import {
   FETCH_MENU,
   FETCH_MENUS,
   ADD_MENU,
+  DELETED_MENU,
   FETCH_TODAY_MENUS
 } from "../reducers/constants";
 import instance from './axiosInstance';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
+
 const postMenuMock = {
   id: 1,
   title: "title menu",
@@ -59,6 +61,28 @@ describe("meals actions", () => {
 
     const store = mockStore({ data: {} });
     return store.dispatch(actions.addMenu(data)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it("should create EDIT_MENU action", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: postMenuMock
+      });
+    });
+
+    const expectedAction = [
+      {
+        type: FETCH_MENU,
+        data: postMenuMock
+      }
+    ];
+
+    const store = mockStore({ data: {} });
+    return store.dispatch(actions.editMenu(1, data)).then(() => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });
@@ -128,4 +152,23 @@ describe("meals actions", () => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });
+
+  it('should handle DELETED_MENU action', () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: { "status": "successful" }
+      });
+    });
+
+    const expectedAction = [
+      { type: DELETED_MENU, data: { "status": "successful" } }
+    ]
+
+    const store = mockStore({ data: {} });
+    return store.dispatch(actions.deleteMenu(1)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  })
 });

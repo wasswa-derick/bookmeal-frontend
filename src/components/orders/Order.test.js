@@ -2,20 +2,7 @@ import React from "react";
 import { mount } from "enzyme";
 import { Order } from "./Order";
 
-const err = {
-  response: {
-    status: 400
-  }
-};
-const fn = () => Promise.reject(err);
-
-const postOrderMockFn = data =>
-  new Promise((resolve, reject) => {
-    if (data) {
-      resolve({});
-    }
-    reject(err);
-  });
+const fn = data => Promise.resolve(data);
 
 describe("Order", () => {
   let wrapper;
@@ -43,7 +30,7 @@ describe("Order", () => {
         menu={menu}
         history={history}
         setMessage={mockFn}
-        postOrder={postOrderMockFn}
+        postOrder={fn}
         getMenu={fn}
         match={match}
       />

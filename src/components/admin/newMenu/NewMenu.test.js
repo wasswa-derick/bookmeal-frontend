@@ -20,8 +20,8 @@ describe("NewMenu", () => {
     };
     wrapper = mount(
       <NewMenu
-        setMessage={fn}
-        getMeals={fn}
+        setMessage={jest.fn}
+        getMeals={jest.fn}
         meals={[]}
         addMenu={fn}
         history={history}

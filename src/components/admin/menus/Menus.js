@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "react-loader";
 import PropTypes from "prop-types";
+import $ from "jquery";
 import { getMenus, deleteMenu } from "../../../actions/menus";
 import coffee from "../../../assets/images/coffee.jpg";
 import DeleteModal from "../deleteModal/DeleteModal";
@@ -32,8 +33,9 @@ export class Menus extends React.Component {
   delete = () => {
     const { menuId } = this.state;
     this.props.deleteMenu(menuId).then(() => {
-      // this.props.getMenus()
-      window.location.reload();
+      this.setState({ menuId: 0 });
+      this.props.getMenus();
+      $("#btn-no").click();
     });
   };
 
@@ -118,6 +120,7 @@ export class Menus extends React.Component {
                         <i className="fa fa-edit" />
                       </Link>
                       <a
+                        id="btn-delete"
                         style={{ marginLeft: "10px" }}
                         href="#delete"
                         role="button"

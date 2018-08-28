@@ -3,10 +3,22 @@ import { shallow } from "enzyme";
 import LoginForm from "./LoginForm";
 import FormInput from "../formInput/FormInput";
 
+const err = {
+  response: {
+    status: 400,
+    data: {
+      errors: {
+        title: "This field is required"
+      }
+    }
+  }
+};
+const mockFn = () => Promise.reject(err);
+
 describe("LoginForm", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<LoginForm handleSubmit={jest.fn} />);
+    wrapper = shallow(<LoginForm handleSubmit={mockFn} />);
   });
 
   it("should render form", () => {
@@ -61,6 +73,18 @@ describe("LoginForm", () => {
     wrapper.instance().onSubmit({ preventDefault: jest.fn });
     const { errors } = wrapper.instance().state;
     expect(errors.email).toBe("This email is invalid");
+  });
+
+  it("should handle errors on submiting form", () => {
+    wrapper.instance().setState({
+      data: {
+        email: "test@t.com",
+        password: "test"
+      }
+    });
+    wrapper.instance().onSubmit({ preventDefault: jest.fn });
+    const { errors } = wrapper.instance().state;
+    expect(errors).toEqual({});
   });
 
   it("should render correctly", () => {

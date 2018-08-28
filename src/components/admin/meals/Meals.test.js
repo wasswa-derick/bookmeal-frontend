@@ -13,12 +13,19 @@ const err = {
   }
 };
 const fn = () => Promise.reject(err);
+const mockFn = () => Promise.resolve({});
 
 describe("Meals", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = mount(
-      <Meals getMeals={fn} postMeal={fn} meals={[]} deleteMeal={fn} />
+      <Meals
+        getMeals={mockFn}
+        postMeal={fn}
+        meals={[]}
+        deleteMeal={mockFn}
+        setMessage={jest.fn}
+      />
     );
   });
 

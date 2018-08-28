@@ -1,7 +1,10 @@
 import { GOT_MESSAGE } from "./constants";
 
 const initialState = {
-  message: {}
+  message: {
+    text: "",
+    show: false
+  }
 };
 
 /**

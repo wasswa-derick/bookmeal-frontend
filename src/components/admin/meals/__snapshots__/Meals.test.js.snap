@@ -6,6 +6,7 @@ exports[`Meals should render correctly 1`] = `
   getMeals={[Function]}
   meals={Array []}
   postMeal={[Function]}
+  setMessage={[Function]}
 >
   <div>
     <div
@@ -25,18 +26,14 @@ exports[`Meals should render correctly 1`] = `
       </section>
       <Component
         component="div"
-        loaded={true}
+        loaded={false}
         loadedClassName="loadedContent"
         parentClassName="loader"
       >
         <div
-          className="loadedContent"
-          key="content"
-        >
-          <div
-            className="row"
-          />
-        </div>
+          className="loader"
+          key="loader"
+        />
       </Component>
       <div
         className="modal fade"
@@ -153,6 +150,7 @@ exports[`Meals should render correctly 1`] = `
               <button
                 className="btn btn-secondary"
                 data-dismiss="modal"
+                id="close-btn"
                 type="button"
               >
                 Close
@@ -220,6 +218,7 @@ exports[`Meals should render correctly 1`] = `
                 <button
                   className="btn btn-secondary"
                   data-dismiss="modal"
+                  id="btn-no"
                   type="button"
                 >
                   No

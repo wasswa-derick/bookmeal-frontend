@@ -81,6 +81,21 @@ describe("RegistrationForm", () => {
     expect(errors.email).toBe("This email is invalid");
   });
 
+  it("should handle errors on submiting form", () => {
+    wrapper.instance().setState({
+      data: {
+        businessAddress: "test",
+        businessName: "test",
+        name: "test",
+        email: "test@t.com",
+        password: "test"
+      }
+    });
+    wrapper.instance().onFormSubmit({ preventDefault: jest.fn });
+    const { errors } = wrapper.instance().state;
+    expect(errors).toEqual({});
+  });
+
   it("should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });

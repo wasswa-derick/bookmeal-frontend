@@ -7,12 +7,27 @@ describe("message reducer", () => {
   beforeEach(() => {
     message = { type: "success", text: "test message" };
     initialState = {
-      message: {}
+      message: {
+        show: false,
+        text: ""
+      }
     };
   });
 
   it("should return the initial state", () => {
-    expect(reducer(undefined, {})).toEqual({ message: {} });
+    expect(
+      reducer(undefined, {
+        message: {
+          show: false,
+          text: ""
+        }
+      })
+    ).toEqual({
+      message: {
+        show: false,
+        text: ""
+      }
+    });
   });
 
   it("should handle GOT_MESSAGE ", () => {

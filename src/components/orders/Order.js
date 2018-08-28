@@ -28,10 +28,7 @@ export class Order extends React.Component {
       loaded: false,
       order: { ...this.state.order, menuId: id }
     });
-    this.props
-      .getMenu(id)
-      .then(() => { })
-      .catch(() => { });
+    this.props.getMenu(id);
 
     this.setState({ loaded: true });
   };
@@ -49,11 +46,10 @@ export class Order extends React.Component {
       .then(() => {
         this.props.setMessage({
           text: `Your order has been placed. thank you`,
-          type: "info"
+          show: true
         });
         this.props.history.push("/orders");
-      })
-      .catch(err => console.log(err));
+      });
   };
 
   /**

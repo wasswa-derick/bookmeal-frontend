@@ -33,6 +33,14 @@ In order to test the application you can run the command
     npm test or yarn test
 ```
 
+## Deployment
+
+In order to try out the application you can run visit
+
+```
+   https://bookmeal-app.herokuapp.com/
+```
+
 ## License
 
 The project is licensed under MIT License.

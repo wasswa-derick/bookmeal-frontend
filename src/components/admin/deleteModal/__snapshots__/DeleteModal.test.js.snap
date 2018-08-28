@@ -49,6 +49,7 @@ exports[`delete modal should render correctly 1`] = `
         <button
           className="btn btn-secondary"
           data-dismiss="modal"
+          id="btn-no"
           type="button"
         >
           No

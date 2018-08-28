@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logoutUser } from "../../../actions/auth";
+import MessageAlert from "../messageAlert/MessageAlert";
 
 /**
  * @export
@@ -19,7 +20,7 @@ export class NavBar extends React.Component {
    * @returns {any} rendered elements
    */
   render() {
-    const { type, text } = this.props;
+    // const { type, text } = this.props;
     return (
       <header>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -92,8 +93,8 @@ export class NavBar extends React.Component {
                   </li>
                 </ul>
               ) : (
-                  <ul />
-                )}
+                <ul />
+              )}
             </ul>
             {this.props.isUserAuthenticated ? (
               <ul className="navbar-nav pull-right">
@@ -107,34 +108,32 @@ export class NavBar extends React.Component {
                 </li>
               </ul>
             ) : (
-                <ul className="navbar-nav pull-right">
-                  <li className="nav-item">
-                    <Link
-                      className="nav-link"
-                      href="/business/signup"
-                      to="/business/signup"
-                    >
-                      Sign up as a caterer
+              <ul className="navbar-nav pull-right">
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    href="/business/signup"
+                    to="/business/signup"
+                  >
+                    Sign up as a caterer
                   </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" href="/signup" to="/signup">
-                      Sign up as customer
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/signup" to="/signup">
+                    Sign up as customer
                   </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" href="/login" to="/login">
-                      Log In
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/login" to="/login">
+                    Log In
                   </Link>
-                  </li>
-                </ul>
-              )}
+                </li>
+              </ul>
+            )}
           </div>
         </nav>
         <div className="container">
-          {text && (
-            <div className={type}>{text}</div>
-          )}
+          <MessageAlert />
         </div>
       </header>
     );
@@ -144,15 +143,9 @@ export class NavBar extends React.Component {
 NavBar.propTypes = {
   isUserAuthenticated: PropTypes.bool.isRequired,
   isAdmin: PropTypes.bool.isRequired,
-  logoutUser: PropTypes.func.isRequired,
-  type: PropTypes.string,
-  text: PropTypes.string
+  logoutUser: PropTypes.func.isRequired
 };
 
-NavBar.defaultProps = {
-  type: undefined,
-  text: undefined
-};
 /**
 
  * @param {any} state

@@ -21,7 +21,7 @@ export class Home extends React.Component {
     this.props
       .getTodayMenus()
       .then(() => this.setState({ loaded: true }))
-      .catch(() => { });
+      .catch(() => {});
   };
 
   /**
@@ -32,10 +32,9 @@ export class Home extends React.Component {
    */
   viewMeals = (evt, id) => {
     if (!this.props.isUserAuthenticated) {
-      // FIXME:
       this.props.setMessage({
         text: "Login or create account to view and order meals on this menu",
-        type: "warning"
+        show: true
       });
       $(".modal-backdrop").remove();
       this.props.history.push("/login");
@@ -78,44 +77,44 @@ export class Home extends React.Component {
                     </h4>
                   </div>
                 ) : (
-                    <div>
-                      <div className="row mt-2">
-                        {menus.map(menu => (
+                  <div>
+                    <div className="row mt-2">
+                      {menus.map(menu => (
+                        <div
+                          style={{ cursor: "pointer" }}
+                          key={menu.id}
+                          className="col-md-3"
+                        >
                           <div
-                            style={{ cursor: "pointer" }}
-                            key={menu.id}
-                            className="col-md-3"
+                            onClick={evt => this.viewMeals(evt, menu.id)}
+                            aria-hidden
+                            className="card"
+                            style={{ width: "16rem", padding: "10px" }}
                           >
-                            <div
-                              onClick={evt => this.viewMeals(evt, menu.id)}
-                              aria-hidden
-                              className="card"
-                              style={{ width: "16rem", padding: "10px" }}
-                            >
-                              <img
-                                className="img img-thumbnail"
-                                src={menu.imageURL ? menu.imageURL : coffee}
-                                alt=""
-                                style={{ height: "180px", width: "100%" }}
-                              />
-                              <div className="card-body">
-                                <h6 className="card-title">{menu.title}</h6>
-                                <p
-                                  style={{ color: "gray" }}
-                                  className="card-text"
-                                >
-                                  <i>{menu.description}</i>
-                                </p>
-                              </div>
-                              <div>
-                                <p>By: {menu.catering.name}</p>
-                              </div>
+                            <img
+                              className="img img-thumbnail"
+                              src={menu.imageURL ? menu.imageURL : coffee}
+                              alt=""
+                              style={{ height: "180px", width: "100%" }}
+                            />
+                            <div className="card-body">
+                              <h6 className="card-title">{menu.title}</h6>
+                              <p
+                                style={{ color: "gray" }}
+                                className="card-text"
+                              >
+                                <i>{menu.description}</i>
+                              </p>
+                            </div>
+                            <div>
+                              <p>By: {menu.catering.name}</p>
                             </div>
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      ))}
                     </div>
-                  )}
+                  </div>
+                )}
               </Loader>
             </div>
           </div>

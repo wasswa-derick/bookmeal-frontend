@@ -5,16 +5,26 @@ import LoginForm from "../../components/common/forms/loginForm/LoginForm";
 
 describe("LoginPage", () => {
   let wrapper;
+  let mockFn;
+  let history;
   beforeEach(() => {
-    const history = {
-      push: jest.fn
+    mockFn = jest.fn();
+    history = {
+      push: mockFn
     };
-    wrapper = shallow(<Login loginUser={jest.fn} history={history} />);
+    const fn = () => Promise.resolve();
+    wrapper = shallow(<Login loginUser={fn} history={history} />);
   });
 
   it("should render a login form", () => {
     const form = <LoginForm handleSubmit={wrapper.instance().handleSubmit} />;
     expect(wrapper.containsMatchingElement(form)).toEqual(true);
+  });
+
+  it("should handle submit", () => {
+    const data = { username: "test", password: "test" };
+    wrapper.instance().handleSubmit(data);
+    expect(wrapper.instance().props.history).toEqual(history);
   });
 
   it("should render correctly", () => {

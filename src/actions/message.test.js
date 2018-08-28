@@ -9,7 +9,7 @@ const mockStore = configureMockStore(middlewares);
 describe("message actions", () => {
   let data;
   beforeEach(() => {
-    data = { type: "success", text: "test message" };
+    data = { show: false, text: "test message" };
   });
 
   it("message action GOT_MESSAGE are dispatched to redux store", () => {

@@ -32,23 +32,6 @@ export const orderMeals = data => dispatch => {
   return dispatch(gotCheckoutOrder(data));
 };
 
-export const getCartOrder = () => dispatch => {
-  const data = sessionStorage.getItem("cartOrder");
-  if (data == null) {
-    return dispatch(
-      gotCheckoutOrder({
-        menuId: 0,
-        meals: [],
-        totalCost: 0,
-        itemCount: 0,
-        cost: 0,
-        mealIds: []
-      })
-    );
-  }
-  return dispatch(gotCheckoutOrder(JSON.parse(data)));
-};
-
 export const getOrders = () => dispatch => http
   .get("/orders")
   .then(res => dispatch(gotOrders(res.data.orders)));

@@ -7,8 +7,9 @@ const asyncMockFn = () => Promise.resolve({});
 
 describe("Signup Page", () => {
   let wrapper;
+  let history;
   beforeEach(() => {
-    const history = {
+    history = {
       push: jest.fn
     };
     wrapper = shallow(
@@ -22,6 +23,12 @@ describe("Signup Page", () => {
         <RegistrationForm handleSubmit={wrapper.instance().handleSubmit} />
       )
     ).toEqual(true);
+  });
+
+  it("should handle submit", () => {
+    const data = { username: "test", password: "test" };
+    wrapper.instance().handleSubmit(data);
+    expect(wrapper.instance().props.history).toEqual(history);
   });
 
   it("should render correctly", () => {

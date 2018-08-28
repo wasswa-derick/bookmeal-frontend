@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { OrderMealModal } from "../../components/common";
 import { getMyOrders, modifyOrder } from "../../actions/orders";
+import { setMessage } from "../../actions/message";
 import { getMenu } from "../../actions/menus";
 
 /**
@@ -35,10 +36,7 @@ export class CustomerOrders extends React.Component {
     }
   };
   componentWillMount = () => {
-    this.props
-      .getMyOrders()
-      .then(() => this.setState({ loaded: true }))
-      .catch(() => {});
+    this.props.getMyOrders().then(() => this.setState({ loaded: true }));
   };
 
   /**
@@ -52,8 +50,7 @@ export class CustomerOrders extends React.Component {
     // get the menu for this order
     this.props
       .getMenu(order.menuId)
-      .then(() => this.setState({ selectedMenu: this.props.menu }))
-      .catch(() => {});
+      .then(() => this.setState({ selectedMenu: this.props.menu }));
   };
   /**
    * @param {Object} data
@@ -66,15 +63,20 @@ export class CustomerOrders extends React.Component {
         orderCount: data.orderCount,
         meals: data.meals.map(meal => meal.id)
       })
-      .then(() => window.location.reload())
-      .catch(() => {});
+      .then(() => {
+        this.props.setMessage({
+          text: "Order has been placed successfully",
+          show: true
+        });
+        this.props.getMyOrders();
+      });
   };
   /**
    * @returns {null} renders elements
    * @memberof CustomerOrders
    */
   render() {
-    const { loaded } = this.state;
+    const { loaded, order } = this.state;
     const { orders } = this.props;
     return (
       <div className="container">
@@ -95,24 +97,24 @@ export class CustomerOrders extends React.Component {
             </thead>
 
             <tbody>
-              {orders.map(order => (
-                <tr key={order.id} className="even">
-                  <td>{order.orderCount}</td>
+              {orders.map(myOrder => (
+                <tr key={myOrder.id} className="even">
+                  <td>{myOrder.orderCount}</td>
                   <td>
-                    {order.meals.map(meal => (
+                    {myOrder.meals.map(meal => (
                       <li key={meal.id}>
                         {meal.title}: UGX {meal.price}
                       </li>
                     ))}
                   </td>
-                  <td>UGX {order.cost}</td>
-                  <td>{moment(order.expiresAt).fromNow()}</td>
+                  <td>UGX {myOrder.cost}</td>
+                  <td>{moment(myOrder.expiresAt).fromNow()}</td>
                   <td>
-                    {(moment() - moment(order.expiresAt) <= 0 && (
+                    {(moment() - moment(myOrder.expiresAt) <= 0 && (
                       <i
                         aria-hidden
                         style={{ cursor: "pointer" }}
-                        onClick={evt => this.onSelected(evt, order)}
+                        onClick={evt => this.onSelected(evt, myOrder)}
                         className="fa fa-edit"
                         data-toggle="modal"
                         data-target="#orderModal"
@@ -126,7 +128,7 @@ export class CustomerOrders extends React.Component {
         </Loader>
         <OrderMealModal
           selectedMenu={this.state.selectedMenu}
-          order={this.state.order}
+          order={order}
           submit={this.makeOrder}
         />
       </div>
@@ -163,7 +165,8 @@ CustomerOrders.propTypes = {
       }).isRequired
     ).isRequired
   }).isRequired,
-  modifyOrder: PropTypes.func.isRequired
+  modifyOrder: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -171,6 +174,9 @@ const mapStateToProps = state => ({
   menu: state.menusReducer.menu
 });
 
-export default connect(mapStateToProps, { getMyOrders, getMenu, modifyOrder })(
-  CustomerOrders
-);
+export default connect(mapStateToProps, {
+  getMyOrders,
+  getMenu,
+  modifyOrder,
+  setMessage
+})(CustomerOrders);

@@ -19,13 +19,24 @@ describe("CustomerOrders", () => {
       description: "lorem desc",
       meals: [{ id: 1, title: "test meal", price: 1000, description: "desc" }]
     };
+    const orders = [
+      {
+        id: 1,
+        menuId: 1,
+        cost: 2000,
+        orderCount: 1,
+        expiresAt: "",
+        meals: [{ id: 1, title: "test" }]
+      }
+    ];
     wrapper = shallow(
       <CustomerOrders
         getMyOrders={asyncMockFn}
         getMenu={asyncMockFn}
         menu={menu}
         modifyOrder={fn}
-        orders={[]}
+        orders={orders}
+        setMessage={jest.fn}
       />
     );
   });
@@ -33,7 +44,6 @@ describe("CustomerOrders", () => {
   it("should handle onSelected", () => {
     const evt = {};
     wrapper.instance().onSelected(evt, { id: 1 });
-    // console.log(wrapper.instance().state.selectedMenu);
   });
 
   it("should render correctly", () => {

@@ -1,10 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Message Alert should render correctly 1`] = `
-<div
-  className="alert alert-info"
-  role="alert"
->
-  test msg
-</div>
+<Connect(MessageAlert)
+  show={false}
+  text="test msg"
+/>
 `;

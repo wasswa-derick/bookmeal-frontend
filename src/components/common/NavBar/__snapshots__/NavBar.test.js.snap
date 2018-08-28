@@ -96,6 +96,8 @@ exports[`NavBar should render correctly 1`] = `
   </nav>
   <div
     className="container"
-  />
+  >
+    <Connect(MessageAlert) />
+  </div>
 </header>
 `;

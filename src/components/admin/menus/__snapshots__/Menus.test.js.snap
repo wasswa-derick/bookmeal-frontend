@@ -14,7 +14,7 @@ exports[`MenusPage should render correctly 1`] = `
         className="stat"
       >
         <h2>
-          0
+          1
            
           <i
             className="fa fa-bars"
@@ -81,7 +81,76 @@ exports[`MenusPage should render correctly 1`] = `
             </th>
           </tr>
         </thead>
-        <tbody />
+        <tbody>
+          <tr
+            className="even"
+            key="1"
+          >
+            <td />
+            <td>
+              <img
+                alt=""
+                className="img img-thumbnail"
+                src="coffee.jpg"
+                style={
+                  Object {
+                    "height": "100px",
+                    "width": "150px",
+                  }
+                }
+              />
+            </td>
+            <td>
+              <li
+                key="1"
+              >
+                meal
+                :
+                 
+                <span
+                  style={
+                    Object {
+                      "color": "#00a1e0",
+                    }
+                  }
+                >
+                  UGX 
+                </span>
+              </li>
+            </td>
+            <td>
+              test
+            </td>
+            <td>
+              <Link
+                href="/admin/menus/1/edit"
+                replace={false}
+                to="/admin/menus/1/edit"
+              >
+                <i
+                  className="fa fa-edit"
+                />
+              </Link>
+              <a
+                data-target="#confirmDel"
+                data-toggle="modal"
+                href="#delete"
+                id="btn-delete"
+                onClick={[Function]}
+                role="button"
+                style={
+                  Object {
+                    "marginLeft": "10px",
+                  }
+                }
+              >
+                <i
+                  className="fa fa-trash text-danger"
+                />
+              </a>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </Component>
     <DeleteModal

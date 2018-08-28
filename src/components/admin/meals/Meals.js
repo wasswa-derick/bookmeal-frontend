@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import validator from "validator";
 import PropTypes from "prop-types";
 import Loader from "react-loader";
+import $ from "jquery";
 import { Link } from "react-router-dom";
 import { MealOption, Footer, InlineError } from "../../common";
 import { FormInput } from "../../common/forms";
 import { getMeals, postMeal, deleteMeal } from "../../../actions/meals";
+import { setMessage } from "../../../actions/message";
 import DeleteModal from "../deleteModal/DeleteModal";
 
 const EditLink = ({ id }) => (
@@ -41,8 +43,7 @@ export class Meals extends React.Component {
   };
 
   componentWillMount = () => {
-    this.props.getMeals().catch(() => {});
-    this.setState({ loaded: true });
+    this.props.getMeals().then(() => this.setState({ loaded: true }));
   };
 
   /**
@@ -60,7 +61,14 @@ export class Meals extends React.Component {
     if (Object.keys(errors).length === 0) {
       this.props
         .postMeal({ ...data, price: parseInt(data.price, 10) })
-        .then(() => window.location.reload())
+        .then(() => {
+          this.props.getMeals();
+          $("#close-btn").click();
+          this.props.setMessage({
+            text: "Meal added successfully",
+            show: true
+          });
+        })
         .catch(err => {
           if (err.response.status && err.response.status === 400) {
             errors = { ...err.response.data.errors };
@@ -81,10 +89,13 @@ export class Meals extends React.Component {
 
   confirmDeletion = () => {
     const { mealId } = this.state;
-    this.props
-      .deleteMeal(mealId)
-      .then(() => window.location.reload())
-      .catch(() => {});
+    this.props.deleteMeal(mealId).then(() => {
+      $("#btn-no").click();
+      this.props.setMessage({
+        text: "Meal deleted successfully",
+        show: true
+      });
+    });
   };
 
   /**
@@ -205,6 +216,7 @@ export class Meals extends React.Component {
                 </div>
                 <div className="modal-footer">
                   <button
+                    id="close-btn"
                     type="button"
                     className="btn btn-secondary"
                     data-dismiss="modal"
@@ -241,7 +253,8 @@ Meals.propTypes = {
   ).isRequired,
   getMeals: PropTypes.func.isRequired,
   postMeal: PropTypes.func.isRequired,
-  deleteMeal: PropTypes.func.isRequired
+  deleteMeal: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired
 };
 
 /**
@@ -255,5 +268,6 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   getMeals,
   postMeal,
-  deleteMeal
+  deleteMeal,
+  setMessage
 })(Meals);

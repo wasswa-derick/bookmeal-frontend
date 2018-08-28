@@ -7,7 +7,7 @@ import { gotMessage } from "./message";
  * @export
  * @param {any} store
  */
-export default function (store) {
+export default function(store) {
   instance.interceptors.response.use(
     response => response,
     error => {
@@ -20,7 +20,7 @@ export default function (store) {
               store.dispatch(
                 gotMessage({
                   text: "Session has expired log out and login again.",
-                  type: "danger"
+                  show: true
                 })
               );
               window.location.reload();
@@ -31,7 +31,7 @@ export default function (store) {
             store.dispatch(
               gotMessage({
                 text: "Internal server error occurred",
-                type: "danger"
+                show: true
               })
             );
             break;
@@ -39,7 +39,7 @@ export default function (store) {
             store.dispatch(
               gotMessage({
                 text: "Cannot fetch resource, access forbidden",
-                type: "danger"
+                show: true
               })
             );
             break;
@@ -47,7 +47,7 @@ export default function (store) {
             store.dispatch(
               gotMessage({
                 text: "Requested resource not found",
-                type: "info"
+                show: true
               })
             );
             break;

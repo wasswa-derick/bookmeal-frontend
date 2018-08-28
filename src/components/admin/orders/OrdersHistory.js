@@ -14,16 +14,8 @@ export class OrdersHistory extends React.Component {
   state = {
     loaded: false
   };
-  componentWillMount = () => {
-    this.props
-      .getOrders()
-      .then(() => this.setState({ loaded: true }))
-      .catch(() => {});
-  };
-
-  componentDidMount = () => {};
-
-  componentDidUpdate = () => {};
+  componentWillMount = () =>
+    this.props.getOrders().then(() => this.setState({ loaded: true }));
 
   /**
    * @returns {null} renders elements

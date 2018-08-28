@@ -6,9 +6,11 @@ describe("AdminRoute", () => {
   let wrapper;
   beforeEach(() => {
     const component = () => <h1>Test</h1>;
-    wrapper = shallow(
-      <AdminRoute isUserAuthenticated isAdmin component={component} />
-    );
+    const props = {
+      isUserAuthenticated: true,
+      isAdmin: true
+    };
+    wrapper = shallow(<AdminRoute {...props} component={component} />);
   });
 
   it("should render correctly", () => {

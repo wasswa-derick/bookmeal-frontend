@@ -36,7 +36,7 @@ export class NewMenu extends React.Component {
       if (meals.length === 0) {
         this.props.setMessage({
           text: `Select at least one meal to put on the menu`,
-          type: "danger"
+          show: true
         });
         return;
       }
@@ -52,7 +52,7 @@ export class NewMenu extends React.Component {
         .then(() => {
           this.props.setMessage({
             text: `New Menu ${data.title}  has been created successfully`,
-            type: "success"
+            show: true
           });
           this.props.history.push("/admin/menus");
         })

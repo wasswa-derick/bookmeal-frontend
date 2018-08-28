@@ -156,24 +156,4 @@ describe("orders actions", () => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });
-
-  it("should handle getCartOrder", () => {
-    const expectedAction = [
-      {
-        type: CHECKOUT_ORDER,
-        data: postOrderMock
-      }
-    ];
-
-    const store = mockStore({ data: {} });
-    store.dispatch(actions.getCartOrder());
-    expect(store.getActions()).toEqual(expectedAction);
-
-    // sessionStorage.removeItem("cartOrder");
-    // store.dispatch(actions.getCartOrder());
-    // expect(store.getActions()).toEqual({
-    //   type: CHECKOUT_ORDER,
-    //   data: cartOrderMock
-    // });
-  });
 });
