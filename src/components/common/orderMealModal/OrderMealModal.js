@@ -113,6 +113,7 @@ export class OrderMealModal extends React.Component {
   makeOrder = () => {
     // remove this modal
     $(".modal-backdrop").remove();
+    $("#btn-close-modal").click();
     this.props.submit(this.state.order);
   };
 
@@ -133,6 +134,7 @@ export class OrderMealModal extends React.Component {
                 {selectedMenu.title}
               </h5>
               <button
+                id="btn-close-modal"
                 type="button"
                 className="close"
                 data-dismiss="modal"
