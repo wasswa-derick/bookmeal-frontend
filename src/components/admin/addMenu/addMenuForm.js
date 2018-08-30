@@ -57,7 +57,9 @@ const AddMenuForm = ({
       </div>
       <div className="col-md-3">
         <div className="form-group">
-          <label htmlFor="desc">Description</label>
+          <label htmlFor="desc">
+            Description <i>(40 characters)</i>
+          </label>
           <textarea
             className={
               errors.description ? "form-control is-invalid" : "form-control"
@@ -65,7 +67,7 @@ const AddMenuForm = ({
             name="description"
             id="desc"
             cols="20"
-            rows="2"
+            rows="4"
             onChange={onChange}
             value={data.description}
           />

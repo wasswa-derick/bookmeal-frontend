@@ -22,15 +22,15 @@ export class Order extends React.Component {
       totalCost: 0
     }
   };
-  componentWillMount = () => {
+  componentDidMount = () => {
     const { id } = this.props.match.params;
     this.setState({
       loaded: false,
       order: { ...this.state.order, menuId: id }
     });
-    this.props.getMenu(id);
-
-    this.setState({ loaded: true });
+    this.props.getMenu(id).then(() => {
+      this.setState({ loaded: true });
+    });
   };
   cancelOrder = () => {
     this.props.history.push("/");
@@ -110,15 +110,16 @@ export class Order extends React.Component {
    * @memberof Order
    */
   render() {
-    const { menu } = this.props;
-    const { loaded, order } = this.state;
+    const orderMenu = this.props.menu;
+    const { order, loaded } = this.state;
+
     return (
       <div className="container">
-        <h5>{menu.title}</h5>
+        <h5>{loaded ? orderMenu.title : "Loading"}</h5>
         <hr />
         <Loader loaded={loaded}>
           <div className="modal-body">
-            {menu.meals.map(meal => (
+            {orderMenu.meals.map(meal => (
               <div key={meal.id} className="form-group meal-order-item">
                 <input
                   onChange={evt => this.checked(evt, meal.id)}
@@ -223,9 +224,7 @@ Order.propTypes = {
   }).isRequired
 };
 
-const mapStateToProps = state => ({
-  menu: state.menusReducer.menu
-});
+const mapStateToProps = state => ({ menu: state.menusReducer.menu });
 
 export default connect(mapStateToProps, {
   getMenu,

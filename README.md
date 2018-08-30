@@ -2,7 +2,7 @@
 
 Frontend for meal-booking-application, that allows customers to make food orders and helps the food vendor know what the customers want to eat.
 
-[![Build Status](https://travis-ci.com/solnsubuga/bookmeal-frontend.svg?branch=master)](https://travis-ci.com/solnsubuga/bookmeal-frontend) [![Coverage Status](https://coveralls.io/repos/github/solnsubuga/bookmeal-frontend/badge.svg?branch=develop)](https://coveralls.io/github/solnsubuga/bookmeal-frontend?branch=develop)[![Maintainability](https://api.codeclimate.com/v1/badges/7fe6f1825eabebb7ddb5/maintainability)](https://codeclimate.com/github/solnsubuga/bookmeal-frontend/maintainability)
+[![Build Status](https://travis-ci.com/solnsubuga/bookmeal-frontend.svg?branch=master)](https://travis-ci.com/solnsubuga/bookmeal-frontend) [![Coverage Status](https://coveralls.io/repos/github/solnsubuga/bookmeal-frontend/badge.svg?branch=develop)](https://coveralls.io/github/solnsubuga/bookmeal-frontend?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/7fe6f1825eabebb7ddb5/maintainability)](https://codeclimate.com/github/solnsubuga/bookmeal-frontend/maintainability)
 
 ## Backend Api Setup
 

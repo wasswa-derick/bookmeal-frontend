@@ -80,6 +80,11 @@ exports[`Home should render correctly 1`] = `
                   />
                   <div
                     className="card-body"
+                    style={
+                      Object {
+                        "height": "100px",
+                      }
+                    }
                   >
                     <h6
                       className="card-title"

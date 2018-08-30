@@ -83,7 +83,10 @@ exports[`AddMenu should render correctly 1`] = `
         <label
           htmlFor="desc"
         >
-          Description
+          Description 
+          <i>
+            (40 characters)
+          </i>
         </label>
         <textarea
           className="form-control is-invalid"
@@ -91,7 +94,7 @@ exports[`AddMenu should render correctly 1`] = `
           id="desc"
           name="description"
           onChange={[Function]}
-          rows="2"
+          rows="4"
           value=""
         />
         <InlineError

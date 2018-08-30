@@ -12,7 +12,14 @@ export default function(store) {
     response => response,
     error => {
       // Handle 505 errors and 401 errors
-      if (error.response.status) {
+      if (error.response === undefined) {
+        store.dispatch(
+          gotMessage({
+            text: "Internal server error, Backend service is offline",
+            show: true
+          })
+        );
+      } else if (error.response.status) {
         switch (error.response.status) {
           case 401:
             if (localStorage.getItem("authUserToken")) {

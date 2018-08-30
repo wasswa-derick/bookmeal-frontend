@@ -25,6 +25,7 @@ exports[`OrderMealModal should render correctly 1`] = `
           aria-label="Close"
           className="close"
           data-dismiss="modal"
+          id="btn-close-modal"
           type="button"
         >
           <span

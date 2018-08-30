@@ -18,10 +18,7 @@ export class Home extends React.Component {
     loaded: false
   };
   componentDidMount = () => {
-    this.props
-      .getTodayMenus()
-      .then(() => this.setState({ loaded: true }))
-      .catch(() => {});
+    this.props.getTodayMenus().then(() => this.setState({ loaded: true }));
   };
 
   /**
@@ -97,7 +94,10 @@ export class Home extends React.Component {
                               alt=""
                               style={{ height: "180px", width: "100%" }}
                             />
-                            <div className="card-body">
+                            <div
+                              style={{ height: "100px" }}
+                              className="card-body"
+                            >
                               <h6 className="card-title">{menu.title}</h6>
                               <p
                                 style={{ color: "gray" }}
